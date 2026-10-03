@@ -8,8 +8,17 @@ levels actually populated, does the metadata carry the physical pixel size the s
 promises, and is the level ladder well formed.
 
 No chunk bytes are ever downloaded — only `ListObjectsV2` listings and small metadata objects
-(`.zattrs`, `.zarray`, `zarr.json`). A full sweep of the catalog (≈900 stores) costs about
-1,600 requests and 15 minutes on one machine.
+(`.zattrs`, `.zarray`, `zarr.json`). The catalog pass over the 894 stores declared on 2026-09-29 is
+about 1,800 requests and 20 minutes on one machine; the header, pyramid-level and level-chunk layers
+bring the whole evidence set to roughly ten thousand metadata requests. None of them is image data.
+
+**What it found.** 124 stores publish no `axes[].unit` at all, and **81 of them state a micrometre
+pitch in their own name** — 76 raw CT volumes, the input to every downstream step, across 39 samples.
+For **77 of those 81 the correct pitch is already in the catalog manifest**, so the repair is a
+metadata copy rather than a re-render. The other 43 are prediction stores with no pitch in the name.
+Separately, one published surface volume declares six levels and holds no chunks, so a reader gets
+`fill_value` everywhere with no error. Everything else came back clean, and [COVERAGE.md](COVERAGE.md)
+lists each check with the scope it actually covered.
 
 ## Why
 
