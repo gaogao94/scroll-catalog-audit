@@ -279,6 +279,18 @@ photo-mask), checked with HEAD requests only, so no bytes were transferred. Repr
 `python -m scroll_catalog_audit assets`. This is the last "declared versus published" gap in the
 audit: roots, segments, volumes, scans and now assets.
 
+## 3l. The check runs in both directions, and the bucket has one thing the catalog does not
+
+Declared versus published was checked one asset class at a time (3b-iii, 3k). The reverse direction is
+one listing away: the bucket's top level holds **46 prefixes and 4 files**, and the manifest declares
+**45 samples** - every sample has a prefix, and the extra prefix is **`_thumbnails/`**, which no sample
+record describes. It is the website's image cache (`_thumbnails/fit-in/1200x1200/...webp`), at least
+1,000 keys and 102 MB in the first page alone, and it mirrors catalog content rather than being part of
+it. The four top-level files are `metadata.json`, `metadata.min.json`, `LICENSE.txt` and `index.html`.
+
+So the audit's scope statement can be exact in both directions: everything the catalog declares is
+published, and the bucket additionally carries a thumbnail cache the catalog does not describe.
+
 ## 4. Path resolution
 
 | check | scope | result |

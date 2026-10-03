@@ -24,6 +24,7 @@ Snapshot: `metadata.min.json`, `Last-Modified 2026-09-29`, 894 declared Zarr roo
 | stores whose readable metadata declares no `axes[].unit` | 894 | **124** (81 + 43) | `results_levels.jsonl` |
 | stores that publish no readable metadata at all | 894 | **15** (14 no metadata object, 1 unreadable) | `results.jsonl` |
 | declared `photo` / `photo-mask` origins that resolve | 88 origin-root pairs | **88 / 88** (HEAD only, no bytes) | `python -m scroll_catalog_audit assets` |
+| bucket top-level prefixes the manifest does not declare | 46 prefixes vs 45 samples | **1** (`_thumbnails/`, the site's image cache) | one `delimiter=/` listing |
 | … of which state a micrometre pitch in their own name | 124 | **81** (76 raw CT, 4 surface volumes, 1 prediction) | `results.jsonl` |
 | … of which state no pitch in the name | 124 | **43** (42 surface predictions, 1 ink-detection-3d) | `results.jsonl` |
 | affected stores whose pitch is already in the manifest | 81 | **77** | `fixlist.json` |
