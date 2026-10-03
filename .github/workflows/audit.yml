@@ -45,6 +45,23 @@ jobs:
           if python -m scroll_catalog_audit report --results /tmp/does-not-exist.jsonl --out /tmp/y.md; then
             echo "::error::a missing results file was not reported"; exit 1
           fi
+      - name: The manifest checks report exactly what is already filed
+        # The full catalog file, because creation dates, original_volume_id, transforms and the
+        # provenance blocks exist only there. Manifest exits 1 on the one filed defect, so the step
+        # tolerates that and asserts instead that no *other* code has appeared.
+        run: |
+          curl -sSL -o /tmp/metadata.json \
+            https://vesuvius-challenge-open-data.s3.amazonaws.com/metadata.json
+          python -m scroll_catalog_audit manifest --catalog /tmp/metadata.json > /tmp/manifest.txt || true
+          cat /tmp/manifest.txt
+          codes=$(sed -n 's/^ *\[\(ERROR\|WARN\)\] \([A-Z_]*\):.*/\1 \2/p' /tmp/manifest.txt | sort -u)
+          test -n "$codes"
+          for c in $codes; do
+            case "$c" in
+              "ERROR MODEL_SAMPLE_MISSING"|"WARN PROVENANCE_DIRTY_ALWAYS"|"WARN PROVENANCE_OUTPUT_MISMATCH") ;;
+              *) echo "::error::unexpected manifest finding: $c"; exit 1 ;;
+            esac
+          done
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible
