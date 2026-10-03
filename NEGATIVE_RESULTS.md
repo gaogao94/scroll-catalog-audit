@@ -188,6 +188,21 @@ means "at least 1000"; that does not affect the presence check.
 
 Taken with #1892 being the single such store in the catalog, this bounds the class at one.
 
+## 3d-iii. Two tempting ways to detect missing data that do not work here
+
+Chunk *counts* look like they should reveal a store that lost data. Both obvious tests were tried and
+both are invalid in this catalog, which is worth writing down so nobody spends a day on them:
+
+| candidate test | why it fails |
+|---|---|
+| a level's chunks are fewer than its declared shape implies | surface volumes are an irregular mesh inside an axis-aligned box, so empty chunks are the norm. Every one of the 20 comparable level-0 arrays was below its shape-implied count (43/64, 845/1400, 369/570, ...) |
+| a store name republished under several paths has fewer chunks in one copy | copies under different segments render **different surface regions**, so their occupancy legitimately differs. 42 of 61 comparable (group, level) pairs differ by more than 2x |
+
+What *is* usable is presence, not count: a level with a header and no chunks at all (#1892) is
+detectable and is the only such store. One trap inside that check too - a listing is capped at 1000
+keys, and the cap shows up as 999 chunks rather than 1000, so a truncated listing compared against a
+complete one invents a difference.
+
 ## 4. Path resolution
 
 | check | scope | result |
