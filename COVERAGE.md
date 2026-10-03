@@ -38,6 +38,8 @@ Snapshot: `metadata.min.json`, `Last-Modified 2026-09-29`, 894 declared Zarr roo
 | chunk larger than its array shape | 894 | **0** | `results_zarray.jsonl` |
 | v3 stores that are compressed | 81 | **81 / 81** | `results_zarray.jsonl` |
 | v2 stores uncompressed / compressed | 813 | 763 / 50 | `results_zarray.jsonl` |
+| array `order` is not C (column-major) | 894 | **0** — 813 say `C`, the 81 v3 stores omit it | `results_zarray.jsonl` |
+| `filters` carrying a codec a reader may not implement | 894 | **0** — `[]` or the standard v3 `sharding_indexed` | `results_zarray.jsonl` |
 | level-0 uncompressed bytes (level 0 only) | 894 | 909 TB; 626 roots over 256 MB | `results_zarray.jsonl` |
 
 The 909 TB corroborates the catalog-wide uncompressed-storage finding in
