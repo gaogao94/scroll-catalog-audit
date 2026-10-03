@@ -35,7 +35,9 @@ The audit shows this is not a four-store accident:
 * The same sweep also found **1 store that declares six pyramid levels and contains no chunks at
   all** (header-only; reads back as `fill_value` with exit 0 — reproduces #1892 exactly) and
   **14 stores with no metadata object at all**.
-* A **deep sweep of all 120 raw volumes** — every declared level probed for chunks — found **no
+* Every declared level of **every root** listed and counted - 884 roots, six levels each, **5,304 level
+  listings, all successful** - found **6** levels with a header and no chunks, and they are the six
+  levels of one store (#1892). An earlier **deep sweep of all 120 raw volumes** — every declared level probed for chunks — found **no
   header-only level**, so the empty-pyramid problem is confined to derived stores, not the primary
   data. No broken level ladders exist either (see negative results).
 * Counts come from two independent sweeps merged per store (the run that obtained metadata wins),

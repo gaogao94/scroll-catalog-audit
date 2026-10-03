@@ -117,7 +117,9 @@ per-class remediation list.
   [#1892](https://github.com/ScrollPrize/villa/issues/1892) exactly), and **14 stores** carry no
   metadata object at all.
 * **Header-only levels are rare.** Level 0 was checked on **every** root (894) and exactly one store
-  has no chunks there. A deep sweep then probed *every declared level* on all **120 raw volumes**
+  has no chunks there. Listing every declared level of every root - **884 roots, 5,304 level listings,
+all successful** - leaves exactly those six levels, and no others, holding a header with no chunks. A
+separate deep probe covers *header* existence on all **120 raw volumes**
   and on a reproducible random sample of **60 segment surface volumes** (8.7 % of that family,
   `--random 60 --seed 20261003`) — **no header-only level in either**. With 0 hits in 60 draws, the
   segment family's rate is bounded at <5 % (95 %, rule of three), so this is a bound rather than
