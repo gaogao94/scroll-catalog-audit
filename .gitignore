@@ -12,3 +12,4 @@ scan_deep_seg.log
 scan_deep_seg.log
 geometry_probe*.log
 results_geometry_probe.jsonl
+results_geometry_affected.jsonl
