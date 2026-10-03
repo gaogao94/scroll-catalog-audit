@@ -658,6 +658,25 @@ def cmd_manifest(args):
           + f'; the sentinel "none" is a scalar in {sum(scalar_sentinel.values())} place(s) ('
           + ", ".join(f"{k} {n}" for k, n in scalar_sentinel.most_common(3))
           + f") and appears inside a list {in_list} time(s)")
+    # Some samples are catalogued with metadata but no data objects of their own: the six fragments
+    # whose volumes exist only on the retired dl.ash2txt.org host (issue #1755). Printing the families
+    # keeps that claim checkable instead of leaving it in a comment.
+    families: dict[str, list[str]] = {}
+    for name, info in samples.items():
+        url = ((info.get("sample") or {}).get("properties") or {}).get("legacy_data_url") or ""
+        if not url:
+            continue
+        for part in ("/fragments/", "/full-scrolls/"):
+            if part in url:
+                families.setdefault(part.strip("/"), []).append(name)
+                break
+        else:
+            families.setdefault("other", []).append(name)
+    for fam, names in sorted(families.items()):
+        empty = [n for n in names
+                 if not ((samples[n].get("volumes") or samples[n].get("segments") or samples[n].get("scans")))]
+        print(f"  legacy URLs: {len(names)} sample(s) under {fam}, {len(empty)} of them with no "
+              f"volumes/segments/scans" + (f" ({', '.join(sorted(empty))})" if empty else ""))
     return 1 if err else 0
 
 
