@@ -117,7 +117,7 @@ each patch adds tests in the repository's existing style and applies cleanly to 
 1. Problem identification and solution
    Challenge: the published catalog is not self-describing. A metadata-only sweep of all 894 Zarr
    roots shows 81 stores whose own name states a micrometre pitch while their OME metadata carries
-   no scale (66 of them raw CT volumes, the input to every downstream step, across 39 samples), 43
+   no scale (76 of them raw CT volumes, the input to every downstream step, across 39 samples), 43
    prediction stores with no scale at all, 14 stores with no metadata object, and one store that
    declares six levels and holds no chunks.
    Implementation path: `scan` (metadata only, resumable) -> `report` (FINDINGS.md + machine-readable
