@@ -10,3 +10,5 @@ __pycache__/
 scan_deep.log
 scan_deep_seg.log
 scan_deep_seg.log
+geometry_probe*.log
+results_geometry_probe.jsonl

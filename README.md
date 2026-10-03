@@ -113,6 +113,12 @@ per-class remediation list.
 * **No broken level ladders** were found. The z-axis/in-plane asymmetry of surface volumes
   (`[8.64, 8.64, 8.64] → [8.64, 17.28, 17.28]`) is uniform across the catalog and is therefore
   reported as **expected**, not as a defect.
+* **Declared scales match the actual array shapes.** A prototype check (each level's `.zarray`
+  compared against `shape_0 / (scale_i / scale_0)`, 1 % tolerance) ran over **every declared level**
+  of all **120 volume roots** and of the 81 stores carrying the units defect: no level contradicts
+  its own geometry. So for the catalog in this bucket, the "coordinates off by the level ratio"
+  failure mode does not occur — which is worth stating, because it is a class that is otherwise
+  silent when it does.
 * **894 roots resolve to only 224 distinct store names**: 28 names are republished under 2–81 segment
   directories, so 78 % of the roots are repeat publications. That matters for #1951: the store
   `8.64um-1.2m-116keV-volume-20250521151220.zarr` exists **15 times**, and **11 copies declare the
