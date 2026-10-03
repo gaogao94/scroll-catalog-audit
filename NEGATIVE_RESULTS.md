@@ -139,6 +139,25 @@ origin by origin: **894 / 894 Zarr roots in both, with an identical set of decla
 each**. The compact file is a strict subset in fields, not in paths, so a consumer reading either one
 is sent to the same place. The `models` section exists only in the full file.
 
+## 3g. The two access roots use different path conventions
+
+Ten origins declare `https://data.aws.ash2txt.org` as their only access root. Each was requested under
+both spellings - the manifest's `samples/<sample>/volumes/...` and the unprefixed
+`<sample>/volumes/...`:
+
+| origins | S3, unprefixed | S3, `samples/`-prefixed | alternate root |
+|---|---:|---:|---:|
+| 7 | 404 | 404 | 200 |
+| 3 | **200** | 404 | 200 |
+
+So seven catalog volumes really are absent from the S3 bucket (filed as #1949), and the other three are
+present on S3 only under the **unprefixed** path: the alternate root serves `samples/<sample>/...` and
+the bucket serves `<sample>/...`, while the manifest records the alternate-root spelling.
+
+This matters because a completeness check that requests the declared path verbatim against S3 reports
+ten missing, of which three are false positives. Any such check must try both spellings, which is also
+why this sweep resolves every origin against its own declared access root rather than against S3.
+
 ## 4. Path resolution
 
 | check | scope | result |
