@@ -1,5 +1,7 @@
 # Progress Prize 提交 · 照抄粘贴清单
 
+> 这份是仓库内的公开副本；**对外粘贴以工作区的 `表单填写内容.md` 为准**（它受 `ops/check_numbers.py` 校验）。
+
 > **表单入口（已由官方流水线确认）：** 奖项文案 `scrollprize.org/docs/34_prizes.md` 第 347 行在
 > `{/* progress-prizes:form:start */}` 机器标记之间写着这个表单地址——即官方自动化本身在维护它，
 > 不是我的推断。同一节的截止日期标记（第 326 行）写明 **11:59pm Pacific, October 31st, 2026**。
@@ -128,7 +130,9 @@ each patch adds tests in the repository's existing style and applies cleanly to 
    the catalog manifest records and what the store publishes. For 77 of the 81 stores the pitch is
    already in `metadata.min.json` and simply is not propagated, so the repair is mechanical rather
    than archaeological. No existing tool cross-references manifest and store metadata; that
-   comparison is what produced issues #1957 and the fix plans committed with this repository.
+   comparison is what produced issues #1957, #1958 and #1959 and the fix plans committed with this
+   repository. In total 124 stores publish no axis unit at all: 81 state a pitch in the name, and 43
+   are prediction stores with no pitch in the name.
    The three upstream pull requests are the fixes the audit motivated.
 
 2. Documentation
