@@ -36,10 +36,13 @@ jobs:
           python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
           python -m scroll_catalog_audit.audit selftest
       - name: The committed sweep is still true
-        # A canary, not coverage: a small live sample whose findings must still match the committed
-        # ones. If a publisher fixes one of the reported defects, this fails and the numbers get
-        # updated rather than quietly going stale.
-        run: python -m scroll_catalog_audit freshness --sample 8
+        # A canary, not coverage - but drawn from the population that can actually change. If a
+        # publisher fixes one of the 77 stores the audit reports, this fails and the published numbers
+        # get updated rather than quietly going stale. Sampling all 894 roots instead would cover 2 %
+        # of the catalog and about 2 % of the stores that matter.
+        run: |
+          python -m scroll_catalog_audit freshness --sample 8
+          python -m scroll_catalog_audit freshness --label AXES_UNIT_MISSING --sample 24
 
       - name: The guards still guard
         # Both of these were wrong once: `--limit 0` was falsy and therefore ran the whole catalog

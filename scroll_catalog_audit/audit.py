@@ -463,6 +463,15 @@ def cmd_freshness(args):
     if not rows:
         print("no rows to sample", file=sys.stderr)
         return 2
+    if args.label:
+        # Sampling all 894 roots is the wrong population for "has a reported defect been fixed": only
+        # the stores carrying that finding can change, and there are 77 of them rather than 894, so a
+        # 20-store sample covers a quarter of the population instead of two percent.
+        rows = [r for r in rows if args.label in classify(r)]
+        if not rows:
+            print(f"no store carries {args.label}", file=sys.stderr)
+            return 2
+        print(f"population: {len(rows)} store(s) labelled {args.label}")
     rnd = _random.Random(args.seed)
     sample = rnd.sample(rows, min(args.sample, len(rows)))
     print(f"re-probing {len(sample)} of {len(rows)} stores (seed {args.seed}), metadata only")
@@ -1034,6 +1043,8 @@ def main(argv=None):
     fr.add_argument("--results", default="results.jsonl")
     fr.add_argument("--merge", action="append", default=None)
     fr.add_argument("--sample", type=int, default=20)
+    fr.add_argument("--label", default=None,
+                    help="sample only stores carrying this finding, e.g. AXES_UNIT_MISSING")
     fr.add_argument("--seed", type=int, default=20261004)
     fr.add_argument("--limit", type=int, default=5)
     fr.set_defaults(func=cmd_freshness)

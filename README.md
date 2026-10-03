@@ -80,6 +80,11 @@ question, "has a store's metadata changed underneath" - which is what happens wh
 defects is fixed. It re-probes a reproducible sample live and exits 1 if any store's findings differ
 from the committed ones.
 
+`--label` draws the sample from the stores carrying that finding instead of from the whole catalog:
+`freshness --label AXES_UNIT_MISSING --sample 24` covers 24 of the 77 affected stores, where the same
+24 drawn from 894 roots would cover 2 % of the catalog and expect roughly two of the stores that
+matter. Sampling the wrong population is the difference between a canary and a decoration.
+
 `manifest` checks what only the full file records: `segment.original_volume_id` and `volume.scan_id`
 resolving inside their own sample, `transforms` pointing at volumes that exist with a 3x4 invertible
 matrix, `models[*].compatible_samples` naming real samples, a volume agreeing with its scan on all three
