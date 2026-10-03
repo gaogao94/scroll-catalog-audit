@@ -119,6 +119,16 @@ per-class remediation list.
   8.64 µm scale while the other 4 declare none** — the correct metadata is already in the catalog.
   (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 71 affected stores
   only these 4 have a correct sibling; the other 67 are single-copy raw CT volumes.
+* **The catalog already knows the missing pitch.** For **67 of the 71** affected stores the manifest
+  entry carries `properties.pixel_size_um`, and it matches the µm token in the store name exactly
+  (verified per store against `metadata.min.json`). The information is therefore not lost — it is
+  recorded at manifest level and not propagated into the OME metadata of the store, which is why a
+  reader that follows OME-Zarr sees `1.0`. The remaining 4 (the #1951 surface volumes) have it in
+  neither. Filed as <https://github.com/ScrollPrize/villa/issues/1957>.
+* **Coverage self-check.** The manifest declares zarr-typed data for exactly 894 origins and the
+  sweep covers 894 roots; **0 zarr-typed origins are missing from the results** and **0 scanned
+  paths are absent from the manifest**, so "every Zarr root the catalog publishes" is verified
+  rather than asserted.
 * **Every published prediction output is unitless.** All **43** `volume:surface-prediction-zarr`
   stores — the `representations/predictions/surfaces/` family, spanning 36 samples — declare
   level-0 `scale = [1.0, 1.0, 1.0]` and none carries `axes[].unit`. Each `.zattrs` was re-fetched

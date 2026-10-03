@@ -65,6 +65,7 @@ Three fixes for silent physical-scale defaults in the Vesuvius toolchain (reader
 https://github.com/ScrollPrize/villa/pull/1954
 https://github.com/ScrollPrize/villa/pull/1955
 https://github.com/ScrollPrize/villa/pull/1956
+https://github.com/ScrollPrize/villa/issues/1957
 https://github.com/gaogao94/scroll-catalog-audit
 ```
 
