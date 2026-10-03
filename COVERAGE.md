@@ -54,7 +54,7 @@ only**, so it is a subset of that issue's 1.03 PB figure, not a competing number
 | declared depth versus depth actually probed | 107 | **0 disagreements** | `results_deep.jsonl` |
 | header-only levels (volume roots) | 120 | **0** | `results_deep.jsonl` |
 | header-only levels (segment surface volumes, seeded sample) | 60 | **0** | `results_deep_seg.jsonl` |
-| levels that have a header but hold **no chunks** | 720 level entries over 120 roots | **0** | `results_level_chunks.jsonl` |
+| levels that have a header but hold **no chunks** | **5,304 level entries over all 884 roots** | **6** — the six levels of one store (#1892) | `results_level_chunks.jsonl` |
 
 ## 5. Manifest integrity
 

@@ -105,6 +105,14 @@ def deep_no_empty():
     return not bad, f"{len(bad)} header-only level(s)"
 
 
+def level_chunks_present():
+    """At most one store may have a level with a header and no chunks behind it (#1892)."""
+    rs = rows("results_level_chunks.jsonl")
+    empty = [1 for r in rs for l in r.get("levels", []) if l.get("status") == "OK" and l.get("n_chunks") == 0]
+    stores = {r["path"] for r in rs for l in r.get("levels", []) if l.get("status") == "OK" and l.get("n_chunks") == 0}
+    return len(stores) <= 1, f"{len(empty)} level(s) across {len(stores)} store(s) hold no chunks"
+
+
 CHECKS = [
     ("catalog: every declared root resolves", catalog_paths),
     ("catalog: at most one store has no chunks on the first page", catalog_chunks),
@@ -115,6 +123,7 @@ CHECKS = [
     ("levels: declared pyramid paths are contiguous from zero", levels_contiguous),
     ("levels: the last declared level has a header", levels_last_exists),
     ("deep: no header-only level in the probed volumes or segments", deep_no_empty),
+    ("level chunks: at most one store has a level with no chunks", level_chunks_present),
 ]
 
 

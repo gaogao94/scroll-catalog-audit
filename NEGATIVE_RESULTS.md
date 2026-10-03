@@ -171,24 +171,24 @@ Bounded catalog-wide: of the 1,264 `bbox_transformed` entries, **28 carry this v
 `PHerc0500P2`, `PHerc0139`, `PHerc1667`) and are not this marker; 24 of the 323 segments carry
 `volume_coverage: null` rather than a dict, which is a third shape.
 
-## 3d-ii. Every level of a sampled store holds data, not only a header
+## 3d-ii. Every level of every root holds data, not only a header
 
-`3d` asked whether each declared level has an array header. A header can exist with no chunks behind
-it - that is exactly #1892, and a reader gets fill_value with no error. So every declared level of a
-reproducible sample was listed directly (`--sample 120 --seed 20261004`, 120 roots, 720 level entries,
-every listing successful):
+`3d` asked whether each declared level has an array **header**. A header can exist with no chunks behind
+it - that is exactly #1892, and a reader gets fill_value with no error. So every declared level of
+**every root** was listed directly and its chunk objects counted: 884 roots, 6 levels each, **5,304
+level listings, 5,304 successful, 0 failures** (7 transient failures on the first pass were re-probed).
 
 | check | scope | result |
 |---|---:|---|
-| levels with a header but **no** chunk objects | 720 | **0** |
+| levels with a header but **no** chunk objects | 5,304 | **6** - all six levels of one store (#1892) |
+| stores involved | 884 | **1** |
 
-Chunk counts fall with depth as a pyramid should - minimum per level 21, 8, 3, 1, 1, 1 and median
-999, 999, 552, 148, 39, 12 from level 0 to 5. Listings are capped at 1000 keys, so a count of 1000
-means "at least 1000"; that does not affect the presence check.
+Chunk counts fall with depth as a pyramid should (median 999, 999, 525, 142, 39, 12 from level 0 to 5).
+1,766 of the listings are truncated at the API's 1000-key page, so a count of 999 means "at least 999";
+that does not affect the presence check, which is what this section reports.
 
-Taken with #1892 being the single such store in the catalog, this bounds the class at one. The sweep
-reaches that store eventually, and when it does it reports it six times: it holds no chunks at **any**
-of its six levels, not only at level 0 - one `.zarray` per level and nothing else behind it.
+With #1892 the single such store in the catalog, the class is bounded at one store - and that is now a
+whole-catalog statement rather than a 120-root sample.
 
 ## 3d-iii. Two tempting ways to detect missing data that do not work here
 
