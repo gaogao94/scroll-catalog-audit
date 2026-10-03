@@ -205,6 +205,13 @@ detectable and is the only such store. One trap inside that check too - a listin
 keys, and the cap shows up as 999 chunks rather than 1000, so a truncated listing compared against a
 complete one invents a difference.
 
+## 3i. A volume and the scan it belongs to agree on the physical parameters
+
+Every volume names a `scan_id`, and both sides carry `pixel_size_um`, `energy_keV` and
+`detector_distance_mm` - the volume in `properties`, the scan in `properties` **and** in
+`creation.metadata`. Compared for all 73 volumes against both scan-side copies: **0 disagreements**,
+and no volume lacks a scan entry.
+
 ## 4. Path resolution
 
 | check | scope | result |
