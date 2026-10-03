@@ -79,6 +79,10 @@ physical parameters, and the two observations inside the provenance blocks (ever
 `atlas_git_dirty` sets it, and one `parameters.output-path` disagrees with the artifact it is attached
 to). 3839 provenance records, 2500 output paths compared, one mismatch - all re-run by
 `python -m scroll_catalog_audit manifest` rather than taken from prose.
+
+It exits 1 today, and that is the expected state rather than a failure: the one error it finds is the
+model entry filed as #1958, and one of the two warnings is the artifact filed as #1959. CI asserts the
+code set is exactly those three, so a fourth appearing fails the build.
 ```
 
 Regenerating the committed reports takes **both** merges - `results_alt.jsonl` for the ten origins on

@@ -122,6 +122,16 @@ behaviour is unchanged.
 It also records a **negative result**: no broken level ladders exist catalog-wide, and the
 z-axis/in-plane asymmetry of surface volumes is uniform — so future audits do not have to re-file it.
 
+## The manifest layer is a command, not a paragraph
+
+Seven checks that were run by hand against the full `metadata.json` - `original_volume_id` and
+`scan_id` resolving inside their own sample, `transforms` pointing at volumes that exist with a 3x4
+invertible matrix, `models[*].compatible_samples` naming real samples, a volume agreeing with its scan
+on all three physical parameters, and the two provenance observations - are now
+`python -m scroll_catalog_audit manifest`, and CI runs them on every push and asserts the findings are
+exactly the three already filed. Someone who doubts any of it can re-run one command rather than
+re-derive it.
+
 ## Evidence / reproducibility
 
 * `python -m scroll_catalog_audit scan --workers 10` — full catalog, metadata only, resumable.
