@@ -64,6 +64,19 @@ python -m scroll_catalog_audit siblings          # catalog-wide: how many affect
 
 # 6. has the catalog changed since this sweep? cheap follow-up after any catalog edit
 python -m scroll_catalog_audit drift
+
+# 7. structural assertions over the committed evidence (what CI runs on every push)
+python -m scroll_catalog_audit.asserts
+```
+
+Regenerating the committed reports takes **both** merges - `results_alt.jsonl` for the ten origins on
+the alternate root, and `results_deep.jsonl` for the per-level probes. With only the first, FINDINGS.md
+comes out different and looks unreproducible when it is not:
+
+```bash
+python -m scroll_catalog_audit report \
+    --results results.jsonl --merge results_alt.jsonl --merge results_deep.jsonl \
+    --out FINDINGS.md --fixlist fixlist.json
 ```
 
 `explain` prints the raw evidence behind a finding — pitch in the store name, whether the axes
