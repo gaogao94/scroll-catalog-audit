@@ -171,6 +171,23 @@ Bounded catalog-wide: of the 1,264 `bbox_transformed` entries, **28 carry this v
 `PHerc0500P2`, `PHerc0139`, `PHerc1667`) and are not this marker; 24 of the 323 segments carry
 `volume_coverage: null` rather than a dict, which is a third shape.
 
+## 3d-ii. Every level of a sampled store holds data, not only a header
+
+`3d` asked whether each declared level has an array header. A header can exist with no chunks behind
+it - that is exactly #1892, and a reader gets fill_value with no error. So every declared level of a
+reproducible sample was listed directly (`--sample 120 --seed 20261004`, 120 roots, 720 level entries,
+every listing successful):
+
+| check | scope | result |
+|---|---:|---|
+| levels with a header but **no** chunk objects | 720 | **0** |
+
+Chunk counts fall with depth as a pyramid should - minimum per level 21, 8, 3, 1, 1, 1 and median
+999, 999, 552, 148, 39, 12 from level 0 to 5. Listings are capped at 1000 keys, so a count of 1000
+means "at least 1000"; that does not affect the presence check.
+
+Taken with #1892 being the single such store in the catalog, this bounds the class at one.
+
 ## 4. Path resolution
 
 | check | scope | result |
