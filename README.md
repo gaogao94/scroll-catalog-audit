@@ -66,7 +66,7 @@ python -m scroll_catalog_audit siblings          # catalog-wide: how many affect
 python -m scroll_catalog_audit drift
 
 # 7. structural assertions over the committed evidence (what CI runs on every push)
-python -m scroll_catalog_audit.asserts
+python -m scroll_catalog_audit asserts          # same as `python -m scroll_catalog_audit.asserts`
 ```
 
 Regenerating the committed reports takes **both** merges - `results_alt.jsonl` for the ten origins on

@@ -576,6 +576,17 @@ def cmd_explain(args):
     return 0
 
 
+def cmd_asserts(args):
+    """Structural assertions over the committed evidence.
+
+    `asserts` is its own module, so `python -m scroll_catalog_audit.asserts` works; exposing it here as
+    well means every documented command has the same shape (`-m scroll_catalog_audit <sub>`), which it
+    did not, and that asymmetry cost me two rounds of "why does this exit 2".
+    """
+    from scroll_catalog_audit import asserts
+    return asserts.main()
+
+
 def cmd_drift(args):
     """What changed in the catalog since the last sweep?
 
@@ -774,6 +785,8 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    asr = sub.add_parser("asserts", help="structural assertions over the committed evidence")
+    asr.set_defaults(func=cmd_asserts)
     args = ap.parse_args(argv)
     sys.exit(args.func(args) or 0)
 

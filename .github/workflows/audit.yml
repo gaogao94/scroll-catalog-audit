@@ -31,6 +31,7 @@ jobs:
         run: |
           python -m scroll_catalog_audit selftest
           python -m scroll_catalog_audit.asserts
+          python -m scroll_catalog_audit asserts
           python -m scroll_catalog_audit demo
           python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
           python -m scroll_catalog_audit.audit selftest
