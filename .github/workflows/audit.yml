@@ -43,6 +43,9 @@ jobs:
         run: |
           python -m scroll_catalog_audit freshness --sample 8
           python -m scroll_catalog_audit freshness --label AXES_UNIT_MISSING --sample 24
+          # Population of one: the store whose six levels hold no chunks (#1892). If it is fixed or
+          # withdrawn, the published claim changes and this is the cheapest possible way to hear about it.
+          python -m scroll_catalog_audit freshness --label NO_CHUNKS_IN_FIRST_PAGE --sample 1
 
       - name: The guards still guard
         # Both of these were wrong once: `--limit 0` was falsy and therefore ran the whole catalog
