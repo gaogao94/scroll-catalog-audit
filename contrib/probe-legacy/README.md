@@ -13,6 +13,9 @@ question with a real audience.
 python probe_legacy.py --out results_legacy.jsonl     # resumable; metadata only, no chunk bytes
 ```
 
+Five offline tests cover the parsing (`python -m unittest discover -s contrib/probe-legacy -p "test_*.py"`);
+the network calls are stubbed, so they run anywhere.
+
 Discovery walks the host's autoindex pages; only `.zattrs` / `zarr.json` and one listing per store are
 fetched. Results: `results_legacy.jsonl` (28 roots) and the table in `FINDINGS-legacy.md`.
 

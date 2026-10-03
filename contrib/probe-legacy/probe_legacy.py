@@ -119,9 +119,8 @@ def probe(url: str) -> dict:
     entries = listing(url)
     rec["root_entries"] = sorted(e.rstrip("/") for e in (entries or []))[:12]
     present = {e.rstrip("/") for e in (entries or [])}
-    if declared:
-        rec["levels_present"] = [p for p in declared if p in present]
-        rec["levels_missing"] = [p for p in declared if p not in present]
+    rec["levels_present"] = [p for p in (declared or []) if p in present]
+    rec["levels_missing"] = [p for p in (declared or []) if p not in present]
     rec["unitless"] = units is not None and not any(units)
     rec["unit_is_one"] = scale0 in ([1, 1, 1], [1.0, 1.0, 1.0])
     return rec
