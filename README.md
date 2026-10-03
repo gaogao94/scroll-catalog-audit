@@ -67,6 +67,18 @@ python -m scroll_catalog_audit drift
 
 # 7. structural assertions over the committed evidence (what CI runs on every push)
 python -m scroll_catalog_audit asserts          # same as `python -m scroll_catalog_audit.asserts`
+
+# 8. integrity checks that need the FULL metadata.json, not the compact one
+python -m scroll_catalog_audit manifest
+```
+
+`manifest` checks what only the full file records: `segment.original_volume_id` and `volume.scan_id`
+resolving inside their own sample, `transforms` pointing at volumes that exist with a 3x4 invertible
+matrix, `models[*].compatible_samples` naming real samples, a volume agreeing with its scan on all three
+physical parameters, and the two observations inside the provenance blocks (every record that carries
+`atlas_git_dirty` sets it, and one `parameters.output-path` disagrees with the artifact it is attached
+to). 3839 provenance records, 2500 output paths compared, one mismatch - all re-run by
+`python -m scroll_catalog_audit manifest` rather than taken from prose.
 ```
 
 Regenerating the committed reports takes **both** merges - `results_alt.jsonl` for the ten origins on

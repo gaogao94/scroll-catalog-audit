@@ -440,6 +440,134 @@ def _fail_missing(paths) -> bool:
     return False
 
 
+SCAN_KEYS = ("pixel_size_um", "energy_keV", "detector_distance_mm")
+CHUNK_META = (".zarray", ".zattrs", "zarr.json", ".zmetadata", ".zgroup")
+
+
+def _det3(m):
+    return (m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
+            - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
+            + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]))
+
+
+def cmd_manifest(args):
+    """Integrity checks over the *full* catalog file.
+
+    These need `metadata.json`, not `metadata.min.json`: creation dates, original_volume_id,
+    properties.shape, transforms and the provenance blocks exist only in the full file. Every check
+    here is one that was run by hand while the audit was being written; putting them in the tool is
+    what lets someone else re-run them instead of taking the write-up on trust.
+    """
+    doc = load_catalog(args.catalog)
+    samples = doc.get("samples") or {}
+    err: list[tuple[str, str]] = []
+    warn: list[tuple[str, str]] = []
+    from collections import Counter
+    counts = Counter()
+
+    def note(bucket, code, where):
+        counts[code] += 1
+        bucket.append((code, where))
+
+    for sname, info in samples.items():
+        volumes = info.get("volumes") or {}
+        scans = info.get("scans") or {}
+        for vid, v in volumes.items():
+            sid = v.get("scan_id")
+            if sid is not None:
+                counts["VOLUME_SCAN_CHECKED"] += 1
+                if sid not in scans:
+                    note(err, "VOLUME_SCAN_MISSING", f"{sname}/{vid} -> {sid}")
+            scan = scans.get(sid) or {}
+            vp = v.get("properties") or {}
+            for source in (scan.get("properties") or {}, (scan.get("creation") or {}).get("metadata") or {}):
+                for k in SCAN_KEYS:
+                    a, b = vp.get(k), source.get(k)
+                    if a is None or b is None:
+                        continue
+                    counts["VOLUME_SCAN_PARAM_CHECKED"] += 1
+                    if abs(float(a) - float(b)) > 1e-6:
+                        note(warn, "VOLUME_SCAN_PARAM_DISAGREES", f"{sname}/{vid} {k}: {a} vs {b}")
+            for t in vp.get("transforms") or []:
+                counts["TRANSFORM_CHECKED"] += 1
+                tid = t.get("to_volume_id")
+                if tid not in volumes:
+                    note(err, "TRANSFORM_TARGET_MISSING", f"{sname}/{vid} -> {tid}")
+                m = t.get("transformation_matrix")
+                if not (isinstance(m, list) and len(m) == 3 and all(isinstance(r, list) and len(r) == 4 for r in m)):
+                    note(warn, "TRANSFORM_NOT_3X4", f"{sname}/{vid}")
+                elif abs(_det3(m)) < 1e-12:
+                    note(err, "TRANSFORM_SINGULAR", f"{sname}/{vid}")
+        for seg in (info.get("segments") or {}).values():
+            oid = seg.get("original_volume_id")
+            if oid is None:
+                continue
+            counts["SEGMENT_VOLUME_CHECKED"] += 1
+            if oid not in volumes:
+                note(err, "SEGMENT_VOLUME_MISSING", f"{sname}/{seg.get('id')} -> {oid}")
+
+    for mid, m in (doc.get("models") or {}).items():
+        props = m.get("properties") or {}
+        for field in ("compatible_samples", "excluded_samples"):
+            for s in props.get(field) or []:
+                counts["MODEL_SAMPLE_CHECKED"] += 1
+                if s not in samples:
+                    note(err, "MODEL_SAMPLE_MISSING", f"{mid} {field}={s!r}")
+
+    prov = {"total": 0, "dirty": 0, "dirty_field_present": 0, "output_path_checked": 0,
+            "output_path_mismatch": 0}
+    for info in samples.values():
+        for section in ("volumes", "segments"):
+            for item in (info.get(section) or {}).values():
+                for d in item.get("data") or []:
+                    p = (d.get("creation_info") or {}).get("provenance")
+                    if not p:
+                        continue
+                    prov["total"] += 1
+                    dirty = p.get("atlas_git_dirty")
+                    if dirty is not None:
+                        prov["dirty_field_present"] += 1
+                        if dirty is True:
+                            prov["dirty"] += 1
+                    out = (p.get("parameters") or {}).get("output-path")
+                    if not out:
+                        continue
+                    prov["output_path_checked"] += 1
+                    want = out.split("s3://")[-1].split("/", 1)[-1].rstrip("/")
+                    origins = [(o.get("path") or "").rstrip("/") for o in (d.get("origins") or [])]
+                    if not any(o == want or o.startswith(want) or o.endswith(want.rsplit("/", 1)[-1])
+                               for o in origins):
+                        prov["output_path_mismatch"] += 1
+                        note(warn, "PROVENANCE_OUTPUT_MISMATCH", f"{want}")
+
+    # Every record that carries the flag sets it, so the recorded revision cannot identify the
+    # code that ran. Five records omit the field entirely, which is why this compares against
+    # the records that have it rather than against all of them.
+    if prov["dirty_field_present"] and prov["dirty"] == prov["dirty_field_present"]:
+        note(warn, "PROVENANCE_DIRTY_ALWAYS",
+             f"{prov['dirty']}/{prov['dirty_field_present']} records that carry the flag")
+
+    print(f"catalog: {len(samples)} samples, {sum(len(i.get('volumes') or {}) for i in samples.values())} volumes, "
+          f"{sum(len(i.get('segments') or {}) for i in samples.values())} segments, "
+          f"{len(doc.get('models') or {})} models")
+    for code, n in sorted(counts.items()):
+        if code.endswith("_CHECKED"):
+            print(f"  checked {code[:-8].lower().replace('_', ' ')}: {n}")
+    for bucket, label in ((err, "ERROR"), (warn, "WARN")):
+        for code in sorted({c for c, _ in bucket}):
+            where = [w for c, w in bucket if c == code]
+            print(f"  [{label}] {code}: {len(where)}")
+            for w in where[: args.limit]:
+                print(f"        {w}")
+            if len(where) > args.limit:
+                print(f"        ... and {len(where) - args.limit} more")
+    if not err and not warn:
+        print("  no findings")
+    print(f"  provenance: {prov['total']} records, {prov['dirty']} with atlas_git_dirty=true, "
+          f"{prov['output_path_checked']} output-paths compared, {prov['output_path_mismatch']} mismatched")
+    return 1 if err else 0
+
+
 def cmd_report(args):
     if _fail_missing([args.results, *(args.merge or [])]):
         return 2
@@ -537,6 +665,46 @@ def cmd_report(args):
     print(f"wrote {args.out}: {len(rows)} stores, {len(agg)} finding classes")
 
 
+def _manifest_fixture_codes() -> str:
+    """Run the manifest checks over a synthetic catalog and return the codes it found."""
+    import contextlib
+    import io
+    import os
+    import tempfile
+    fixture = {
+        "samples": {
+            "S": {
+                "volumes": {
+                    "v1": {
+                        "scan_id": "s1",
+                        "properties": {
+                            "pixel_size_um": 2.4,
+                            "transforms": [{"to_volume_id": "missing_volume",
+                                            "transformation_matrix": [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0]]}],
+                        },
+                    }
+                },
+                "scans": {"s1": {"properties": {"pixel_size_um": 2.4}}},
+                "segments": {"seg1": {"id": "seg1", "original_volume_id": "nope"}},
+            }
+        },
+        "models": {"m1": {"properties": {"compatible_samples": ["none"]}}},
+    }
+    fd, path = tempfile.mkstemp(suffix=".json")
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump(fixture, fh)
+        args = argparse.Namespace(catalog=path, limit=5)
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            code = cmd_manifest(args)
+        codes = sorted({line.split("]")[1].split(":")[0].strip()
+                        for line in buf.getvalue().splitlines() if "] " in line and "[" in line})
+        return f"{code}:" + ",".join(codes)
+    finally:
+        os.unlink(path)
+
+
 SELFTEST_CASES = [
     (lambda: is_chunk_key("0/0/0/5"), True, "hierarchical chunk"),
     (lambda: is_chunk_key("0/0.0.11"), True, "dotted chunk"),
@@ -555,6 +723,8 @@ SELFTEST_CASES = [
     (lambda: classify({"exists": True, "um_in_path": 8.64, "scale0": [1, 1, 1], "units_present": False}),
      ["AXES_UNIT_MISSING", "SCALE_IS_UNIT"], "unitless store naming a pitch"),
     (lambda: classify({"skipped": "NOT_S3_ORIGIN", "exists": False}), [], "other roots are not findings"),
+    (_manifest_fixture_codes, "1:MODEL_SAMPLE_MISSING,SEGMENT_VOLUME_MISSING,TRANSFORM_TARGET_MISSING",
+     "manifest checks find the synthetic defects"),
 ]
 
 
@@ -818,6 +988,10 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    man = sub.add_parser("manifest", help="integrity checks over the full metadata.json")
+    man.add_argument("--catalog", default=None, help="local metadata.json (default: fetch it)")
+    man.add_argument("--limit", type=int, default=5, help="examples to show per finding")
+    man.set_defaults(func=cmd_manifest)
     asr = sub.add_parser("asserts", help="structural assertions over the committed evidence")
     asr.set_defaults(func=cmd_asserts)
     args = ap.parse_args(argv)

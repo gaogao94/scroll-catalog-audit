@@ -85,6 +85,10 @@ documented rather than quietly fixed.
 ## 7. How to reproduce any row
 
 ```
+python -m scroll_catalog_audit manifest      # the manifest-layer checks in section 5, re-run by anyone
+```
+
+```
 python -m scroll_catalog_audit selftest      # 12 offline checks
 python -m scroll_catalog_audit.asserts       # 9 structural assertions over the committed evidence
 python -m scroll_catalog_audit demo          # reproduces two filed issues offline
