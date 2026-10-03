@@ -37,12 +37,13 @@ Findings (2026-10-03 snapshot, two sweeps merged per store):
 - Negative result: no broken level ladders; deep sweeps of all 120 raw volumes and of a
   reproducible 60-root random sample of segment volumes found no header-only level.
 
-Reproducibility: `python -m scroll_catalog_audit demo --merge results_deep.jsonl` runs the offline
-self-test, reproduces both already-filed issues, and prints every headline number. A CI job
-regenerates all committed reports from the committed per-store data and fails on any diff, so no
-number in the repository can be hand-edited.
+Reproducibility: `python -m scroll_catalog_audit demo` runs the offline self-test, reproduces both
+already-filed issues, and prints every headline number. A CI job regenerates all committed reports
+from the committed per-store data and fails on any diff, so no number in the repository can be
+hand-edited. The repository also documents every check that came back clean, with the scope each
+one actually covered (NEGATIVE_RESULTS.md), so the negative side is as reviewable as the positive.
 
-Motivated three upstream pull requests (see submission 2). MIT licensed, stdlib only.
+Motivated three upstream pull requests and one new issue (see submission 2). MIT licensed, stdlib only.
 ```
 
 **Longer detail / 更长说明（若表单允许长文本）**
