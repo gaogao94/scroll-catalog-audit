@@ -19,6 +19,11 @@ jobs:
           python-version: "3.12"
       - name: Offline unit checks
         run: python -m scroll_catalog_audit.audit selftest
+      - name: Structural assertions over the committed evidence
+        # Deliberately structural rather than totals, so a growing catalog does not fail the build
+        # but a catalog that starts filling blanks with a non-zero value, or publishing a chunk
+        # larger than its array, does. Covers the headers and levels evidence, not just the catalog.
+        run: python -m scroll_catalog_audit.asserts
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible

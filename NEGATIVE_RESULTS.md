@@ -62,6 +62,21 @@ Header format splits the corpus cleanly: **all 81 v3 stores are compressed and a
 uncompressed / 50 compressed. So "the catalog stores uncompressed" is true of the v2-era stores and
 false of anything published through the v3 path.
 
+## 3b-ii. Folder-name tokens versus `properties`
+
+Volume folder names encode three physical parameters (`<pitch>um-<distance>m-<energy>keV`). Compared
+against the manifest's own `properties` for the 67 volume origins whose names carry all three:
+
+| parameter | contradictions | explanation |
+|---|---:|---|
+| `pixel_size_um` | **0 / 67** | exact match everywhere |
+| `energy_keV` | 0 real | one name rounds 65.35 to `65keV` |
+| `detector_distance_mm` | 0 real | 28 names round 220 mm to `0.2m` |
+
+So the name is a rounded label and the manifest is the precise record; where they differ the manifest
+is the finer value. This matters for repair planning: a fix should copy from `properties`, never parse
+the folder name.
+
 ## 3c. Referential integrity inside the full `metadata.json`
 
 The catalog publishes two files: `metadata.min.json` (67 KB, paths and physical properties) and
