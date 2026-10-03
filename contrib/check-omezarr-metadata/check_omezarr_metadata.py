@@ -200,6 +200,8 @@ class Store:
             self.base = f"{p.scheme}://{p.netloc}"
             self.rel = p.path.lstrip("/")
 
+    fetched_any = False
+
     def _get(self, rel: str):
         url = f"{self.base}/{urllib.parse.quote(rel)}"
         try:
@@ -210,9 +212,11 @@ class Store:
         if b[:2] == b"\x1f\x8b":
             b = gzip.decompress(b)
         try:
-            return json.loads(b.decode("utf-8"))
+            doc = json.loads(b.decode("utf-8"))
         except Exception:
             return None
+        self.fetched_any = True
+        return doc
 
     def json_at(self, rel: str):
         if self.local:
@@ -224,9 +228,11 @@ class Store:
             if raw[:2] == b"\x1f\x8b":
                 raw = gzip.decompress(raw)
             try:
-                return json.loads(raw.decode("utf-8"))
+                doc = json.loads(raw.decode("utf-8"))
             except Exception:
                 return None
+            self.fetched_any = True
+            return doc
         return self._get(f"{self.rel.rstrip('/')}/{rel}" if self.rel else rel)
 
     def multiscales(self):
@@ -292,6 +298,12 @@ def run_checks(store: Store, pitch_in_name: float | None, check_chunks: bool) ->
     findings: list[Finding] = []
     ms, fmt = store.multiscales()
     pitch = pitch_in_name if pitch_in_name is not None else pitch_from_name(store.raw)
+    if not isinstance(ms, dict) and not store.fetched_any:
+        # "could not read it" and "it has no pyramid" are different problems and were being reported
+        # as the same one, which sends a reader looking for missing metadata when the path is wrong.
+        return [Finding(ERROR, "STORE_UNREADABLE",
+                        "could not read .zattrs or zarr.json at that path - check the store path "
+                        "before reading anything into a missing pyramid")]
     findings += check_multiscales(ms, pitch)
     if not isinstance(ms, dict):
         return findings

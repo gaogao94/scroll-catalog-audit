@@ -198,6 +198,18 @@ class EndToEndTest(unittest.TestCase):
         store = FakeStore(attrs={"multiscales": [ms]}, keys=("x/0/.zarray", "x/0/.zattrs"))
         self.assertIn("NO_CHUNKS", [f.code for f in check.run_checks(store, None, True)])
 
+    def test_an_unreadable_store_is_not_reported_as_missing_metadata(self) -> None:
+        """A wrong path and a store with no pyramid are different problems, and were the same message."""
+        store = FakeStore()          # nothing readable, so nothing was fetched
+        codes = [f.code for f in check.run_checks(store, None, False)]
+        self.assertEqual(codes, ["STORE_UNREADABLE"])
+
+    def test_a_readable_store_without_a_pyramid_still_says_so(self) -> None:
+        store = FakeStore(attrs={"something": "else"})
+        store.fetched_any = True
+        codes = [f.code for f in check.run_checks(store, None, False)]
+        self.assertEqual(codes, ["NO_MULTISCALES"])
+
     def test_v3_multiscales_are_read_from_attributes(self) -> None:
         ms = multiscales(("micrometer",) * 2, (2.4, 2.4), levels=("0",), axes=("y", "x"))
         store = FakeStore(zarr_json={"attributes": {"multiscales": [ms]}})
