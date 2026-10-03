@@ -49,6 +49,13 @@ The audit shows this is not a four-store accident:
 origin is resolved against the root it declares (`via` in the JSONL), so the ten volumes published
 on the alternate host are audited too rather than skipped.
 
+## Installable as an action, not just readable as a report
+
+`.github/workflows/action-selftest.yml` runs the publish-time check the way another repository would -
+`uses: gaogao94/scroll-catalog-audit@main` - against one healthy store and two carrying real defects,
+and asserts the exit status in both directions: a check that never fails is not a check. So the
+contribution can be adopted in three lines rather than read and re-implemented.
+
 ## Community uptake so far
 
 * **Independently reproduced by a second auditor.** The reporter of
