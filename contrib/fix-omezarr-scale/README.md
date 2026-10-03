@@ -27,6 +27,9 @@ stays reviewable as a diff.
 | already fixed | reports that the corrected document is identical and stops |
 | level count | refuses when the plan and the store disagree on how many levels exist |
 
+Exit codes: 0 when it did something or found nothing to do, 2 when the store has no plan entry or
+its metadata cannot be read, 3 when a guard above refused.
+
 Every proposed value comes from the plan, which was built from the manifest's own `pixel_size_um` and
 the store's own level ratios — in particular it keeps a surface volume's **anisotropic** ladder (z at
 the base pitch, in-plane doubling) rather than forcing an isotropic one.

@@ -3,9 +3,11 @@
 A store whose OME metadata is wrong does not fail; it returns a wrong number or blank data. This script
 turns every defect class found in the catalog audit into a check that can run before publishing.
 
-    python check_omezarr_metadata.py --root <catalog path | local dir | url>
-    python check_omezarr_metadata.py --root <...> --json
-    python check_omezarr_metadata.py --root <...> --no-chunks    # skip the listing
+    python check_omezarr_metadata.py --path <catalog path | local dir | url>
+    python check_omezarr_metadata.py --path <...> --json
+    python check_omezarr_metadata.py --path <...> --no-chunks    # skip the listing
+
+(`--root` is accepted as an alias, because the composite action passes it.)
 
 Exit code 1 when any ERROR was reported. Metadata only; no chunk bytes are downloaded.
 

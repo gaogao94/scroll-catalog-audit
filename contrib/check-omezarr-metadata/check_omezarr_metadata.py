@@ -310,7 +310,10 @@ def run_checks(store: Store, pitch_in_name: float | None, check_chunks: bool) ->
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--root", required=True, help="store path, local directory, or full URL")
+    # `--path` matches explain/siblings/fix; `--root` stays as an alias because the composite action
+    # and the documented examples pass it.
+    ap.add_argument("--path", "--root", dest="root", required=True, metavar="PATH",
+                    help="store path, local directory, or full URL (--root is an alias)")
     ap.add_argument("--bucket", default=DEFAULT_BUCKET, help="base for a relative --root")
     ap.add_argument("--name-states-pitch", type=float, default=None,
                     help="micrometre pitch the store name states; inferred from the name when omitted")
