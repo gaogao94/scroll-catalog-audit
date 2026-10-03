@@ -18,7 +18,7 @@ affected levels) and adds an opt-in `--require-scale` that fails instead of proc
 ## Why this is not hypothetical
 
 A metadata-only sweep of the catalog (`scroll-catalog-audit`, companion submission) found **71
-stores that state a µm pitch in their own name while their OME metadata carries no `scale`** — 66
+stores that state a µm pitch in their own name while their OME metadata carries no `scale`** — 76
 of them raw CT volumes, across 39 samples. Four surface volumes of this kind are already tracked in
 [#1951](https://github.com/ScrollPrize/villa/issues/1951).
 

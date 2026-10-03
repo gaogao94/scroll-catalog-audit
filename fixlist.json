@@ -3,7 +3,7 @@
   "stores": 894,
   "classes": {
     "AXES_UNIT_MISSING": {
-      "count": 71,
+      "count": 81,
       "recommended_action": "Write axes[].unit in the store metadata (the pitch is already stated in the store name), or document the exemption.",
       "paths": [
         "PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr/",
@@ -76,11 +76,21 @@
         "PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr/",
         "PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr/",
         "PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr/",
-        "PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr/"
+        "PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231027191953-3.240um-53keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231117143551-7.910um-53keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231201141544-3.240um-70keV-masked.zarr/",
+        "samples/PHerc1667/volumes/20231107190228-3.240um-88keV-masked.zarr/",
+        "samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20230206171837-7.910um-54keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr/"
       ]
     },
     "SCALE_IS_UNIT": {
-      "count": 71,
+      "count": 81,
       "recommended_action": "Write the level-0 scale from the pitch encoded in the store name; a reader that trusts metadata otherwise gets 1.",
       "paths": [
         "PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr/",
@@ -153,7 +163,17 @@
         "PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr/",
         "PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr/",
         "PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr/",
-        "PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr/"
+        "PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231027191953-3.240um-53keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231117143551-7.910um-53keV-masked.zarr/",
+        "samples/PHerc0332/volumes/20231201141544-3.240um-70keV-masked.zarr/",
+        "samples/PHerc1667/volumes/20231107190228-3.240um-88keV-masked.zarr/",
+        "samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20230206171837-7.910um-54keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr/",
+        "samples/PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr/"
       ]
     },
     "SCALE_UNITLESS_NO_NAME_UM": {

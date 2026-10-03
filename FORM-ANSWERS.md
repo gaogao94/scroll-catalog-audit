@@ -30,8 +30,8 @@ root, checks pyramid levels for chunks, and compares the physical pitch stated i
 with the scale its OME metadata carries.
 
 Findings (2026-10-03 snapshot, two sweeps merged per store):
-- 71 stores state a um pitch in their own name while their OME metadata carries no scale;
-  66 of them are raw CT volumes -- the input to every downstream step -- across 39 samples.
+- 81 stores state a um pitch in their own name while their OME metadata carries no scale;
+  76 of them are raw CT volumes -- the input to every downstream step -- across 39 samples.
 - 1 store declares six pyramid levels and holds no chunks (reproduces issue #1892).
 - 14 stores carry no metadata object at all.
 - Negative result: no broken level ladders; deep sweeps of all 120 raw volumes and of a
@@ -80,7 +80,7 @@ the ratio of the real pitch (8.64x for the PHerc1447 set in issue #1951).
 
 The patches make the absence visible -- a single warning naming the affected levels, plus an
 opt-in --require-scale that fails instead of proceeding unitless -- and leave every produced and
-consumed value byte-identical. Both sides are covered: the reader fix makes the 71 existing stores
+consumed value byte-identical. Both sides are covered: the reader fix makes the 81 existing stores
 in the catalog stop being silently misread; the writer fix stops new instances being created.
 
 Evidence: a metadata-only audit of all 894 published stores (link above) quantifies the class;

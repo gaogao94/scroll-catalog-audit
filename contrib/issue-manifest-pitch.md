@@ -6,12 +6,12 @@ A read-only, metadata-only sweep of every Zarr root the catalog publishes — 89
 requests, no chunk bytes downloaded. Method and raw per-store output:
 <https://github.com/gaogao94/scroll-catalog-audit>.
 
-**71 stores state a µm pitch in their own name while their OME metadata carries no `axes[].unit`
+**81 stores state a µm pitch in their own name while their OME metadata carries no `axes[].unit`
 and a level-0 `scale` of `[1.0, 1.0, 1.0]`.**
 
 ### The new part: the catalog already knows the value
 
-`metadata.min.json` records the physical pitch for these volumes. For **67 of the 71** affected
+`metadata.min.json` records the physical pitch for these volumes. For **77 of the 81** affected
 stores, the manifest entry that declares the store carries `properties.pixel_size_um`, and it
 **matches the pitch encoded in the store name exactly**:
 
@@ -21,7 +21,7 @@ stores, the manifest entry that declares the store carries `properties.pixel_siz
 | `PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr` | 2.401 µm | `axes[].unit` absent, `scale = [1,1,1]` | **2.401** |
 | `PHerc0009B/volumes/20260319104112-2.401um-0.3m-77keV-masked.zarr` | 2.401 µm | `axes[].unit` absent, `scale = [1,1,1]` | **2.401** |
 
-Breakdown of the 71: **66 × `volume:ome-zarr`** and 1 × `volume:surface-prediction-zarr` have the
+Breakdown of the 81: **76 × `volume:ome-zarr`** and 1 × `volume:surface-prediction-zarr` have the
 manifest value; **4 × `segment:layers-zarr`** have it in neither and are tracked in #1951 (those four
 are copies of one store name — see [the note there](https://github.com/ScrollPrize/villa/issues/1951#issuecomment-5970262863)).
 

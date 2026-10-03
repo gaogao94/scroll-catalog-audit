@@ -27,8 +27,8 @@ surface volumes are already tracked in
 
 The audit shows this is not a four-store accident:
 
-* **71 stores** state a µm pitch in their name while their metadata carries none.
-* **66 of them are raw CT volumes** (`volumes/*-masked.zarr`) — the input to every downstream step.
+* **81 stores** state a µm pitch in their name while their metadata carries none.
+* **76 of them are raw CT volumes** (`volumes/*-masked.zarr`) — the input to every downstream step.
 * They span **39 samples**.
 * Meanwhile 85.4 % of stores (755 of 884 S3 origins) *do* carry correct units, so the catalog is
   not uniformly unitless and a consumer cannot rely on either behaviour.

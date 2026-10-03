@@ -1,26 +1,27 @@
 # Vesuvius open-data catalog · consistency audit
 
-- stores scanned: **894** (S3 origins 884, other roots 10)
+- stores scanned: **894** (resolved on the S3 bucket: 884; on a declared alternate root: 10)
 - stores with full physical units: **755**
-- findings: `AXES_UNIT_MISSING` × 71, `SCALE_IS_UNIT` × 71, `SCALE_UNITLESS_NO_NAME_UM` × 43, `NO_METADATA` × 14, `META_ERROR` × 1, `NO_CHUNKS_IN_FIRST_PAGE` × 1
+- findings: `AXES_UNIT_MISSING` × 81, `SCALE_IS_UNIT` × 81, `SCALE_UNITLESS_NO_NAME_UM` × 43, `NO_METADATA` × 14, `META_ERROR` × 1, `NO_CHUNKS_IN_FIRST_PAGE` × 1
 
 ## Summary by sample
 
 | sample | findings |
 |---|---|
+| PHercParis4 | `AXES_UNIT_MISSING` × 11, `SCALE_IS_UNIT` × 11, `SCALE_UNITLESS_NO_NAME_UM` × 2 |
 | PHerc0139 | `AXES_UNIT_MISSING` × 9, `SCALE_IS_UNIT` × 9, `NO_METADATA` × 3, `SCALE_UNITLESS_NO_NAME_UM` × 2 |
 | PHerc0500P2 | `AXES_UNIT_MISSING` × 4, `SCALE_IS_UNIT` × 4, `NO_METADATA` × 3, `SCALE_UNITLESS_NO_NAME_UM` × 2, `META_ERROR` × 1 |
-| PHercParis4 | `AXES_UNIT_MISSING` × 6, `SCALE_IS_UNIT` × 6, `SCALE_UNITLESS_NO_NAME_UM` × 2 |
 | PHerc0814 | `NO_METADATA` × 4, `AXES_UNIT_MISSING` × 3, `SCALE_IS_UNIT` × 3, `SCALE_UNITLESS_NO_NAME_UM` × 2, `NO_CHUNKS_IN_FIRST_PAGE` × 1 |
 | PHerc1447 | `AXES_UNIT_MISSING` × 5, `SCALE_IS_UNIT` × 5, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
 | PHerc0009B | `AXES_UNIT_MISSING` × 3, `SCALE_IS_UNIT` × 3, `NO_METADATA` × 2, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
+| PHerc0332 | `AXES_UNIT_MISSING` × 4, `SCALE_IS_UNIT` × 4, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
+| PHerc1667 | `AXES_UNIT_MISSING` × 4, `SCALE_IS_UNIT` × 4, `NO_METADATA` × 1 |
 | PHerc0841 | `SCALE_UNITLESS_NO_NAME_UM` × 2, `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2 |
 | PHerc0846A | `SCALE_UNITLESS_NO_NAME_UM` × 2, `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2 |
 | PHerc1203 | `SCALE_UNITLESS_NO_NAME_UM` × 2, `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2 |
 | PHerc0172 | `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2, `NO_METADATA` × 1 |
 | PHerc0343P | `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
 | PHerc1451 | `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
-| PHerc1667 | `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2, `NO_METADATA` × 1 |
 | PHercMANBp | `AXES_UNIT_MISSING` × 2, `SCALE_IS_UNIT` × 2, `SCALE_UNITLESS_NO_NAME_UM` × 1 |
 | PHerc0125 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0175A | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
@@ -30,7 +31,6 @@
 | PHerc0257 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0268 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0306B | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
-| PHerc0332 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0343 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0358 | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
 | PHerc0483A | `SCALE_UNITLESS_NO_NAME_UM` × 1, `AXES_UNIT_MISSING` × 1, `SCALE_IS_UNIT` × 1 |
@@ -50,57 +50,11 @@
 
 ## Negative results (checked, nothing found)
 
-- Level ladders: **869** stores had parseable multiscale metadata and **none** showed a non-monotonic or non-integral level ladder.
+- Level ladders: **879** stores had parseable multiscale metadata and **none** showed a non-monotonic or non-integral level ladder.
 - The z-axis/in-plane asymmetry of surface volumes (`[8.64, 8.64, 8.64] → [8.64, 17.28, 17.28] → …`) is uniform across the catalog and is recorded here as **expected**, not as a defect, so future audits do not re-file it.
-- Origins that declare a non-S3 access root are skipped by design rather than reported missing (see `ALT_HOST_ORIGIN` in the JSONL).
+- Origins that declare a non-S3 access root are resolved against that root (see `via` in the JSONL); on such hosts there is no ListObjectsV2 API, so existence is established from the metadata object and the chunk-page fields stay unknown.
 
-## AXES_UNIT_MISSING — 71 stores
-
-| # | store | sample | detail |
-|---:|---|---|---|
-| 1 | `PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr/` | PHerc0009B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 2 | `PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr/` | PHerc0009B | name 2.401µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 3 | `PHerc0009B/volumes/20260319104112-2.401um-0.3m-77keV-masked.zarr/` | PHerc0009B | name 2.401µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 4 | `PHerc0125/volumes/20250821151825-9.362um-1.2m-113keV-masked.zarr/` | PHerc0125 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 5 | `PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 6 | `PHerc0139/volumes/20250820105138-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 7 | `PHerc0139/volumes/20250822062710-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 8 | `PHerc0139/volumes/20251107132835-9.362um-1.2m-113keV-pag0-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 9 | `PHerc0139/volumes/20251107135911-9.362um-1.2m-113keV-pag50-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 10 | `PHerc0139/volumes/20260102150214-2.399um-0.2m-78keV-masked.zarr/` | PHerc0139 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 11 | `PHerc0139/volumes/20260319133050-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 12 | `PHerc0139/volumes/20260319133554-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 13 | `PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr/` | PHerc0139 | name 1.129µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 14 | `PHerc0172/volumes/20241024131838-7.910um-53keV-masked.zarr/` | PHerc0172 | name 7.91µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 15 | `PHerc0172/volumes/20241024131839-7.910um-53keV-masked.zarr/` | PHerc0172 | name 7.91µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 16 | `PHerc0175A/volumes/20250521115057-8.640um-1.2m-116keV-masked.zarr/` | PHerc0175A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 17 | `PHerc0175B/volumes/20250521125822-8.640um-1.2m-116keV-masked.zarr/` | PHerc0175B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 18 | `PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr/` | PHerc0191 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 19 | `PHerc0211/volumes/20250821151803-9.362um-1.2m-113keV-masked.zarr/` | PHerc0211 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 20 | `PHerc0257/volumes/20250821151750-9.362um-1.2m-113keV-masked.zarr/` | PHerc0257 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 21 | `PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr/` | PHerc0268 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 22 | `PHerc0306B/volumes/20250521133212-8.640um-1.2m-116keV-masked.zarr/` | PHerc0306B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 23 | `PHerc0332/volumes/20251211183505-2.399um-0.2m-78keV-masked.zarr/` | PHerc0332 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 24 | `PHerc0343/volumes/20250521140437-8.640um-1.2m-116keV-masked.zarr/` | PHerc0343 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 25 | `PHerc0343P/volumes/20250521134555-8.640um-1.2m-116keV-masked.zarr/` | PHerc0343P | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 26 | `PHerc0343P/volumes/20260304131111-2.215um-0.4m-111keV-masked.zarr/` | PHerc0343P | name 2.215µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 27 | `PHerc0358/volumes/20250821151737-9.362um-1.2m-113keV-masked.zarr/` | PHerc0358 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 28 | `PHerc0483A/volumes/20250521140913-8.640um-1.2m-116keV-masked.zarr/` | PHerc0483A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 29 | `PHerc0483B/volumes/20251124083638-8.640um-1.2m-116keV-masked.zarr/` | PHerc0483B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 30 | `PHerc0490A/volumes/20250521151210-8.640um-1.2m-116keV-masked.zarr/` | PHerc0490A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 31 | `PHerc0490B/volumes/20250521151215-8.640um-1.2m-116keV-masked.zarr/` | PHerc0490B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 32 | `PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr/` | PHerc0500P2 | name 2.215µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 33 | `PHerc0500P2/volumes/20250528085330-4.317um-1.2m-111keV-masked.zarr/` | PHerc0500P2 | name 4.317µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 34 | `PHerc0500P2/volumes/20250820143440-9.362um-1.2m-113keV-masked.zarr/` | PHerc0500P2 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 35 | `PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr/` | PHerc0500P2 | name 0.55µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 36 | `PHerc0800/volumes/20250521135224-8.640um-1.2m-116keV-masked.zarr/` | PHerc0800 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 37 | `PHerc0813/volumes/20250821151723-9.362um-1.2m-113keV-masked.zarr/` | PHerc0813 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 38 | `PHerc0814/volumes/20250804134230-9.362um-1.2m-113keV-masked.zarr/` | PHerc0814 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 39 | `PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr/` | PHerc0814 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| 40 | `PHerc0814/volumes/20260521123630-1.129um-0.2m-59keV-masked.zarr/` | PHerc0814 | name 1.129µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| … | 31 more in the JSONL results | | |
-
-## SCALE_IS_UNIT — 71 stores
+## AXES_UNIT_MISSING — 81 stores
 
 | # | store | sample | detail |
 |---:|---|---|---|
@@ -144,7 +98,53 @@
 | 38 | `PHerc0814/volumes/20250804134230-9.362um-1.2m-113keV-masked.zarr/` | PHerc0814 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
 | 39 | `PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr/` | PHerc0814 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
 | 40 | `PHerc0814/volumes/20260521123630-1.129um-0.2m-59keV-masked.zarr/` | PHerc0814 | name 1.129µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
-| … | 31 more in the JSONL results | | |
+| … | 41 more in the JSONL results | | |
+
+## SCALE_IS_UNIT — 81 stores
+
+| # | store | sample | detail |
+|---:|---|---|---|
+| 1 | `PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr/` | PHerc0009B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 2 | `PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr/` | PHerc0009B | name 2.401µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 3 | `PHerc0009B/volumes/20260319104112-2.401um-0.3m-77keV-masked.zarr/` | PHerc0009B | name 2.401µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 4 | `PHerc0125/volumes/20250821151825-9.362um-1.2m-113keV-masked.zarr/` | PHerc0125 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 5 | `PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 6 | `PHerc0139/volumes/20250820105138-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 7 | `PHerc0139/volumes/20250822062710-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 8 | `PHerc0139/volumes/20251107132835-9.362um-1.2m-113keV-pag0-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 9 | `PHerc0139/volumes/20251107135911-9.362um-1.2m-113keV-pag50-masked.zarr/` | PHerc0139 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 10 | `PHerc0139/volumes/20260102150214-2.399um-0.2m-78keV-masked.zarr/` | PHerc0139 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 11 | `PHerc0139/volumes/20260319133050-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 12 | `PHerc0139/volumes/20260319133554-2.403um-0.2m-77keV-masked.zarr/` | PHerc0139 | name 2.403µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 13 | `PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr/` | PHerc0139 | name 1.129µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 14 | `PHerc0172/volumes/20241024131838-7.910um-53keV-masked.zarr/` | PHerc0172 | name 7.91µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 15 | `PHerc0172/volumes/20241024131839-7.910um-53keV-masked.zarr/` | PHerc0172 | name 7.91µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 16 | `PHerc0175A/volumes/20250521115057-8.640um-1.2m-116keV-masked.zarr/` | PHerc0175A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 17 | `PHerc0175B/volumes/20250521125822-8.640um-1.2m-116keV-masked.zarr/` | PHerc0175B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 18 | `PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr/` | PHerc0191 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 19 | `PHerc0211/volumes/20250821151803-9.362um-1.2m-113keV-masked.zarr/` | PHerc0211 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 20 | `PHerc0257/volumes/20250821151750-9.362um-1.2m-113keV-masked.zarr/` | PHerc0257 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 21 | `PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr/` | PHerc0268 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 22 | `PHerc0306B/volumes/20250521133212-8.640um-1.2m-116keV-masked.zarr/` | PHerc0306B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 23 | `PHerc0332/volumes/20251211183505-2.399um-0.2m-78keV-masked.zarr/` | PHerc0332 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 24 | `PHerc0343/volumes/20250521140437-8.640um-1.2m-116keV-masked.zarr/` | PHerc0343 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 25 | `PHerc0343P/volumes/20250521134555-8.640um-1.2m-116keV-masked.zarr/` | PHerc0343P | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 26 | `PHerc0343P/volumes/20260304131111-2.215um-0.4m-111keV-masked.zarr/` | PHerc0343P | name 2.215µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 27 | `PHerc0358/volumes/20250821151737-9.362um-1.2m-113keV-masked.zarr/` | PHerc0358 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 28 | `PHerc0483A/volumes/20250521140913-8.640um-1.2m-116keV-masked.zarr/` | PHerc0483A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 29 | `PHerc0483B/volumes/20251124083638-8.640um-1.2m-116keV-masked.zarr/` | PHerc0483B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 30 | `PHerc0490A/volumes/20250521151210-8.640um-1.2m-116keV-masked.zarr/` | PHerc0490A | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 31 | `PHerc0490B/volumes/20250521151215-8.640um-1.2m-116keV-masked.zarr/` | PHerc0490B | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 32 | `PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr/` | PHerc0500P2 | name 2.215µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 33 | `PHerc0500P2/volumes/20250528085330-4.317um-1.2m-111keV-masked.zarr/` | PHerc0500P2 | name 4.317µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 34 | `PHerc0500P2/volumes/20250820143440-9.362um-1.2m-113keV-masked.zarr/` | PHerc0500P2 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 35 | `PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr/` | PHerc0500P2 | name 0.55µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 36 | `PHerc0800/volumes/20250521135224-8.640um-1.2m-116keV-masked.zarr/` | PHerc0800 | name 8.64µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 37 | `PHerc0813/volumes/20250821151723-9.362um-1.2m-113keV-masked.zarr/` | PHerc0813 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 38 | `PHerc0814/volumes/20250804134230-9.362um-1.2m-113keV-masked.zarr/` | PHerc0814 | name 9.362µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 39 | `PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr/` | PHerc0814 | name 2.399µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| 40 | `PHerc0814/volumes/20260521123630-1.129um-0.2m-59keV-masked.zarr/` | PHerc0814 | name 1.129µm; scale0=[1.0, 1.0, 1.0]; axes have no unit |
+| … | 41 more in the JSONL results | | |
 
 ## SCALE_UNITLESS_NO_NAME_UM — 43 stores
 

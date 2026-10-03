@@ -11,7 +11,7 @@
 
 ### What the catalog does
 
-A read-only sweep of every Zarr root the catalog publishes (894 roots, `metadata.min.json` 2026-10-03; tool and raw output in <https://github.com/gaogao94/scroll-catalog-audit>) found **71 stores whose own name states a µm pitch while their OME metadata carries no `axes[].unit` and a level-0 `scale` of `[1,1,1]`** — 66 of them **raw CT volumes** (`volumes/*-masked.zarr`), spanning 39 samples. Meanwhile 85.4 % of stores *do* carry correct units, so a consumer cannot rely on either behaviour.
+A read-only sweep of every Zarr root the catalog publishes (894 roots, `metadata.min.json` 2026-10-03; tool and raw output in <https://github.com/gaogao94/scroll-catalog-audit>) found **81 stores whose own name states a µm pitch while their OME metadata carries no `axes[].unit` and a level-0 `scale` of `[1,1,1]`** — 76 of them **raw CT volumes** (`volumes/*-masked.zarr`), spanning 39 samples. Meanwhile 85.4 % of stores *do* carry correct units, so a consumer cannot rely on either behaviour.
 
 Four such surface volumes are already tracked in #1951. The point of this issue is the other half: **what happens downstream when a store like that is read.**
 

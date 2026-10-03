@@ -97,7 +97,7 @@ per-class remediation list.
 
 * **894** zarr roots published by the catalog (884 with an S3 access root); **755 (85.4 %)** carry
   full physical units.
-* **71 stores** state a µm pitch in the store name while their OME metadata carries none — **66 of
+* **81 stores** state a µm pitch in the store name while their OME metadata carries none — **76 of
   them raw CT volumes** (`volumes/*-masked.zarr`), 4 surface volumes, 1 surface prediction — across
   **39 samples**. This is the class tracked for four PHerc1447 volumes in
   [#1951](https://github.com/ScrollPrize/villa/issues/1951).
@@ -117,9 +117,9 @@ per-class remediation list.
   directories, so 78 % of the roots are repeat publications. That matters for #1951: the store
   `8.64um-1.2m-116keV-volume-20250521151220.zarr` exists **15 times**, and **11 copies declare the
   8.64 µm scale while the other 4 declare none** — the correct metadata is already in the catalog.
-  (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 71 affected stores
-  only these 4 have a correct sibling; the other 67 are single-copy raw CT volumes.
-* **The catalog already knows the missing pitch.** For **67 of the 71** affected stores the manifest
+  (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 81 affected stores
+  only these 4 have a correct sibling; the other 77 are single-copy raw CT volumes.
+* **The catalog already knows the missing pitch.** For **77 of the 81** affected stores the manifest
   entry carries `properties.pixel_size_um`, and it matches the µm token in the store name exactly
   (verified per store against `metadata.min.json`). The information is therefore not lost — it is
   recorded at manifest level and not propagated into the OME metadata of the store, which is why a

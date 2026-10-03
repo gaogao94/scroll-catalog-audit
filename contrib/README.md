@@ -6,7 +6,7 @@ it. Nothing here is applied upstream yet; each item names the issue or PR it is 
 
 | File | What it is | Intended target |
 |---|---|---|
-| `issue-1951-addendum.md` | Catalog-wide quantification of the missing-physical-scale class (71 stores, 66 of them raw CT volumes, 39 samples) plus a negative result on level ladders | comment on [ScrollPrize/villa#1951](https://github.com/ScrollPrize/villa/issues/1951) |
+| `issue-1951-addendum.md` | Catalog-wide quantification of the missing-physical-scale class (81 stores, 76 of them raw CT volumes, 39 samples) plus a negative result on level ladders | comment on [ScrollPrize/villa#1951](https://github.com/ScrollPrize/villa/issues/1951) |
 | `scale-fallback-issue.md` | Reader side: three places that substitute `1.0` for a missing physical scale without a word, with `file:line`, executed before/after evidence, and an appendix listing four further candidates found by the same search | new issue in `ScrollPrize/villa` |
 | `lasagna-scale-fallback.patch` | Reader-side fix: warning naming the affected levels + opt-in `--require-scale`; 4 files, +111/−2, includes tests | PR against `ScrollPrize/villa` |
 | `spiral-unitless-issue.md` | Writer side: `tracks_to_ome_zarr` writes `1.0` into newly produced OME-Zarr metadata when no voxel size is available | new issue / PR description |
@@ -17,7 +17,7 @@ it. Nothing here is applied upstream yet; each item names the issue or PR it is 
 ## How the pieces relate
 
 ```
-scroll-catalog-audit  ──finds──▶  71 stores whose name states a µm pitch
+scroll-catalog-audit  ──finds──▶  81 stores whose name states a µm pitch
         (this repo)               while their OME metadata carries none
                                           │
                      ┌────────────────────┴────────────────────┐
@@ -52,7 +52,7 @@ and `yaml` — and run in CI.
 ## Full chain
 
 ```
-scroll-catalog-audit  ──finds──▶  71 stores whose name states a µm pitch
+scroll-catalog-audit  ──finds──▶  81 stores whose name states a µm pitch
         (this repo)               while their OME metadata carries none
                                           │
         ┌─────────────────────────────────┼─────────────────────────────────┐

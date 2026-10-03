@@ -111,6 +111,21 @@ def resolves_on_s3(access_roots) -> bool:
     return S3_ROOT in access_roots
 
 
+def origin_base(access_roots):
+    """The URL base a store must be resolved against, per its OWN declared access roots (R4).
+
+    Some volumes are published on a second host and only there; skipping them would leave a hole
+    in the sweep, so resolve each origin against its declared root instead.
+    """
+    roots = access_roots or []
+    if not roots or S3_ROOT in roots:
+        return BUCKET
+    for r in roots:
+        if isinstance(r, str) and r.startswith("http"):
+            return r.rstrip("/")
+    return None
+
+
 def ladder_issues(scales) -> list:
     """Report non-monotonic ladders and non-integral level ratios (empty = clean)."""
     sc = [s for s in (scales or []) if isinstance(s, list) and s]
@@ -272,44 +287,55 @@ def scan_root(rec, deep=False):
     out["ctx"] = {k: v for k, v in rec["ctx"].items() if k in ("vol_pixel_um", "scan_pixel_um", "access_roots")}
     out["um_in_path"] = um_from_path(root)
     roots = rec["ctx"].get("access_roots")
-    if not resolves_on_s3(roots):
-        out["skipped"] = "NOT_S3_ORIGIN"
-        out["access_roots"] = roots
+    base = origin_base(roots)
+    out["access_roots"] = roots
+    if base is None:
+        out["skipped"] = "NO_USABLE_ROOT"
         out["exists"] = None
         out["mismatch"] = []
         return out
-    keys, err = list_keys(root)
-    if err:
-        # A failed request is NOT a missing path: keep it retryable and separate.
-        out.update({"exists": None, "list_err": err, "mismatch": ["LIST_ERROR"]})
-        return out
-    out["exists"] = bool(keys)
-    out["n_keys_first_page"] = len(keys)
-    out["chunks_in_first_page"] = sum(1 for k in keys if is_chunk_key(k[len(root):]))
-    if not out["exists"]:
-        out["mismatch"] = ["PATH_MISSING"]
-        return out
-    doc, zerr = _json(f"{BUCKET}/{urllib.parse.quote(root.rstrip('/'))}/.zattrs")
+    out["via"] = base
+    is_s3 = base == BUCKET
+    if is_s3:
+        keys, err = list_keys(root, base=base)
+        if err:
+            # A failed request is NOT a missing path: keep it retryable and separate.
+            out.update({"exists": None, "list_err": err, "mismatch": ["LIST_ERROR"]})
+            return out
+        out["exists"] = bool(keys)
+        out["n_keys_first_page"] = len(keys)
+        out["chunks_in_first_page"] = sum(1 for k in keys if is_chunk_key(k[len(root):]))
+        if not out["exists"]:
+            out["mismatch"] = ["PATH_MISSING"]
+            return out
+    # Non-S3 roots are plain HTTPS file servers: they have no ListObjectsV2 API, so existence is
+    # established from the metadata object itself and the chunk-page fields stay unknown.
+    doc, zerr = _json(f"{base}/{urllib.parse.quote(root.rstrip('/'))}/.zattrs")
     fmt = "v2"
     if doc is None:
-        doc, zerr3 = _json(f"{BUCKET}/{urllib.parse.quote(root.rstrip('/'))}/zarr.json")
+        doc, zerr3 = _json(f"{base}/{urllib.parse.quote(root.rstrip('/'))}/zarr.json")
         if doc is not None:
             fmt = "v3"
             info = parse_multiscales(doc, v3=True)
         else:
-            # A store can legitimately have chunks and no metadata object at all.
             reason = "NO_METADATA" if "HTTP404" in f"{zerr}{zerr3}" else "META_ERROR"
             out.update({"meta_err": f"{zerr}|{zerr3}", "format": "none"})
+            if not is_s3:
+                out["exists"] = "HTTP404" not in f"{zerr}{zerr3}"
+                out["mismatch"] = ["PATH_MISSING"] if not out["exists"] else [reason]
+                return out
             out["mismatch"] = [reason]
             return out
     else:
         info = parse_multiscales(doc, v3=False)
+    if not is_s3:
+        out["exists"] = True
     out.update({"format": fmt, **info})
     out.pop("levels", None)
     if deep and info.get("levels"):
         empty = []
         for lvl in info["levels"][:8]:
-            lk, lerr = list_keys(f"{root}{lvl}/", max_keys=5)
+            lk, lerr = list_keys(f"{root}{lvl}/", max_keys=5, base=base)
             if lerr or not any(is_chunk_key(k[len(root):]) for k in (lk or [])):
                 empty.append(lvl)
         out["empty_levels"] = empty
@@ -332,6 +358,8 @@ def cmd_scan(args):
     todo = [r for p, r in sorted(roots.items()) if p not in done]
     if args.kind:
         todo = [r for r in todo if args.kind in r["kind"]]
+    if args.path_substring:
+        todo = [r for r in todo if args.path_substring in r["path"]]
     if args.random:
         import random as _random
         rnd = _random.Random(args.seed)
@@ -396,8 +424,10 @@ def cmd_report(args):
             agg[m] += 1
     s3 = [r for r in rows if not r.get("skipped")]
     units_ok = [r for r in s3 if r.get("units_present")]
+    on_alt = [r for r in s3 if r.get("via") and r["via"] != BUCKET]
     lines = ["# Vesuvius open-data catalog · consistency audit", "",
-             f"- stores scanned: **{len(rows)}** (S3 origins {len(s3)}, other roots {len(rows)-len(s3)})",
+             f"- stores scanned: **{len(rows)}** (resolved on the S3 bucket: {len(s3) - len(on_alt)}; "
+             f"on a declared alternate root: {len(on_alt)})",
              f"- stores with full physical units: **{len(units_ok)}**",
              f"- findings: " + (", ".join(f"`{k}` × {v}" for k, v in agg.most_common()) or "none"), ""]
     by = defaultdict(list)
@@ -426,8 +456,9 @@ def cmd_report(args):
         "- The z-axis/in-plane asymmetry of surface volumes "
         "(`[8.64, 8.64, 8.64] → [8.64, 17.28, 17.28] → …`) is uniform across the catalog and is "
         "recorded here as **expected**, not as a defect, so future audits do not re-file it.",
-        "- Origins that declare a non-S3 access root are skipped by design rather than reported "
-        "missing (see `ALT_HOST_ORIGIN` in the JSONL).",
+        "- Origins that declare a non-S3 access root are resolved against that root (see `via` in "
+        "the JSONL); on such hosts there is no ListObjectsV2 API, so existence is established from "
+        "the metadata object and the chunk-page fields stay unknown.",
         "",
     ]
 
@@ -466,7 +497,7 @@ def cmd_report(args):
         "NON_INTEGRAL_RATIO": "Repair the level ladder ratio.",
         "LIST_ERROR": "Transient request failure - re-run the scan; not a finding.",
         "META_ERROR": "Transient metadata fetch failure - re-run the scan; not a finding.",
-        "ALT_HOST_ORIGIN": "No action: this origin resolves against a non-S3 root and was intentionally skipped.",
+        "ALT_HOST_ORIGIN": "No action: this origin was resolved against its own declared (non-S3) root.",
     }
     fix = {"generated_from": args.results, "stores": len(rows),
            "classes": {m: {"count": len(v), "recommended_action": ACTIONS.get(m, ""),
@@ -660,6 +691,7 @@ def main(argv=None):
     s.add_argument("--results", default="results.jsonl")
     s.add_argument("--limit", type=int, default=None)
     s.add_argument("--kind", default=None, help="only scan roots whose kind contains this substring (e.g. 'volume:')")
+    s.add_argument("--path-substring", default=None, help="only scan roots whose path contains this substring")
     s.add_argument("--random", type=int, default=None, help="randomly sample this many roots (with --seed)")
     s.add_argument("--seed", type=int, default=0, help="seed for --random sampling")
     s.add_argument("--workers", type=int, default=10)

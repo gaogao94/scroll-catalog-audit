@@ -13,17 +13,17 @@
 Method: read-only sweep of **all 894 Zarr roots** the catalog publishes (`metadata.min.json`, 2026-10-03). Every root was resolved against **its own declared `access_roots`** (the catalog publishes some volumes twice, once on `s3://vesuvius-challenge-open-data` and once on `https://data.aws.ash2txt.org`; resolving everything against S3 manufactures false "missing path" hits). Metadata was read from `.zattrs` (Zarr v2) with a `zarr.json` fallback (Zarr v3). No chunk bytes were downloaded.
 
 **Result 1 — the pattern is catalog-wide and hits the primary data.**
-Full sweep, 2026-10-03: 894 roots, of which **884 resolve on the S3 bucket** (the other 10 declare a non-S3 access root and are skipped by design). **755 (85.4 %) carry full physical units**; and **71 stores have a µm token in their own name while their OME metadata carries no `scale`**, i.e. the store name states a physical pitch that the metadata does not:
+Full sweep, 2026-10-03: 894 roots, of which **884 resolve on the S3 bucket** and **10 on their declared alternate root** (those 10 are now audited as well, each against its own declared root). **755 (85.4 %) carry full physical units**; and **81 stores have a µm token in their own name while their OME metadata carries no `scale`**, i.e. the store name states a physical pitch that the metadata does not:
 
 | kind | count | example |
 |---|---:|---|
-| `volume:ome-zarr` (**raw CT**) | **66** | `PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr` |
+| `volume:ome-zarr` (**raw CT**) | **76** | `PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr` |
 | `segment:layers-zarr` (surface volumes — the 4 reported here) | 4 | `PHerc1447/.../8.64um-1.2m-116keV-volume-20250521151220.zarr` |
 | `volume:surface-prediction-zarr` | 1 | — |
 
-The 71 roots span **39 samples**. So the failure mode described in this issue affects the **raw scans** — the input to everything else — not just the four surface volumes: a consumer that reads physical voxel size from OME metadata gets `unit: null` / `scale: [1,1,1]` for 66 raw volumes, and the filename is the only place the true pitch appears. Meanwhile segment surface volumes in the same samples (e.g. `PHerc0172/segments/.../7.91um-53keV-volume-20241024131838.zarr`) do carry `"unit": "micrometer"` and the correct scale, so the catalog is **not** uniformly unitless and a reader cannot rely on either behaviour.
+The 81 roots span **39 samples**. So the failure mode described in this issue affects the **raw scans** — the input to everything else — not just the four surface volumes: a consumer that reads physical voxel size from OME metadata gets `unit: null` / `scale: [1,1,1]` for 76 raw volumes, and the filename is the only place the true pitch appears. Meanwhile segment surface volumes in the same samples (e.g. `PHerc0172/segments/.../7.91um-53keV-volume-20241024131838.zarr`) do carry `"unit": "micrometer"` and the correct scale, so the catalog is **not** uniformly unitless and a reader cannot rely on either behaviour.
 
-*Counting method, stated because it matters*: the numbers come from **two independent sweeps merged per store** (`report --merge`): for each store the run that actually obtained metadata wins. A single sweep gave 67 / 62 / 35 — the difference is entirely transient metadata-fetch failures, which the tool labels `META_ERROR` and re-runs rather than reporting. Anyone reproducing this should expect a few stores to move between classes on a re-run.
+*Counting method, stated because it matters*: the numbers come from **two independent sweeps merged per store** (`report --merge`): for each store the run that actually obtained metadata wins. A single sweep, without the alternate-root pass or the merge, gave 67 / 62 / 35 — the difference is entirely transient metadata-fetch failures, which the tool labels `META_ERROR` and re-runs rather than reporting. Anyone reproducing this should expect a few stores to move between classes on a re-run.
 
 Two adjacent classes came out of the same sweep, both reproducible with the same tool:
 * **1 store** declares six pyramid levels and contains **no chunks at all** — it reads back as `fill_value` with no error (this is #1892, reproduced here as a calibration case).
@@ -59,5 +59,5 @@ Across all **794 roots with parseable multiscale metadata**: 0 non-monotonic lad
 - [x] **R4 access_roots**：修正了 10 条"路径缺失"假阳性（真值 0）
 - [x] **R5 抽样复核**：5 个原始卷 + 4 个表面卷 + 对照组逐一手工核对原始元数据
 - [x] **R6 限速与错误分类**：瞬时失败单列 `LIST_ERROR` / `META_ERROR`（本轮均为 0 / 9），不并入结论
-- [x] 数字已按 2026-10-03 最终全量重扫刷新（合并口径：71 个 store / 39 个 sample）
+- [x] 数字已按 2026-10-03 最终全量重扫刷新（合并口径：81 个 store / 39 个 sample）
 - [ ] 等 G1 解锁后提交（同时把发布版工具推到公开仓库，提供可复现链接）
