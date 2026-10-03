@@ -45,5 +45,9 @@ catalog where the pitch appears, so anyone repairing them has to take the value 
 the scan parameters documented outside the catalog. That is a materially weaker position than the
 bucket's 77, and worth knowing before the host goes away.
 
+The contrast inside the manifest is stark and reproducible: of the ten samples that carry a legacy URL,
+the four scrolls (`/full-scrolls/`) all have a `pixel_size_um` recorded, and the six fragments
+(`/fragments/`) have none. `python -m scroll_catalog_audit manifest` prints both lines.
+
 The 10 declared-but-absent levels above are counted per root, not per level: each of the two affected
 roots is missing levels 1 through 5.

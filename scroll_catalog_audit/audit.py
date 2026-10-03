@@ -672,11 +672,19 @@ def cmd_manifest(args):
                 break
         else:
             families.setdefault("other", []).append(name)
+    def _has_pitch(name):
+        info = samples[name]
+        if "pixel_size_um" in json.dumps(info):
+            return True
+        return False
+
     for fam, names in sorted(families.items()):
         empty = [n for n in names
                  if not ((samples[n].get("volumes") or samples[n].get("segments") or samples[n].get("scans")))]
+        pitched = [n for n in names if _has_pitch(n)]
         print(f"  legacy URLs: {len(names)} sample(s) under {fam}, {len(empty)} of them with no "
-              f"volumes/segments/scans" + (f" ({', '.join(sorted(empty))})" if empty else ""))
+              f"volumes/segments/scans" + (f" ({', '.join(sorted(empty))})" if empty else "")
+              + f", {len(pitched)} with a pixel_size_um recorded anywhere in the sample record")
     return 1 if err else 0
 
 
