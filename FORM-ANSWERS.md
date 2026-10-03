@@ -149,13 +149,16 @@ each patch adds tests in the repository's existing style and applies cleanly to 
 
 ---
 
-## 提交前请顺手确认两件事
+## 提交前请顺手确认一件事
 
 1. **表单里若有"类别/Category"字段**：选与 *analytic tools / tooling / bug fixes* 最接近的一项；
    两份提交选不同类别即可，不必相同。
-2. **是否需要 Discord**：我在官方条款里读到一句 "To qualify, you must have registered on the
-   Vesuvius Challenge Discord at the time of the submission"。它出现在**大奖**条款段落附近，
-   是否同样适用于 Progress Prize 我无法确认。若要保险，花 2 分钟注册并加入他们的 Discord 服务器即可。
+
+> **Discord 不需要——已查证。** 我先前提示过"提交时必须已注册 Discord"，那其实是**大奖（2027 Grand
+> Prize）**的条款：在官方权威文案 `scrollprize.org/docs/34_prizes.md` 中，Discord 要求**只出现一次**，
+> 位于第 167 行的 `## 2027 Grand Prize` 一节；**Progress Prizes 一节（302–348 行）完全没有这条**，
+> 而评奖自动化脚本（`.github/progress-prizes-*.mjs`）里也**不检查 Discord**。
+> 所以这份提交不依赖 Discord——登不上不影响。
 
 ---
 
