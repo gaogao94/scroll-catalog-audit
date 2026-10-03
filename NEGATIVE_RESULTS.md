@@ -169,6 +169,23 @@ This matters because a completeness check that requests the declared path verbat
 ten missing, of which three are false positives. Any such check must try both spellings, which is also
 why this sweep resolves every origin against its own declared access root rather than against S3.
 
+## 3g-ii. The alternate root mirrors the objects but cannot be listed, and says so with a 200
+
+Section 3g covers the two path conventions. A related question a consumer has to answer - "can I just
+use the alternate host for everything?" - has a two-part answer:
+
+* **Objects: yes.** Twenty of the 884 S3-convention roots, drawn with a fixed seed, were probed for their
+  metadata objects at `https://data.aws.ash2txt.org/samples/<path>/...`: 20 of 20 resolve (`HEAD` only).
+  The alternate host is a read-through mirror, not a sparse one.
+* **Listings: no, and it does not fail safely.** A `ListObjectsV2` request against that host returns
+  **HTTP 200 with an HTML page**, not XML and not an error. Code that parses the response looking for
+  `<Contents>` finds none and concludes the prefix is empty - which is how a first attempt at this check
+  produced "0 of 45 samples are mirrored" before the response body was looked at. Against the S3 endpoint
+  the same request returns proper XML.
+
+So the practical rule is: enumerate on S3, fetch on either. Anything that enumerates the alternate host
+gets a confident, empty, wrong answer.
+
 ## 3h. Where the tifxyz missing-point marker reaches a derived bounding box
 
 28 of the 29 PHercParis4 `w###` segments published 2026-07-01 carry a `meta.json` bbox whose lower
