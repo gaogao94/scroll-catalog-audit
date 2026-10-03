@@ -52,6 +52,9 @@ python -m scroll_catalog_audit explain --path PHerc1447/segments/20250702235910
 # 5. stores that share a name — one volume republished under many segment directories
 python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
 python -m scroll_catalog_audit siblings          # catalog-wide: how many affected stores have a correct sibling?
+
+# 6. has the catalog changed since this sweep? cheap follow-up after any catalog edit
+python -m scroll_catalog_audit drift
 ```
 
 `explain` prints the raw evidence behind a finding — pitch in the store name, whether the axes

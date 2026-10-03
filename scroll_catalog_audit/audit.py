@@ -576,6 +576,38 @@ def cmd_explain(args):
     return 0
 
 
+def cmd_drift(args):
+    """What changed in the catalog since the last sweep?
+
+    Diffs the origins the catalog declares *now* against the paths in a committed results file, so a
+    catalog edit can be followed up with a few requests instead of a full re-scan. This is how a fix
+    to a single store (e.g. an entry removed from the manifest) is confirmed.
+    """
+    rows = [json.loads(l) for l in open(args.results, encoding="utf-8") if l.strip()]
+    have = {r["path"] for r in rows}
+    catalog = load_catalog(args.catalog)
+    now = build_roots(catalog)
+
+    added = sorted(set(now) - have)
+    removed = sorted(have - set(now))
+    print(f"declared now: {len(now)}   in {os.path.basename(args.results)}: {len(have)}")
+    print(f"added since the sweep   : {len(added)}")
+    print(f"removed since the sweep : {len(removed)}")
+    for label, items in (("ADDED", added), ("REMOVED", removed)):
+        for p in items[: args.limit]:
+            kind = now.get(p, {}).get("kind", "?")
+            print(f"  [{label}] {kind:<34} {p}")
+        if len(items) > args.limit:
+            print(f"  ... and {len(items) - args.limit} more {label.lower()}")
+    if not added and not removed:
+        print("no drift: the declared set is identical to the swept set")
+    if args.emit_json:
+        with open(args.emit_json, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump({"added": added, "removed": removed}, fh, ensure_ascii=False, indent=2)
+        print(f"wrote {args.emit_json}")
+    return 0
+
+
 def cmd_demo(args):
     """One command, fully offline: prove the tool works, reproduce the two filed issues,
     and print the headline numbers from the committed results."""
@@ -735,6 +767,13 @@ def main(argv=None):
     sib.add_argument("--merge", action="append", default=None)
     sib.add_argument("--path", default=None, help="store-name substring; omit for the catalog-wide summary")
     sib.set_defaults(func=cmd_siblings)
+    dr = sub.add_parser("drift",
+                        help="what the catalog declares now versus what the last sweep covered")
+    dr.add_argument("--results", default="results.jsonl")
+    dr.add_argument("--catalog", default=None, help="local catalog snapshot (default: fetch it)")
+    dr.add_argument("--limit", type=int, default=25)
+    dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
+    dr.set_defaults(func=cmd_drift)
     args = ap.parse_args(argv)
     sys.exit(args.func(args) or 0)
 
