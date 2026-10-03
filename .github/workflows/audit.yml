@@ -48,20 +48,28 @@ jobs:
       - name: The manifest checks report exactly what is already filed
         # The full catalog file, because creation dates, original_volume_id, transforms and the
         # provenance blocks exist only there. Manifest exits 1 on the one filed defect, so the step
-        # tolerates that and asserts instead that no *other* code has appeared.
+        # tolerates that and asserts instead that no *other* code has appeared. The extraction is in
+        # Python because the first attempt used sed and silently captured only the severity word.
         run: |
           curl -sSL -o /tmp/metadata.json \
             https://vesuvius-challenge-open-data.s3.amazonaws.com/metadata.json
           python -m scroll_catalog_audit manifest --catalog /tmp/metadata.json > /tmp/manifest.txt || true
           cat /tmp/manifest.txt
-          codes=$(sed -n 's/^ *\[\(ERROR\|WARN\)\] \([A-Z_]*\):.*/\1 \2/p' /tmp/manifest.txt | sort -u)
-          test -n "$codes"
-          for c in $codes; do
-            case "$c" in
-              "ERROR MODEL_SAMPLE_MISSING"|"WARN PROVENANCE_DIRTY_ALWAYS"|"WARN PROVENANCE_OUTPUT_MISMATCH") ;;
-              *) echo "::error::unexpected manifest finding: $c"; exit 1 ;;
-            esac
-          done
+          python - <<'PY'
+          import re
+          allowed = {
+              "ERROR MODEL_SAMPLE_MISSING",
+              "WARN PROVENANCE_DIRTY_ALWAYS",
+              "WARN PROVENANCE_OUTPUT_MISMATCH",
+          }
+          text = open("/tmp/manifest.txt", encoding="utf-8").read()
+          found = {f"{m.group(1)} {m.group(2)}"
+                   for m in re.finditer(r"^\s*\[(ERROR|WARN)\] ([A-Z_]+):", text, re.M)}
+          print("codes:", sorted(found))
+          assert found, "the manifest step produced no findings at all"
+          unexpected = found - allowed
+          assert not unexpected, f"unexpected manifest finding(s): {sorted(unexpected)}"
+          PY
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible
