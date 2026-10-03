@@ -25,7 +25,7 @@ succeeds and the output looks well formed.
 
 ### Why it matters more than a read-side default
 
-This is the *producing* end of a pattern that the companion audit enumerates in the catalog: **71
+This is the *producing* end of a pattern that the companion audit enumerates in the catalog: **81
 published stores state a µm pitch in their own name while their OME metadata carries no scale** (76
 of them raw CT volumes). A reader-side default makes an existing gap invisible; this line can create
 new instances of it — and because the output is a valid OME-Zarr whose `scale` looks deliberate,

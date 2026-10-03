@@ -21,9 +21,19 @@ stores, the manifest entry that declares the store carries `properties.pixel_siz
 | `PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr` | 2.401 µm | `axes[].unit` absent, `scale = [1,1,1]` | **2.401** |
 | `PHerc0009B/volumes/20260319104112-2.401um-0.3m-77keV-masked.zarr` | 2.401 µm | `axes[].unit` absent, `scale = [1,1,1]` | **2.401** |
 
-Breakdown of the 81: **76 × `volume:ome-zarr`** and 1 × `volume:surface-prediction-zarr` have the
-manifest value; **4 × `segment:layers-zarr`** have it in neither and are tracked in #1951 (those four
-are copies of one store name — see [the note there](https://github.com/ScrollPrize/villa/issues/1951#issuecomment-5970262863)).
+Breakdown of the 81: **76 × `volume:ome-zarr`**, 1 × `volume:surface-prediction-zarr` and
+**4 × `segment:layers-zarr`** — those four are the group tracked in #1951 and the only ones without a
+manifest pitch. They are also copies of one store name; see
+[the note there](https://github.com/ScrollPrize/villa/issues/1951#issuecomment-5970262863).
+
+Ten of the 81 are published on the **alternate access root** (`data.aws.ash2txt.org`, `samples/…`
+layout) and seven of those ten are not present in the S3 bucket at all. They show the same pattern,
+so the class is not specific to one host.
+
+One case where the two disagree: `PHercParis4/representations/predictions/surfaces/…-surface-recto-2um-ps256-L0-th0.45.zarr`
+has **`2um` in its name while the manifest entry says `2.4`**, and its OME metadata carries no scale
+at all — so nothing in the store resolves the conflict. Flagging it as a single observation rather
+than a pattern: it is the only disagreement among the 77 stores where both values exist.
 
 So the information is not missing from the catalog. It is recorded at manifest level and **not
 propagated into the OME metadata of the store itself**.
