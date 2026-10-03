@@ -107,6 +107,9 @@ python -m scroll_catalog_audit freshness --sample 20
 
 # 10. do the sweeps agree with each other? restates every quoted figure from the data
 python -m scroll_catalog_audit verify
+
+# 11. are the declared photos and photo masks actually published?
+python -m scroll_catalog_audit assets
 ```
 
 `drift` answers "does the catalog list a different set of roots"; `freshness` answers the other

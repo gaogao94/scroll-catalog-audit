@@ -688,6 +688,68 @@ def cmd_manifest(args):
     return 1 if err else 0
 
 
+def cmd_assets(args):
+    """Do the catalog's non-Zarr assets exist? Photos and photo masks, HEAD only.
+
+    The sweep covers every Zarr root and the manifest checks cover references between records, but
+    nothing had asked whether the `photo` and `photo-mask` entries a sample declares are actually
+    published. A missing one is a declaration the catalog does not honour - the same silent failure as
+    everything else here, except it is a file rather than a number.
+    """
+    import collections
+    import time
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+
+    doc = load_catalog(args.catalog)
+    ua = {"User-Agent": "Mozilla/5.0 (scroll-catalog-audit assets; HEAD only)"}
+
+    def resolve(root: str, path: str) -> str:
+        p = path.lstrip("/")
+        if root.startswith("s3://"):
+            return f"https://vesuvius-challenge-open-data.s3.amazonaws.com/{urllib.parse.quote(p)}"
+        return f"{root.rstrip('/')}/{urllib.parse.quote(p)}"
+
+    checks = []
+    for name, info in (doc.get("samples") or {}).items():
+        for datum in (info.get("sample") or {}).get("data") or []:
+            for origin in datum.get("origins") or []:
+                roots = [r.get("url") for r in (origin.get("access_roots") or []) if r.get("url")]
+                for root in roots:
+                    checks.append((name, datum.get("type"), root, origin.get("path"),
+                                   resolve(root, origin.get("path"))))
+
+    print(f"asset origins to check: {len(checks)}")
+    status: collections.Counter = collections.Counter()
+    by_type: dict = collections.defaultdict(lambda: [0, 0])
+    failures = []
+    for name, kind, root, path, url in checks:
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, method="HEAD", headers=ua),
+                                        timeout=30) as resp:
+                code = resp.status
+        except urllib.error.HTTPError as exc:
+            code = exc.code
+        except Exception as exc:  # noqa: BLE001
+            code = type(exc).__name__
+        ok = isinstance(code, int) and 200 <= code < 300
+        status[200 if ok else code] += 1
+        by_type[kind or "?"][0 if ok else 1] += 1
+        if not ok:
+            failures.append((name, kind, path, code))
+        time.sleep(args.delay)
+    for kind, (good, bad) in sorted(by_type.items()):
+        print(f"  {kind:<12} {good} reachable, {bad} not")
+    print(f"  status codes: {dict(status)}")
+    for name, kind, path, code in failures[: args.limit]:
+        print(f"  [MISSING] {code} {kind} {name} {path}")
+    if len(failures) > args.limit:
+        print(f"  ... and {len(failures) - args.limit} more")
+    print(f"assets: {len(checks) - len(failures)}/{len(checks)} declared asset origins resolve")
+    return 1 if failures else 0
+
+
 def cmd_verify(args):
     """Do the sweeps agree with each other, and do the headline numbers still come out?
 
@@ -1245,6 +1307,11 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    ast_ = sub.add_parser("assets", help="do the declared photo and photo-mask origins exist?")
+    ast_.add_argument("--catalog", default=None)
+    ast_.add_argument("--delay", type=float, default=0.02)
+    ast_.add_argument("--limit", type=int, default=10)
+    ast_.set_defaults(func=cmd_assets)
     vf = sub.add_parser("verify", help="cross-check the sweeps against each other and restate the figures")
     vf.add_argument("--dir", default=".", help="directory holding results*.jsonl")
     vf.set_defaults(func=cmd_verify)

@@ -271,6 +271,14 @@ And two things inside those blocks that do agree, everywhere they can be compare
 `atlas_git_sha` and the sha inside `infra_revision` never coincide (0 of 3,834) - they appear to name
 different repositories, so that is recorded here only to stop it being read as a defect later.
 
+## 3k. The catalog publishes the non-Zarr assets it declares
+
+Every Zarr root was swept, but nothing had asked whether the `photo` and `photo-mask` entries a
+sample declares are actually there. They are: **88 of 88 origin-root pairs resolve** (55 photo, 33
+photo-mask), checked with HEAD requests only, so no bytes were transferred. Reproduce with
+`python -m scroll_catalog_audit assets`. This is the last "declared versus published" gap in the
+audit: roots, segments, volumes, scans and now assets.
+
 ## 4. Path resolution
 
 | check | scope | result |
