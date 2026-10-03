@@ -119,6 +119,11 @@ per-class remediation list.
   8.64 µm scale while the other 4 declare none** — the correct metadata is already in the catalog.
   (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 71 affected stores
   only these 4 have a correct sibling; the other 67 are single-copy raw CT volumes.
+* **Every published prediction output is unitless.** All **43** `volume:surface-prediction-zarr`
+  stores — the `representations/predictions/surfaces/` family, spanning 36 samples — declare
+  level-0 `scale = [1.0, 1.0, 1.0]` and none carries `axes[].unit`. Each `.zattrs` was re-fetched
+  directly from the bucket to confirm (42 confirmed, 1 transient failure). For a *surface* this is
+  not cosmetic: flattening and measurement code that trusts the metadata gets 1.0 for all of them.
 * **The affected stores do not cluster by date.** They span 2024-10 … 2026-06 with clean months in
   between, so a pipeline-regression window is ruled out; the pattern is per-sample/per-store.
 * **`demo`** runs the offline self-test, reproduces both filed issues, and prints these numbers in
