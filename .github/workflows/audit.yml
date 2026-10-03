@@ -35,6 +35,12 @@ jobs:
           python -m scroll_catalog_audit demo
           python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
           python -m scroll_catalog_audit.audit selftest
+      - name: The committed sweep is still true
+        # A canary, not coverage: a small live sample whose findings must still match the committed
+        # ones. If a publisher fixes one of the reported defects, this fails and the numbers get
+        # updated rather than quietly going stale.
+        run: python -m scroll_catalog_audit freshness --sample 8
+
       - name: The guards still guard
         # Both of these were wrong once: `--limit 0` was falsy and therefore ran the whole catalog
         # (~1,860 requests), and a missing results file produced a traceback instead of a sentence.

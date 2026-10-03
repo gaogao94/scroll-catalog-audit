@@ -70,7 +70,15 @@ python -m scroll_catalog_audit asserts          # same as `python -m scroll_cata
 
 # 8. integrity checks that need the FULL metadata.json, not the compact one
 python -m scroll_catalog_audit manifest
+
+# 9. is the committed sweep still true? re-probe a sample and compare
+python -m scroll_catalog_audit freshness --sample 20
 ```
+
+`drift` answers "does the catalog list a different set of roots"; `freshness` answers the other
+question, "has a store's metadata changed underneath" - which is what happens when one of the reported
+defects is fixed. It re-probes a reproducible sample live and exits 1 if any store's findings differ
+from the committed ones.
 
 `manifest` checks what only the full file records: `segment.original_volume_id` and `volume.scan_id`
 resolving inside their own sample, `transforms` pointing at volumes that exist with a 3x4 invertible

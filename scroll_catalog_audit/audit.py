@@ -450,6 +450,48 @@ def _det3(m):
             + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]))
 
 
+def cmd_freshness(args):
+    """Is the committed sweep still true? Re-probe a sample and compare classifications.
+
+    `drift` watches the *declared set* - which roots the catalog lists. It cannot see a store whose
+    metadata changed underneath, which is exactly what happens when a publisher fixes one of the
+    defects this audit reports. This re-probes a reproducible sample live and reports any store whose
+    findings differ from the committed ones, so a claim can be re-checked without re-sweeping 894 roots.
+    """
+    import random as _random
+    rows = load_rows(args.results, args.merge)
+    if not rows:
+        print("no rows to sample", file=sys.stderr)
+        return 2
+    rnd = _random.Random(args.seed)
+    sample = rnd.sample(rows, min(args.sample, len(rows)))
+    print(f"re-probing {len(sample)} of {len(rows)} stores (seed {args.seed}), metadata only")
+    changed = []
+    failed = []
+    for rec in sample:
+        try:
+            fresh = scan_root(dict(rec))
+        except Exception as exc:  # noqa: BLE001
+            failed.append((rec["path"], type(exc).__name__))
+            continue
+        before, after = sorted(set(classify(rec))), sorted(set(classify(fresh)))
+        if before != after:
+            changed.append((rec["path"], before, after))
+    print(f"  unchanged: {len(sample) - len(changed) - len(failed)}")
+    print(f"  changed  : {len(changed)}")
+    for path, before, after in changed[: args.limit]:
+        print(f"    {path}")
+        print(f"      was: {before}")
+        print(f"      now: {after}")
+    if len(changed) > args.limit:
+        print(f"    ... and {len(changed) - args.limit} more")
+    if failed:
+        print(f"  could not re-probe: {len(failed)}")
+        for path, why in failed[: args.limit]:
+            print(f"    {why}: {path}")
+    return 1 if changed else 0
+
+
 def cmd_manifest(args):
     """Integrity checks over the *full* catalog file.
 
@@ -988,6 +1030,13 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    fr = sub.add_parser("freshness", help="re-probe a sample and report any store whose findings changed")
+    fr.add_argument("--results", default="results.jsonl")
+    fr.add_argument("--merge", action="append", default=None)
+    fr.add_argument("--sample", type=int, default=20)
+    fr.add_argument("--seed", type=int, default=20261004)
+    fr.add_argument("--limit", type=int, default=5)
+    fr.set_defaults(func=cmd_freshness)
     man = sub.add_parser("manifest", help="integrity checks over the full metadata.json")
     man.add_argument("--catalog", default=None, help="local metadata.json (default: fetch it)")
     man.add_argument("--limit", type=int, default=5, help="examples to show per finding")
