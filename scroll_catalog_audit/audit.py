@@ -616,6 +616,48 @@ def cmd_manifest(args):
         print("  no findings")
     print(f"  provenance: {prov['total']} records, {prov['dirty']} with atlas_git_dirty=true, "
           f"{prov['output_path_checked']} output-paths compared, {prov['output_path_mismatch']} mismatched")
+    # Conventions, printed rather than transcribed. A census quoted in a discussion is worth little if
+    # the only way to check it is to re-derive it by hand; this is the walk the write-up cites.
+    shapes = {"null": 0, "empty list": 0, "list": 0, "list holding a sentinel": 0}
+    for m in (doc.get("models") or {}).values():
+        cs = (m.get("properties") or {}).get("compatible_samples")
+        if cs is None:
+            shapes["null"] += 1
+        elif cs == []:
+            shapes["empty list"] += 1
+        elif any(isinstance(s, str) and s.strip().lower() in ("none", "") for s in cs):
+            shapes["list holding a sentinel"] += 1
+        else:
+            shapes["list"] += 1
+    scalar_sentinel: Counter = Counter()
+    in_list = 0
+
+    def walk(node):
+        """Count the sentinel where it is a dict value, and separately where a list holds it.
+
+        Recursing into list members with their parent's key counted the one inside
+        `compatible_samples` as a scalar too, which is exactly the ambiguity that made an earlier
+        write-up quote 729 for what is 728 scalar uses plus this single list.
+        """
+        nonlocal in_list
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if isinstance(v, str) and v.strip().lower() == "none":
+                    scalar_sentinel[k] += 1
+                else:
+                    walk(v)
+        elif isinstance(node, list):
+            if any(isinstance(x, str) and x.strip().lower() == "none" for x in node):
+                in_list += 1
+            for v in node:
+                walk(v)
+
+    walk(doc)
+    print("  conventions: compatible_samples = "
+          + ", ".join(f"{v} {k}" for k, v in shapes.items() if v)
+          + f'; the sentinel "none" is a scalar in {sum(scalar_sentinel.values())} place(s) ('
+          + ", ".join(f"{k} {n}" for k, n in scalar_sentinel.most_common(3))
+          + f") and appears inside a list {in_list} time(s)")
     return 1 if err else 0
 
 
