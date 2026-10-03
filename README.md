@@ -127,8 +127,12 @@ per-class remediation list.
   neither. Filed as <https://github.com/ScrollPrize/villa/issues/1957>.
 * **Coverage self-check.** The manifest declares zarr-typed data for exactly 894 origins and the
   sweep covers 894 roots; **0 zarr-typed origins are missing from the results** and **0 scanned
-  paths are absent from the manifest**, so "every Zarr root the catalog publishes" is verified
-  rather than asserted.
+  paths are absent from the manifest**. At bucket level: the bucket root lists **46 top-level
+  prefixes**, 39 of them the sample prefixes the manifest declares, and the 7 the sweep does not
+  cover (`PHerc1667Cr1Fr3`, `PHerc51Cr4Fr8`, `PHercParis1Fr34/39`, `PHercParis2Fr143/47`,
+  `_thumbnails`) **contain no Zarr data at all** — six hold only `photos/`, one is a thumbnail
+  cache. So the 894 roots are all the Zarr in that bucket.
+  *Scope note:* this does not cover `dl.ash2txt.org/fragments/…`, which is a different host.
 * **Every published prediction output is unitless.** All **43** `volume:surface-prediction-zarr`
   stores — the `representations/predictions/surfaces/` family, spanning 36 samples — declare
   level-0 `scale = [1.0, 1.0, 1.0]` and none carries `axes[].unit`. Each `.zattrs` was re-fetched
