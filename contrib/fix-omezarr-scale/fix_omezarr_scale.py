@@ -158,7 +158,14 @@ def main(argv=None) -> int:
     ap.add_argument("--local", default=None, help="read the store from this local directory instead of a URL")
     args = ap.parse_args(argv)
 
-    plan_doc = json.loads(Path(args.plan).read_text(encoding="utf-8"))
+    try:
+        plan_doc = json.loads(Path(args.plan).read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"no plan file at {args.plan}", file=sys.stderr)
+        return 2
+    except json.JSONDecodeError as exc:
+        print(f"plan file {args.plan} is not valid JSON: {exc}", file=sys.stderr)
+        return 2
     plans = plan_doc.get("plans") if isinstance(plan_doc, dict) else plan_doc
     match = next((p for p in plans if p.get("path", "").rstrip("/") == args.path.rstrip("/")), None)
     if match is None:

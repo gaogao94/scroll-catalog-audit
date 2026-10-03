@@ -126,6 +126,16 @@ class CliTest(unittest.TestCase):
         code = fix.main(["--plan", str(self.plan_path), "--path", "not/in/the/plan.zarr", "--local", str(self.store)])
         self.assertEqual(code, 2)
 
+    def test_a_missing_plan_file_is_reported_not_raised(self):
+        code = fix.main(["--plan", str(self.tmp / "nope.json"), "--path", "x"])
+        self.assertEqual(code, 2)
+
+    def test_a_malformed_plan_file_is_reported_not_raised(self):
+        bad = self.tmp / "bad.json"
+        bad.write_text("{not json", encoding="utf-8")
+        code = fix.main(["--plan", str(bad), "--path", "x"])
+        self.assertEqual(code, 2)
+
     def test_a_precondition_failure_exits_three(self):
         store = self.tmp / "changed"
         store.mkdir()
