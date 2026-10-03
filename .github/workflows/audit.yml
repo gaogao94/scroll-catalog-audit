@@ -34,12 +34,16 @@ jobs:
       - name: Regenerate every committed report from the committed data
         run: |
           set -eux
+          # results_alt.jsonl carries the ten origins that resolve on a declared alternate root
           python -m scroll_catalog_audit.audit report \
-            --results results.jsonl --merge results_deep.jsonl \
+            --results results.jsonl --merge results_alt.jsonl --merge results_deep.jsonl \
             --out /tmp/FINDINGS.md --fixlist /tmp/fixlist.json
           python -m scroll_catalog_audit.audit report \
             --results results_deep.jsonl \
             --out /tmp/FINDINGS_deep.md --fixlist /tmp/fixlist_deep.json
+          python -m scroll_catalog_audit.audit report \
+            --results results_deep_seg.jsonl \
+            --out /tmp/FINDINGS_deep_seg.md --fixlist /tmp/fixlist_deep_seg.json
 
       - name: Committed reports must be byte-identical to the regenerated ones
         run: |
@@ -48,6 +52,8 @@ jobs:
           diff -u fixlist.json /tmp/fixlist.json
           diff -u FINDINGS_deep.md /tmp/FINDINGS_deep.md
           diff -u fixlist_deep.json /tmp/fixlist_deep.json
+          diff -u FINDINGS_deep_seg.md /tmp/FINDINGS_deep_seg.md
+          diff -u fixlist_deep_seg.json /tmp/fixlist_deep_seg.json
 
       - name: Calibration cases must still reproduce the filed issues
         run: |
