@@ -1,0 +1,119 @@
+diff --git a/vesuvius/src/vesuvius/tifxyz_label_transfer/io.py b/vesuvius/src/vesuvius/tifxyz_label_transfer/io.py
+--- a/vesuvius/src/vesuvius/tifxyz_label_transfer/io.py
++++ b/vesuvius/src/vesuvius/tifxyz_label_transfer/io.py
+@@ -10,6 +10,7 @@
+ import tempfile
+ import threading
+ from typing import Optional, Sequence, Tuple
++import warnings
+ 
+ import numpy as np
+ from numpy.typing import NDArray
+@@ -158,6 +159,12 @@
+ 
+     with (surface_path / "meta.json").open("r", encoding="utf-8") as handle:
+         metadata = json.load(handle)
++    if "scale" not in metadata:
++        warnings.warn(
++            f"{surface_path / 'meta.json'} declares no 'scale'; treating one cell as one voxel. "
++            "Distances derived from this surface are wrong unless the cell pitch really is 1.",
++            stacklevel=2,
++        )
+     scale = metadata.get("scale", [1.0, 1.0])
+     if not isinstance(scale, list) or len(scale) < 2:
+         raise ValueError(f"invalid scale in {surface_path / 'meta.json'}")
+diff --git a/vesuvius/src/vesuvius/tifxyz_label_transfer/prepare_canvas_offset_evidence.py b/vesuvius/src/vesuvius/tifxyz_label_transfer/prepare_canvas_offset_evidence.py
+--- a/vesuvius/src/vesuvius/tifxyz_label_transfer/prepare_canvas_offset_evidence.py
++++ b/vesuvius/src/vesuvius/tifxyz_label_transfer/prepare_canvas_offset_evidence.py
+@@ -24,6 +24,7 @@
+ import sys
+ import tempfile
+ from typing import Any, Optional, Sequence
++import warnings
+ 
+ import numpy as np
+ from PIL import Image
+@@ -203,11 +204,19 @@
+         item for item in datasets if str(item["path"]) == level
+     )
+     scale = (1.0, 1.0, 1.0)
++    has_scale = False
+     for transform in dataset.get("coordinateTransformations") or []:
+         if transform.get("type") == "scale":
+             values = tuple(float(value) for value in transform["scale"])
+             if len(values) == 3:
+                 scale = values
++                has_scale = True
++    if not has_scale:
++        warnings.warn(
++            f"{remote} level {level} declares no 3-element scale; treating one voxel as one unit. "
++            "Physical distances recorded in this evidence are wrong unless the voxel size is 1.",
++            stacklevel=2,
++        )
+     return ZarrLevel(
+         remote=remote.rstrip("/"),
+         level=level,
+diff --git a/vesuvius/tests/tifxyz_label_transfer/test_io.py b/vesuvius/tests/tifxyz_label_transfer/test_io.py
+--- a/vesuvius/tests/tifxyz_label_transfer/test_io.py
++++ b/vesuvius/tests/tifxyz_label_transfer/test_io.py
+@@ -150,5 +150,26 @@
+         np.testing.assert_array_equal(surface.valid, expected)
+ 
+ 
++class MissingScaleWarningTests(unittest.TestCase):
++    def test_missing_scale_key_warns_and_treats_one_cell_as_one_voxel(self) -> None:
++        with tempfile.TemporaryDirectory() as temporary:
++            path = Path(temporary) / "surface.tifxyz"
++            path.mkdir()
++            rows, cols = np.meshgrid(
++                np.arange(2, dtype=np.float32),
++                np.arange(3, dtype=np.float32),
++                indexing="ij",
++            )
++            tifffile.imwrite(path / "x.tif", cols)
++            tifffile.imwrite(path / "y.tif", rows)
++            tifffile.imwrite(path / "z.tif", np.full((2, 3), 10.0, dtype=np.float32))
++            (path / "meta.json").write_text(json.dumps({}), encoding="utf-8")
++
++            with self.assertWarns(UserWarning):
++                surface = load_surface(path)
++
++        self.assertEqual(surface.scale_yx, (1.0, 1.0))
++
++
+ if __name__ == "__main__":
+     unittest.main()
+diff --git a/vesuvius/tests/tifxyz_label_transfer/test_prepare_canvas_offset_evidence.py b/vesuvius/tests/tifxyz_label_transfer/test_prepare_canvas_offset_evidence.py
+--- a/vesuvius/tests/tifxyz_label_transfer/test_prepare_canvas_offset_evidence.py
++++ b/vesuvius/tests/tifxyz_label_transfer/test_prepare_canvas_offset_evidence.py
+@@ -31,6 +31,7 @@
+     _surface_z_step_um,
+     build_parser as build_prepare_parser,
+     extract_composite,
++    inspect_zarr,
+     main as prepare_evidence_main,
+     _run_rclone,
+ )
+@@ -692,5 +693,22 @@
+         )
+ 
+ 
++class InspectZarrScaleWarningTests(unittest.TestCase):
++    def test_level_without_scale_transform_warns_and_defaults_to_one(self) -> None:
++        attrs = {"multiscales": [{"datasets": [{"path": "0", "coordinateTransformations": []}]}]}
++
++        def fake_cat_json(path):
++            return attrs if str(path).endswith(".zattrs") else {"shape": [1, 1, 1], "chunks": [1, 1, 1]}
++
++        with mock.patch(
++            "vesuvius.tifxyz_label_transfer.prepare_canvas_offset_evidence._cat_json",
++            side_effect=fake_cat_json,
++        ):
++            with self.assertWarns(UserWarning):
++                info = inspect_zarr("remote", 0)
++
++        self.assertEqual(info.scale_zyx, (1.0, 1.0, 1.0))
++
++
+ if __name__ == "__main__":
+     unittest.main()

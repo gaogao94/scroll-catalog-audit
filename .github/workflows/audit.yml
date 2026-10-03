@@ -1,0 +1,99 @@
+name: catalog-audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    # weekly, so a catalog update cannot quietly grow the findings list
+    - cron: "17 6 * * 1"
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Offline unit checks
+        run: python -m scroll_catalog_audit.audit selftest
+
+  docs-in-sync:
+    # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible
+    # from the committed results. This job regenerates the reports and fails on any diff, so a
+    # hand-edited count cannot survive.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate every committed report from the committed data
+        run: |
+          set -eux
+          python -m scroll_catalog_audit.audit report \
+            --results results.jsonl --merge results_deep.jsonl \
+            --out /tmp/FINDINGS.md --fixlist /tmp/fixlist.json
+          python -m scroll_catalog_audit.audit report \
+            --results results_deep.jsonl \
+            --out /tmp/FINDINGS_deep.md --fixlist /tmp/fixlist_deep.json
+
+      - name: Committed reports must be byte-identical to the regenerated ones
+        run: |
+          set -eux
+          diff -u FINDINGS.md /tmp/FINDINGS.md
+          diff -u fixlist.json /tmp/fixlist.json
+          diff -u FINDINGS_deep.md /tmp/FINDINGS_deep.md
+          diff -u fixlist_deep.json /tmp/fixlist_deep.json
+
+      - name: Calibration cases must still reproduce the filed issues
+        run: |
+          set -eux
+          # #1892: a store that declares levels but has no chunks
+          python -m scroll_catalog_audit.audit explain \
+            --results results.jsonl --path 20260226123353 | tee /tmp/cal1.txt
+          grep -q "NO_CHUNKS_IN_FIRST_PAGE" /tmp/cal1.txt
+          # #1951: a store whose name states a pitch the metadata does not carry
+          python -m scroll_catalog_audit.audit explain \
+            --results results.jsonl --path PHerc1447/segments/20250702235910 | tee /tmp/cal2.txt
+          grep -q "SCALE_IS_UNIT" /tmp/cal2.txt
+
+      - name: Headline counts must match the numbers quoted in the submission
+        run: |
+          set -eux
+          python - <<'PY'
+          import json, re, sys
+          rows = [json.loads(l) for l in open("results.jsonl", encoding="utf-8") if l.strip()]
+          text = open("FINDINGS.md", encoding="utf-8").read()
+          s3 = [r for r in rows if not r.get("skipped")]
+          units = sum(1 for r in s3 if r.get("units_present"))
+          counts = {m: text.count(f"`{m}`") for m in
+                    ("AXES_UNIT_MISSING", "SCALE_IS_UNIT", "NO_CHUNKS_IN_FIRST_PAGE")}
+          print("S3 origins:", len(s3), "with units:", units, counts)
+          assert len(s3) == 884, len(s3)
+          assert units == 755, units
+          assert counts["NO_CHUNKS_IN_FIRST_PAGE"] >= 1
+          PY
+
+  scan:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit the published catalog (metadata only, no chunk bytes)
+        run: python -m scroll_catalog_audit.audit scan --workers 10 --results results_fresh.jsonl
+      - name: Build report
+        run: python -m scroll_catalog_audit.audit report --results results_fresh.jsonl --out FINDINGS_fresh.md
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-audit-results
+          path: |
+            results_fresh.jsonl
+            FINDINGS_fresh.md

@@ -1,0 +1,178 @@
+diff --git a/lasagna/scripts/download_omezarr.py b/lasagna/scripts/download_omezarr.py
+--- a/lasagna/scripts/download_omezarr.py
++++ b/lasagna/scripts/download_omezarr.py
+@@ -432,7 +432,14 @@
+     return sorted(levels)
+ 
+ 
+-def _parse_multiscales(zattrs: dict) -> dict[int, list[float]]:
++def _parse_multiscales(zattrs: dict, missing: set[int] | None = None) -> dict[int, list[float]]:
++    """Map level -> ZYX scale from OME metadata.
++
++    A level whose dataset has no `scale` coordinate transformation is recorded as
++    1.0 per voxel (the OME default for a missing transform). Such levels are also
++    reported through `missing`, so callers can warn rather than silently proceed
++    with a unitless scale.
++    """
+     ms_list = zattrs.get("multiscales", [])
+     if not ms_list:
+         return {}
+@@ -447,11 +454,15 @@
+             continue
+         transforms = ds.get("coordinateTransformations", [])
+         scale = [1.0, 1.0, 1.0]
++        has_scale = False
+         for t in transforms:
+             if t.get("type") == "scale":
+                 s = t["scale"]
+                 scale = [float(v) for v in s[-n_spatial:]]
++                has_scale = True
+                 break
++        if not has_scale and missing is not None:
++            missing.add(lvl)
+         result[lvl] = scale
+     return result
+ 
+@@ -1100,6 +1111,11 @@
+                    help="Z slice range at scale 0: z0,z1 (downloads all X/Y for that Z range)")
+     p.add_argument("--workers", type=_positive_int, default=64,
+                    help="Parallel download threads (default: 64)")
++    p.add_argument(
++        "--require-scale",
++        action="store_true",
++        help="Fail instead of proceeding when OME metadata carries no physical scale",
++    )
+     p.add_argument("--order", choices=("z", "morton", "random"), default="z",
+                    help="Chunk queue order: z is z-major z/y/x, morton is a Z-order curve (default: z)")
+     p.add_argument("--no-remote-inventory", action="store_true",
+@@ -1167,7 +1183,8 @@
+     except (botocore.exceptions.ClientError, FileNotFoundError):
+         zattrs = {}
+ 
+-    multiscales = _parse_multiscales(zattrs)
++    missing_scale: set[int] = set()
++    multiscales = _parse_multiscales(zattrs, missing_scale)
+     available_levels = _discover_levels(bucket, prefix, anon)
+     if not available_levels:
+         print("ERROR: no OME-Zarr levels found", file=sys.stderr)
+@@ -1214,6 +1231,20 @@
+     if not multiscales:
+         for lvl in levels:
+             multiscales[lvl] = [1.0, 1.0, 1.0]
++        missing_scale.update(levels)
++
++    if missing_scale:
++        print(
++            f"WARN: no physical scale in OME metadata for level(s) "
++            f"{sorted(missing_scale)} of {prefix}; assuming 1.0 per voxel. "
++            "Offsets and distances derived from this scale will be wrong unless the "
++            "real voxel size is known to be 1.0.",
++            file=sys.stderr,
++        )
++        if args.require_scale:
++            print("ERROR: --require-scale was set and OME metadata carries no physical scale",
++                  file=sys.stderr)
++            return 1
+ 
+     # --- Run ---
+     local_chunk_keys: dict[int, set[str]] = {}
+diff --git a/lasagna/scripts/zarr_threshold_masks.py b/lasagna/scripts/zarr_threshold_masks.py
+--- a/lasagna/scripts/zarr_threshold_masks.py
++++ b/lasagna/scripts/zarr_threshold_masks.py
+@@ -132,6 +132,12 @@
+     scale = _scale_from_ome_parent(array_path)
+     if scale is not None:
+         return scale
++    print(
++        f"WARN: no physical scale found for {array_path} (neither preprocess params nor "
++        "parent OME-Zarr metadata carry one); assuming 1.0 per voxel. Physical distances "
++        "derived from this scale will be wrong unless the voxel size is known to be 1.0.",
++        file=sys.stderr,
++    )
+     return 1.0, 1.0, 1.0
+ 
+ 
+diff --git a/lasagna/tests/test_download_omezarr.py b/lasagna/tests/test_download_omezarr.py
+--- a/lasagna/tests/test_download_omezarr.py
++++ b/lasagna/tests/test_download_omezarr.py
+@@ -368,3 +368,42 @@
+         "3.0.0",
+     }
+     assert calls == ["root/0/1.", "root/0/3."]
++
++
++def test_parse_multiscales_reports_levels_without_a_scale_transform():
++    zattrs = {
++        "multiscales": [
++            {
++                "datasets": [
++                    {
++                        "path": "0",
++                        "coordinateTransformations": [
++                            {"type": "scale", "scale": [8.64, 8.64, 8.64]}
++                        ],
++                    },
++                    {"path": "1"},
++                    {
++                        "path": "2",
++                        "coordinateTransformations": [
++                            {"type": "translation", "translation": [0.0, 0.0, 0.0]}
++                        ],
++                    },
++                ]
++            }
++        ]
++    }
++    missing: set[int] = set()
++
++    assert dl._parse_multiscales(zattrs, missing) == {
++        0: [8.64, 8.64, 8.64],
++        1: [1.0, 1.0, 1.0],
++        2: [1.0, 1.0, 1.0],
++    }
++    assert missing == {1, 2}
++
++
++def test_parse_multiscales_without_missing_sink_keeps_previous_behaviour():
++    assert dl._parse_multiscales({}) == {}
++    assert dl._parse_multiscales({"multiscales": [{"datasets": [{"path": "0"}]}]}) == {
++        0: [1.0, 1.0, 1.0]
++    }
+diff --git a/lasagna/tests/test_zarr_threshold_masks_scale.py b/lasagna/tests/test_zarr_threshold_masks_scale.py
+new file mode 100644
+--- /dev/null
++++ b/lasagna/tests/test_zarr_threshold_masks_scale.py
+@@ -0,0 +1,33 @@
++"""A missing physical scale must be visible, not silently replaced by 1.0."""
++
++from __future__ import annotations
++
++from pathlib import Path
++
++import pytest
++
++zarr_threshold_masks = pytest.importorskip("lasagna.scripts.zarr_threshold_masks")
++
++
++def test_infer_zyx_scale_warns_when_no_scale_is_available(monkeypatch, capsys):
++    monkeypatch.setattr(zarr_threshold_masks, "_scale_from_preprocess_params", lambda arr: None)
++    monkeypatch.setattr(zarr_threshold_masks, "_scale_from_ome_parent", lambda path: None)
++
++    scale = zarr_threshold_masks._infer_zyx_scale(None, Path("/nonexistent/level0"))
++
++    assert scale == (1.0, 1.0, 1.0)
++    err = capsys.readouterr().err
++    assert "no physical scale found" in err
++    assert "assuming 1.0 per voxel" in err
++
++
++def test_infer_zyx_scale_prefers_metadata_without_warning(monkeypatch, capsys):
++    monkeypatch.setattr(zarr_threshold_masks, "_scale_from_preprocess_params", lambda arr: None)
++    monkeypatch.setattr(zarr_threshold_masks, "_scale_from_ome_parent", lambda path: (8.64, 8.64, 8.64))
++
++    assert zarr_threshold_masks._infer_zyx_scale(None, Path("/nonexistent/level0")) == (
++        8.64,
++        8.64,
++        8.64,
++    )
++    assert "no physical scale found" not in capsys.readouterr().err

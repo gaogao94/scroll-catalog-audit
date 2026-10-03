@@ -1,0 +1,12 @@
+# git
+.git/
+# scratch runs (keep results.jsonl: it is the evidence behind FINDINGS.md)
+smoke*.jsonl
+timing.jsonl
+scan_full.log
+__pycache__/
+*.pyc
+*.egg-info/
+scan_deep.log
+scan_deep_seg.log
+scan_deep_seg.log
