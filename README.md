@@ -137,7 +137,9 @@ per-class remediation list.
 * **The affected stores do not cluster by date.** They span 2024-10 … 2026-06 with clean months in
   between, so a pipeline-regression window is ruled out; the pattern is per-sample/per-store.
 * **`demo`** runs the offline self-test, reproduces both filed issues, and prints these numbers in
-  one command: `python -m scroll_catalog_audit demo --merge results_deep.jsonl`.
+  one command: `python -m scroll_catalog_audit demo`. It picks up `results_alt.jsonl` and
+  `results_deep.jsonl` automatically when they sit next to `results.jsonl`, so the numbers it prints
+  are the ones in `FINDINGS.md`.
 
 **Method note.** The numbers above come from two independent sweeps merged with
 `report --merge`: per store, the run that actually obtained metadata wins. Without the merge a

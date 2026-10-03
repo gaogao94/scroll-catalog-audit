@@ -1,0 +1,6 @@
+# Keep checkouts byte-identical across platforms.
+#
+# The tool writes its reports with LF, and the docs-in-sync CI job regenerates them and compares
+# byte for byte. Without this file a Windows checkout converts them to CRLF, so the documented
+# regeneration step appears to disagree with the committed file even though the content matches.
+* text=auto eol=lf

@@ -599,7 +599,16 @@ def cmd_demo(args):
     ]
     rows = []
     if os.path.exists(args.results):
-        rows = load_rows(args.results, getattr(args, "merge", None))
+        # `demo` with no flags should show the same numbers as the committed report, so pick up
+        # the sibling evidence files that ship with it unless the caller asked for something else.
+        merges = list(getattr(args, "merge", None) or [])
+        if not merges:
+            here = os.path.dirname(os.path.abspath(args.results))
+            for extra in ("results_alt.jsonl", "results_deep.jsonl"):
+                candidate = os.path.join(here, extra)
+                if os.path.exists(candidate):
+                    merges.append(candidate)
+        rows = load_rows(args.results, merges)
     else:
         print(f"      ({args.results} not found - run `scan` first for the full demo)")
     for title, needle, expect in cases:
@@ -620,9 +629,11 @@ def cmd_demo(args):
     print("\n[3/3] headline numbers (from the committed results, not from a live scan)")
     from collections import Counter
     s3 = [r for r in rows if not r.get("skipped")]
+    on_alt = [r for r in s3 if r.get("via") and r["via"] != BUCKET]
     units = sum(1 for r in s3 if r.get("units_present"))
     agg = Counter(m for r in rows for m in (r.get("mismatch") or classify(r)))
-    print(f"    stores: {len(rows)}   S3 origins: {len(s3)}   with full physical units: {units}")
+    print(f"    stores: {len(rows)}   (S3: {len(s3) - len(on_alt)}, alternate root: {len(on_alt)})"
+          f"   with full physical units: {units}")
     for k, v in agg.most_common():
         print(f"    {k}: {v}")
     print("\nRe-run any single store with:  python -m scroll_catalog_audit explain --path <substring>")
