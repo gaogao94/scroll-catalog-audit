@@ -1,9 +1,19 @@
 # Progress Prize 提交 · 照抄粘贴清单
 
-> 表单入口：<https://scrollprize.org/prizes> → **Progress Prizes** 一节的 **Submission Form**
-> （我已抓到的直链是 <https://docs.google.com/forms/d/e/1FAIpQLSc4flEfgK2nyjoczz2_U_XrIGMlgrnSknWatLqrFPnbtKfZwg/viewform>，但 Google 在我这边被墙、无法核实它对应哪个奖项，请以页面上的 "Submission Form" 链接为准。）
-> **截止：2026-10-31 23:59 太平洋时间**
-> 规则允许**每月多次提交**，所以下面两份都可以交。
+> **表单入口（已核实）：** <https://docs.google.com/forms/d/e/1FAIpQLSc4flEfgK2nyjoczz2_U_XrIGMlgrnSknWatLqrFPnbtKfZwg/viewform>
+>
+> **⚠️ 奖项页上有 4 个表单链接，只有第 1 个是 Progress Prize。** 其余三个我逐一解析并核对了它们在页面中的位置：
+>
+> | 链接 | 页面上下文 | 属于 |
+> |---|---|---|
+> | `1FAIpQLSc4flEf…` ← **用这个** | "Technical Integration / Accept standard community formats (OME-Zarr…)" | **Progress Prizes** |
+> | `forms.gle/4zeVPPBtNdSCAQa88` | "As with the Grand Prize, you must not make your discovery public…" | Title Prize |
+> | `forms.gle/TM5ao8GwC2mDrdLk9` | "train a model on it … grow from a few visible strokes" | First Letters |
+> | `forms.gle/wvNK7DkNKuRKjHJdA` | "unroll large areas … same problem as the First Letters prize below" | 大奖 / Open Problems |
+>
+> **提交错表单等于没提交**，所以请从上面的直链进入，或从 <https://scrollprize.org/prizes> 的 **Progress Prizes** 一节点 "Submission Form"。
+>
+> **截止：2026-10-31 23:59 太平洋时间。** 规则允许**每月多次提交**，下面两份都可以交。
 
 ---
 
