@@ -215,6 +215,32 @@ detectable and is the only such store. One trap inside that check too - a listin
 keys, and the cap shows up as 999 chunks rather than 1000, so a truncated listing compared against a
 complete one invents a difference.
 
+## 3d-iv. A chunk-count deficit is not missing data
+
+The obvious way to find missing data is to compare the number of chunk objects in a level against the
+number its own `shape` and `chunks` imply. For 155 stores the level-0 listing is short enough to count
+exactly (the other 739 are truncated at the 1000-key page), and **154 of those 155 hold fewer chunks
+than the grid implies**:
+
+| ratio actual / implied | stores |
+|---|---:|
+| 1.000 | 1 |
+| 0.5 - 0.99 | 134 |
+| below 0.5 | 20 |
+
+Median **0.663**, minimum 0.000 - and the minimum is #1892, the store this repository already reports as
+empty, which is the one case where the deficit is real.
+
+Zarr permits a chunk object to be absent; a reader gets `fill_value` for it, and every store here fills
+with `0`. Surface volumes are mostly empty by construction, so their writers skip the all-zero chunks
+and the deficit is the normal state rather than a fault. Verified by listing one store independently of
+the probe: S3 returns 43 keys / 42 chunk objects at level 0, exactly what `results_level_chunks.jsonl`
+records, so the counts are right and the gap is real sparsity.
+
+Two consequences worth carrying: the ratio is not a health signal, and any "stored bytes" figure
+derived from `shape x dtype` is a *logical* size - the number of materialised objects is lower, here by
+about a third at the median.
+
 ## 3i. A volume and the scan it belongs to agree on the physical parameters
 
 Every volume names a `scan_id`, and both sides carry `pixel_size_um`, `energy_keV` and

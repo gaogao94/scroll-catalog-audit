@@ -57,6 +57,7 @@ only**, so it is a subset of that issue's 1.03 PB figure, not a competing number
 | header-only levels (volume roots) | 120 | **0** | `results_deep.jsonl` |
 | header-only levels (segment surface volumes, seeded sample) | 60 | **0** | `results_deep_seg.jsonl` |
 | levels that have a header but hold **no chunks** | **5,304 level entries over all 884 roots** | **6** — the six levels of one store (#1892) | `results_level_chunks.jsonl` |
+| chunk objects vs the grid `shape`/`chunks` imply (level 0, untruncated only) | 155 roots | median **0.663**; **1** at parity, **20** below half — sparse by design, see [NEGATIVE_RESULTS.md](NEGATIVE_RESULTS.md) §3d-iv | `results_zarray.jsonl`, `results_level_chunks.jsonl` |
 
 ## 5. Manifest integrity
 
