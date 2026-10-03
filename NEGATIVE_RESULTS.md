@@ -212,6 +212,18 @@ Every volume names a `scan_id`, and both sides carry `pixel_size_um`, `energy_ke
 `creation.metadata`. Compared for all 73 volumes against both scan-side copies: **0 disagreements**,
 and no volume lacks a scan entry.
 
+## 3j. Provenance is recorded for most artifacts, and two caveats inside it
+
+`creation_info.provenance` is present on **3,839 of 4,419 `data` entries (87%)**, carrying the workflow
+template, infra revision, atlas version and sha, container images and the full parameter set. Auditing
+it turned up two things (filed as #1959) and one class that is *not* a problem:
+
+| finding | scope | detail |
+|---|---|---|
+| `atlas_git_dirty` is `true` | 3,834 of 3,834 records that have it | so the recorded `atlas_git_sha` does not identify the code that ran, for any artifact |
+| `parameters.output-path` disagrees with the artifact's own origin | 1 of 2,500 comparable | a stride-82 run recorded against a published stride-128 file |
+| `output-path` differs from the origin only by the prefix a step adds to its output name | 30 of 2,500 | **benign**, recorded here so it is not re-derived as a defect |
+
 ## 4. Path resolution
 
 | check | scope | result |
