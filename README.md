@@ -32,6 +32,14 @@ that turn the silent `1.0` defaults above into warnings:
 [#1956](https://github.com/ScrollPrize/villa/pull/1956). Five existing threads were independently
 reproduced, corrected or bounded with evidence: #1730, #1734, #1949, #1950, #1951.
 
+**One corner that is not in the bucket.** Six fragment samples are listed by the catalog but published
+nowhere: their `legacy_data_url` points at `dl.ash2txt.org`, which is no longer maintained. `contrib/probe-legacy/`
+audits that host anyway, because for those six it is the only copy and fragments are training material:
+**28 Zarr roots, all 28 carrying no `axes[].unit` and a level-0 scale of `[1,1,1]`** - the same defect at
+100 % rather than the catalog's 14 % - and **Frag3's 88 keV store declares six levels with only level 0
+present**, reproducing #1755 with a different tool. The other 26 roots have every declared level. See
+[FINDINGS-legacy.md](FINDINGS-legacy.md).
+
 **What others did with it.** Two cases where the audit changed someone else's conclusion rather than
 just adding a comment. The reporter of
 [#1892](https://github.com/ScrollPrize/villa/issues/1892) used this audit's bound - exactly one of 894

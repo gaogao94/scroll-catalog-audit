@@ -46,6 +46,7 @@ unchanged, and the new behaviour is a message (plus, on the reader side, an opt-
 | Tests added | 2 in an existing file + 1 new guarded file | 1 in an existing file |
 | Tests executed locally | 2 PASS (with a minimal pytest shim) | not run (no `click`/`zarr`/`numpy` here); fixture copied from a passing test |
 | Behaviour change | none by default; `--require-scale` is opt-in | none (warning only) |
+| `probe-legacy/` | Metadata-only audit of `dl.ash2txt.org` for the six fragment samples the catalog lists but does not publish (28 roots; #1755 reproduced) |
 
 `vesuvius-scale-warnings.patch` (4 files, +55/−0) is in the same state as those two: `git apply
 --check` OK, base identical to `origin/main`, all four files compile. Its two tests
