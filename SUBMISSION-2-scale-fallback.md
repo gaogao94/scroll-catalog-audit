@@ -72,7 +72,7 @@ AFTER   _parse_multiscales(zattrs, missing) -> same map,  missing -> {1, 2}
 
 ## Links
 
-* Patch: `<to be published>` · Tool: `<to be published>`
+* Patch: <https://github.com/ScrollPrize/villa/pull/1954> · Tool: <https://github.com/gaogao94/scroll-catalog-audit>
 * Related: [#1951](https://github.com/ScrollPrize/villa/issues/1951) (the four volumes),
   [#1660](https://github.com/ScrollPrize/villa/issues/1660) (same failure class, different layer)
 
