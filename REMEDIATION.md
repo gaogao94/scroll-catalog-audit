@@ -24,6 +24,17 @@ does for surface volumes — 674 of 689 unit-carrying segment stores) or scale w
 manifest records in-plane pixel size only, so the derived entries are labelled `DERIVED_UNVERIFIED`
 until that is answered.
 
+### A safety check on the proposed values
+
+Store names of the form `<pitch>um-...-L<n>.zarr` state the source scan's pitch and the level the store
+was taken from, so their **level-0** pitch is `pitch x 2^n`, not `pitch`. Applying a plan that ignored
+this would make such a store worse than leaving it unitless.
+
+Checked across all 81 plans: **one** has an `L` token, and it is `L0` (`...-2um-ps256-L0-th0.45.zarr`),
+where `2 x 2^0 = 2` and the proposed level-0 scale comes from the manifest anyway. So no plan in the
+list is affected. The same convention is handled explicitly in the publish-time check
+(`contrib/check-omezarr-metadata`), where it was found by a false positive on the `-L1` store in #1892.
+
 ## B — the 43 prediction stores
 
 Every `volume:surface-prediction-zarr` store declares `scale = [1,1,1]` and no `axes[].unit`, while
