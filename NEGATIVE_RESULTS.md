@@ -224,6 +224,16 @@ it turned up two things (filed as #1959) and one class that is *not* a problem:
 | `parameters.output-path` disagrees with the artifact's own origin | 1 of 2,500 comparable | a stride-82 run recorded against a published stride-128 file |
 | `output-path` differs from the origin only by the prefix a step adds to its output name | 30 of 2,500 | **benign**, recorded here so it is not re-derived as a defect |
 
+And two things inside those blocks that do agree, everywhere they can be compared:
+
+| check | scope | result |
+|---|---:|---|
+| the commit hash inside a container image tag versus `parameters.commit` | 2,365 records | **0 disagreements** |
+| `volume.properties` versus its scan's `properties` **and** `creation.metadata` | 73 volumes x 3 parameters x 2 sources | **0 disagreements** |
+
+`atlas_git_sha` and the sha inside `infra_revision` never coincide (0 of 3,834) - they appear to name
+different repositories, so that is recorded here only to stop it being read as a defect later.
+
 ## 4. Path resolution
 
 | check | scope | result |
