@@ -186,7 +186,9 @@ Chunk counts fall with depth as a pyramid should - minimum per level 21, 8, 3, 1
 999, 999, 552, 148, 39, 12 from level 0 to 5. Listings are capped at 1000 keys, so a count of 1000
 means "at least 1000"; that does not affect the presence check.
 
-Taken with #1892 being the single such store in the catalog, this bounds the class at one.
+Taken with #1892 being the single such store in the catalog, this bounds the class at one. The sweep
+reaches that store eventually, and when it does it reports it six times: it holds no chunks at **any**
+of its six levels, not only at level 0 - one `.zarray` per level and nothing else behind it.
 
 ## 3d-iii. Two tempting ways to detect missing data that do not work here
 
