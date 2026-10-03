@@ -1,6 +1,10 @@
 # Progress Prize 提交 · 照抄粘贴清单
 
-> **表单入口（已核实）：** <https://docs.google.com/forms/d/e/1FAIpQLSc4flEfgK2nyjoczz2_U_XrIGMlgrnSknWatLqrFPnbtKfZwg/viewform>
+> **表单入口（已由官方流水线确认）：** 奖项文案 `scrollprize.org/docs/34_prizes.md` 第 347 行在
+> `{/* progress-prizes:form:start */}` 机器标记之间写着这个表单地址——即官方自动化本身在维护它，
+> 不是我的推断。同一节的截止日期标记（第 326 行）写明 **11:59pm Pacific, October 31st, 2026**。
+>
+> **表单入口：** <https://docs.google.com/forms/d/e/1FAIpQLSc4flEfgK2nyjoczz2_U_XrIGMlgrnSknWatLqrFPnbtKfZwg/viewform>
 >
 > **⚠️ 奖项页上有 4 个表单链接，只有第 1 个是 Progress Prize。** 其余三个我逐一解析并核对了它们在页面中的位置：
 >
@@ -101,6 +105,47 @@ each patch adds tests in the repository's existing style and applies cleanly to 
 **Longer detail / 更长说明**
 
 把 `work/publish/SUBMISSION-2-scale-fallback.md` 的正文整段粘贴。
+
+---
+
+## 官方公布的"提交核心要求"→ 对应内容（可直接粘贴）
+
+奖项文案（`scrollprize.org/docs/34_prizes.md`，由官方流水线用机器标记维护）在 Progress Prizes
+一节里明确列出三条核心要求。如果表单按这三条提问，用下面这段回答：
+
+```
+1. Problem identification and solution
+   Challenge: the published catalog is not self-describing. A metadata-only sweep of all 894 Zarr
+   roots shows 81 stores whose own name states a micrometre pitch while their OME metadata carries
+   no scale (66 of them raw CT volumes, the input to every downstream step, across 39 samples), 43
+   prediction stores with no scale at all, 14 stores with no metadata object, and one store that
+   declares six levels and holds no chunks.
+   Implementation path: `scan` (metadata only, resumable) -> `report` (FINDINGS.md + machine-readable
+   fixlist.json) -> `explain` for a single store. One command reproduces the two already-filed issues
+   offline: `python -m scroll_catalog_audit demo`.
+   Advantages over existing solutions: the identity of the failure is not the pyramid geometry
+   (checked elsewhere, and clean here) but the metadata layer - and specifically the gap between what
+   the catalog manifest records and what the store publishes. For 77 of the 81 stores the pitch is
+   already in `metadata.min.json` and simply is not propagated, so the repair is mechanical rather
+   than archaeological. No existing tool cross-references manifest and store metadata; that
+   comparison is what produced issues #1957 and the fix plans committed with this repository.
+   The three upstream pull requests are the fixes the audit motivated.
+
+2. Documentation
+   README (usage, every finding class, both traps that produced false findings before they were
+   handled), NEGATIVE_RESULTS.md (every check that came back clean, with the scope it covered and
+   its limits), REMEDIATION.md and the two machine-readable fix plans, plus contrib/ which carries
+   the upstream issue texts and patches. 12 offline unit checks; a CI job regenerates every
+   committed report from the committed per-store data and fails on any diff, so no number can be
+   hand-edited.
+
+3. Technical integration
+   Reads standard community formats: OME-Zarr metadata in both Zarr v2 (.zattrs) and v3 (zarr.json)
+   form, resolved per declared access root. Emits stable machine-readable output (per-store JSONL,
+   JSON fix list) that other tooling can consume, and the audit module is importable for use inside
+   a publish pipeline. Stdlib only, no dependencies, no chunk bytes downloaded; the whole sweep is
+   ~1,900 requests.
+```
 
 ---
 
