@@ -12,14 +12,14 @@ No chunk bytes are ever downloaded — only `ListObjectsV2` listings and small m
 about 1,800 requests and 20 minutes on one machine; the header, pyramid-level and level-chunk layers
 bring the whole evidence set to roughly ten thousand metadata requests. None of them is image data.
 
-**What it found.** 124 stores publish metadata that declares no `axes[].unit` (a further 15 publish no
-readable metadata object at all), and **81 of them state a micrometre
-pitch in their own name** — 76 raw CT volumes, the input to every downstream step, across 39 samples.
-For **77 of those 81 the correct pitch is already in the catalog manifest**, so the repair is a
-metadata copy rather than a re-render. The other 43 are prediction stores with no pitch in the name.
-Separately, one published surface volume declares six levels and holds no chunks, so a reader gets
-`fill_value` everywhere with no error. Everything else came back clean, and [COVERAGE.md](COVERAGE.md)
-lists each check with the scope it actually covered.
+**What it found.** 124 stores publish metadata that declares no `axes[].unit` (a further 15 publish
+nothing readable at all), and **81 of them state a micrometre pitch in their own name** — 76 raw CT
+volumes, the input to every downstream step, across 39 samples. For **77 of those 81 the correct pitch
+is already in the catalog manifest**, so the repair is a metadata copy rather than a re-render. The
+other 43 are prediction stores with no pitch in the name. Separately, one published surface volume
+declares six levels and holds no chunks, so a reader gets `fill_value` everywhere with no error.
+Everything else came back clean, and [COVERAGE.md](COVERAGE.md) lists each check with the scope it
+actually covered.
 
 **What came out of it.** Three upstream issues — [#1957](https://github.com/ScrollPrize/villa/issues/1957)
 (the manifest already records the pitch the published metadata omits),
@@ -31,6 +31,16 @@ that turn the silent `1.0` defaults above into warnings:
 [#1955](https://github.com/ScrollPrize/villa/pull/1955),
 [#1956](https://github.com/ScrollPrize/villa/pull/1956). Five existing threads were independently
 reproduced, corrected or bounded with evidence: #1730, #1734, #1949, #1950, #1951.
+
+**What others did with it.** Two cases where the audit changed someone else's conclusion rather than
+just adding a comment. The reporter of
+[#1892](https://github.com/ScrollPrize/villa/issues/1892) used this audit's bound - exactly one of 894
+roots has no chunks at level 0 - and its remediation options to settle on a fix, and agreed to a
+precision point that avoids removing two populated surface volumes along with the empty one. The
+reporter of [#1951](https://github.com/ScrollPrize/villa/issues/1951) **retracted a claim** after this
+audit's correction: they had reported that the alternate access root does not resolve, re-verified, and
+found a resolver-specific failure on their own side. Their words: *"claims that don't reproduce should
+be retracted fast, so: retracted"*, and they adopted this audit's count as the frame for the class.
 
 ## Why
 
