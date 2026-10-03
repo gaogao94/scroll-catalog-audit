@@ -59,5 +59,5 @@ Across all **794 roots with parseable multiscale metadata**: 0 non-monotonic lad
 - [x] **R4 access_roots**：修正了 10 条"路径缺失"假阳性（真值 0）
 - [x] **R5 抽样复核**：5 个原始卷 + 4 个表面卷 + 对照组逐一手工核对原始元数据
 - [x] **R6 限速与错误分类**：瞬时失败单列 `LIST_ERROR` / `META_ERROR`（本轮均为 0 / 9），不并入结论
-- [x] 数字已按 2026-10-03 最终全量重扫刷新（67 个 store / 35 个 sample）
+- [x] 数字已按 2026-10-03 最终全量重扫刷新（合并口径：71 个 store / 39 个 sample）
 - [ ] 等 G1 解锁后提交（同时把发布版工具推到公开仓库，提供可复现链接）

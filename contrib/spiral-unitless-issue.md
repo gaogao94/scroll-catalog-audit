@@ -25,8 +25,8 @@ succeeds and the output looks well formed.
 
 ### Why it matters more than a read-side default
 
-This is the *producing* end of a pattern that the companion audit enumerates in the catalog: **67
-published stores state a µm pitch in their own name while their OME metadata carries no scale** (62
+This is the *producing* end of a pattern that the companion audit enumerates in the catalog: **71
+published stores state a µm pitch in their own name while their OME metadata carries no scale** (66
 of them raw CT volumes). A reader-side default makes an existing gap invisible; this line can create
 new instances of it — and because the output is a valid OME-Zarr whose `scale` looks deliberate,
 nothing downstream can tell "unitless" from "1 µm per voxel".
@@ -75,6 +75,6 @@ Warning vs. hard error (with `--allow-unitless-scale`), and stdout vs. stderr fo
 |---|---|---|
 | 作用 | 让**已存在**的缺失可见（告警 + `--require-scale`） | 让**新产生**的无单位元数据不再沉默 |
 | 覆盖 | `lasagna` 三处 | `spiral-fitting` 一处 |
-| 效果 | 已发布的 67 个 store 不再被静默误读 | 阻止同类新实例进入目录 |
+| 效果 | 已发布的 71 个 store 不再被静默误读 | 阻止同类新实例进入目录 |
 
 两份补丁合起来构成一个完整叙事：**我们审计了目录 → 找到吃这个缺失的代码 → 修了读取端 → 又掐断了产生端。**

@@ -1,6 +1,6 @@
 # Issue / PR draft · physical scale silently defaults to 1.0 in three places
 
-> **Status**: patch ready (`lasagna-scale-fallback.patch`, 2 files, +39/−2, verified with `git apply --check`), waiting on G1 (GitHub identity) to open the issue/PR.
+> **Status**: patch ready (`lasagna-scale-fallback.patch`, 4 files, +111/−2, verified with `git apply --check` against current `main`); opened as <https://github.com/ScrollPrize/villa/pull/1954>.
 > **Companion evidence**: `work/patches/issue-1951-addendum.md` (catalog-wide enumeration) and the `scroll-catalog-audit` tool (`work/publish/`).
 
 ---
@@ -11,7 +11,7 @@
 
 ### What the catalog does
 
-A read-only sweep of every Zarr root the catalog publishes (894 roots, `metadata.min.json` 2026-10-03; tool and raw output in the companion PR) found **70 stores whose own name states a µm pitch while their OME metadata carries no `axes[].unit` and a level-0 `scale` of `[1,1,1]`** — 65 of them **raw CT volumes** (`volumes/*-masked.zarr`), spanning 39 samples. Meanwhile the majority of stores *do* carry correct units, so a consumer cannot rely on either behaviour.
+A read-only sweep of every Zarr root the catalog publishes (894 roots, `metadata.min.json` 2026-10-03; tool and raw output in <https://github.com/gaogao94/scroll-catalog-audit>) found **71 stores whose own name states a µm pitch while their OME metadata carries no `axes[].unit` and a level-0 `scale` of `[1,1,1]`** — 66 of them **raw CT volumes** (`volumes/*-masked.zarr`), spanning 39 samples. Meanwhile 85.4 % of stores *do* carry correct units, so a consumer cannot rely on either behaviour.
 
 Four such surface volumes are already tracked in #1951. The point of this issue is the other half: **what happens downstream when a store like that is read.**
 
@@ -94,7 +94,7 @@ existing ones.
 |---|---|
 | 证据枚举（894 根目录级审计） | ✅ `work/audit/results/roots.jsonl` |
 | 消费者代码路径定位 | ✅ 三处，含 file:line |
-| 补丁编写 | ✅ `lasagna-scale-fallback.patch`（+39/−2） |
+| 补丁编写 | ✅ `lasagna-scale-fallback.patch`（4 文件 +111/−2，含测试）→ PR #1954 |
 | 补丁可应用性验证 | ✅ `git apply --check` OK |
 | 语法验证 | ✅ `python -m py_compile` OK |
 | 提交 | ⏳ 等 G1 |
