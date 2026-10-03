@@ -125,6 +125,20 @@ The two published figures are complementary, not overlapping:
 | no pitch in the name and no unit either | 43 (42 surface predictions, 1 ink-detection-3d) |
 | **total stores with no `axes[].unit`** | **124** |
 
+## 3e. Coordinate transforms
+
+The manifest records 28 `transforms` entries across 73 volumes, each a 3x4 affine matrix naming a
+`to_volume_id`. All 28: the target volume exists, the left 3x3 block is invertible (smallest absolute
+determinant 0.013, largest 197), and none names its own volume. No transform has a recorded reverse,
+which fits a one-way "registered to" relation and is not a defect given every matrix is invertible.
+
+## 3f. The two published catalog files agree
+
+The bucket publishes `metadata.min.json` (67 KB) and `metadata.json` (1.4 MB gzipped). Compared
+origin by origin: **894 / 894 Zarr roots in both, with an identical set of declared access roots for
+each**. The compact file is a strict subset in fields, not in paths, so a consumer reading either one
+is sent to the same place. The `models` section exists only in the full file.
+
 ## 4. Path resolution
 
 | check | scope | result |

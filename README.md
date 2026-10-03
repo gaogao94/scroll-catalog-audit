@@ -164,6 +164,8 @@ The raw per-store output of every sweep is committed: `results.jsonl` (catalog),
 `results_alt.jsonl` (alternate root), `results_deep*.jsonl` (per-level probes) and
 `results_zarray.jsonl` (array headers).
 
+**Start with [COVERAGE.md](COVERAGE.md)** - every check, its scope and its result on one page.
+
 See `FINDINGS.md` for the enumerated list and the per-sample summary, and `NEGATIVE_RESULTS.md`
 for every check that came back clean, with the scope each one actually covered.
 
