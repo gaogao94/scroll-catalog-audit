@@ -13,6 +13,8 @@ it. Nothing here is applied upstream yet; each item names the issue or PR it is 
 | `spiral-unitless-scale.patch` | Writer-side fix: warn before writing a unitless scale; 2 files, +28/−0, includes a test modelled on an existing fixture | PR against `ScrollPrize/villa` |
 | `vesuvius-scale-warnings-issue.md` | The two remaining reader-side sites in `tifxyz_label_transfer` (one of them records the assumed scale **as evidence**) | new issue / PR description |
 | `vesuvius-scale-warnings.patch` | Reader-side fix for those two: `warnings.warn` on a missing scale, values unchanged; 4 files, +55/−0, includes two tests | PR against `ScrollPrize/villa` |
+| `issue-manifest-pitch.md` | The manifest already records the pitch for 77 of the 81 affected stores, so the repair is a metadata copy from the catalog rather than a re-render | filed as [ScrollPrize/villa#1957](https://github.com/ScrollPrize/villa/issues/1957) |
+| `check-omezarr-metadata/` | Publish-time check for the whole class: every defect this audit found, as a check that runs before a store is published. Standard library only, no chunk bytes, 35 unit tests, verified against four published stores | usable as it stands or as the basis of a PR; also packaged as a composite action at the repository root, so a repository can gate a publish with three lines |
 
 ## How the pieces relate
 
