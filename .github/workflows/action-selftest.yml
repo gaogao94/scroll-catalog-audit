@@ -1,0 +1,55 @@
+name: action-selftest
+
+# The composite action at the repository root is what other repositories would call. This job runs it
+# the same way they would - `uses: ./` - against one healthy store and two that really do carry the
+# defects, and asserts the exit status in both directions. A check that never fails is not a check, so
+# the failing cases are the important ones here.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check-store:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: A healthy store passes
+        uses: ./
+        with:
+          root: PHerc0009B/segments/20250510172639/surface-volumes/8.64um-1.2m-116keV-volume-20250521125136.zarr
+
+      - name: A store whose level 0 holds no chunks fails
+        id: no_chunks
+        continue-on-error: true
+        uses: ./
+        with:
+          root: PHerc0814/segments/20260226123353-auto_grown_20260226123353106/surface-volumes/1.129um-0.22m-59keV-volume-20260521123630-L1.zarr
+
+      - name: That failure was expected
+        if: steps.no_chunks.outcome != 'failure'
+        run: |
+          echo "::error::the store with no chunks did not fail the check"
+          exit 1
+
+      - name: A unitless store fails, and says why in JSON
+        id: unitless
+        continue-on-error: true
+        uses: ./
+        with:
+          root: PHerc1447/segments/20250702235910-auto_grown_20250702235910292/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr
+          json: "true"
+
+      - name: That failure was expected
+        if: steps.unitless.outcome != 'failure'
+        run: |
+          echo "::error::the unitless store did not fail the check"
+          exit 1
+
+      - name: The unit tests still pass
+        run: python -m unittest discover -s contrib/check-omezarr-metadata -p "test_*.py"

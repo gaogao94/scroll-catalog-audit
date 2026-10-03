@@ -164,6 +164,26 @@ The raw per-store output of every sweep is committed: `results.jsonl` (catalog),
 `results_alt.jsonl` (alternate root), `results_deep*.jsonl` (per-level probes) and
 `results_zarray.jsonl` (array headers).
 
+## Use it as a GitHub Action
+
+The publish-time check runs anywhere, on a catalog path, a local directory or a URL:
+
+```yaml
+- uses: gaogao94/scroll-catalog-audit@main
+  with:
+    root: PHerc0814/segments/20260226123353-auto_grown_20260226123353106/surface-volumes/1.129um-0.22m-59keV-volume-20260521123630-L1.zarr
+    # bucket: https://vesuvius-challenge-open-data.s3.amazonaws.com   (default)
+    # name-states-pitch: "2.4"   (inferred from the store name when omitted)
+    # check-chunks: "true"       (default; set false where listing is unavailable)
+    # json: "true"               (emit findings as a JSON array)
+```
+
+The step fails when any ERROR is reported, so it can gate a publish. `action.yml` at the repository
+root is the action; the script it runs is `contrib/check-omezarr-metadata/check_omezarr_metadata.py`.
+`.github/workflows/action-selftest.yml` runs it the way another repository would - `uses: ./` - against
+one healthy store and two carrying real defects, and asserts the exit status in both directions, since
+a check that never fails is not a check.
+
 **Start with [COVERAGE.md](COVERAGE.md)** - every check, its scope and its result on one page.
 
 See `FINDINGS.md` for the enumerated list and the per-sample summary, and `NEGATIVE_RESULTS.md`

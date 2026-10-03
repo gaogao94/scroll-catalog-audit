@@ -1,0 +1,48 @@
+name: Check OME-Zarr metadata
+description: >-
+  Fail a publish step when a store's OME metadata would mislead a reader: no axis units while the
+  name states a pitch, a level-0 scale of [1,1,1], a declared level with no header, a level that
+  holds no chunks, a chunk larger than its array, a non-zero fill_value, or level paths that are not
+  0..n-1. Reads metadata only; no chunk bytes are downloaded.
+
+inputs:
+  root:
+    description: Store path - a catalog path, a local directory, or a full https URL
+    required: true
+  bucket:
+    description: Base URL used when root is a catalog path
+    required: false
+    default: https://vesuvius-challenge-open-data.s3.amazonaws.com
+  name-states-pitch:
+    description: >-
+      Micrometre pitch the store name states, if the name is not the usual
+      <pitch>um-...-L<n>.zarr form. Inferred from the name when omitted.
+    required: false
+    default: ""
+  check-chunks:
+    description: List level 0 to confirm the store actually holds chunks
+    required: false
+    default: "true"
+  json:
+    description: Emit the findings as a JSON array
+    required: false
+    default: "false"
+
+runs:
+  using: composite
+  steps:
+    - name: Check OME metadata
+      shell: bash
+      env:
+        ROOT: ${{ inputs.root }}
+        BUCKET: ${{ inputs.bucket }}
+        PITCH: ${{ inputs.name-states-pitch }}
+        CHECK_CHUNKS: ${{ inputs.check-chunks }}
+        AS_JSON: ${{ inputs.json }}
+      run: |
+        set -euo pipefail
+        args=(--root "$ROOT" --bucket "$BUCKET")
+        if [ -n "${PITCH:-}" ]; then args+=(--name-states-pitch "$PITCH"); fi
+        if [ "$CHECK_CHUNKS" = "false" ]; then args+=(--no-chunks); fi
+        if [ "$AS_JSON" = "true" ]; then args+=(--json); fi
+        python "$GITHUB_ACTION_PATH/contrib/check-omezarr-metadata/check_omezarr_metadata.py" "${args[@]}"
