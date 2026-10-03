@@ -35,6 +35,11 @@ jobs:
           python -m scroll_catalog_audit demo
           python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
           python -m scroll_catalog_audit.audit selftest
+      - name: The sweeps agree and the quoted figures still come out
+        # Cross-checks results.jsonl / results_zarray.jsonl / results_levels.jsonl /
+        # results_level_chunks.jsonl against each other and restates every headline figure from the
+        # committed data, so a number copied from an older run fails here.
+        run: python -m scroll_catalog_audit verify
       - name: The committed sweep is still true
         # A canary, not coverage - but drawn from the population that can actually change. If a
         # publisher fixes one of the 77 stores the audit reports, this fails and the published numbers

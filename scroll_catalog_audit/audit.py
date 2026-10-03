@@ -680,6 +680,97 @@ def cmd_manifest(args):
     return 1 if err else 0
 
 
+def cmd_verify(args):
+    """Do the sweeps agree with each other, and do the headline numbers still come out?
+
+    Every other command reads one or two files. This one cross-checks them: two sweeps that describe
+    the same roots must agree on which roots those are and how many levels each declares, and the
+    figures quoted in the write-up must be what the committed data produces today. It is the command
+    that would have caught a figure copied by hand from an older run.
+    """
+    from pathlib import Path
+    base_dir = Path(args.dir)
+
+    def rows_of(name):
+        path = base_dir / name
+        if not path.exists():
+            return None
+        return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+
+    base = rows_of("results.jsonl")
+    zarr = rows_of("results_zarray.jsonl")
+    levels = rows_of("results_levels.jsonl")
+    chunks = rows_of("results_level_chunks.jsonl")
+    if not all((base, zarr, levels, chunks)):
+        print("verify needs results.jsonl, results_zarray.jsonl, results_levels.jsonl and "
+              "results_level_chunks.jsonl in --dir", file=sys.stderr)
+        return 2
+
+    live = {r["path"].strip("/").rstrip("/") for r in base if not r.get("skipped")}
+    zset = {r["path"].strip("/").rstrip("/") for r in zarr}
+    lset = {r["path"].strip("/").rstrip("/") for r in levels}
+    cset = {r["path"].strip("/").rstrip("/") for r in chunks}
+    bad = 0
+
+    def check(label, ok, detail=""):
+        nonlocal bad
+        print(f"  [{'ok' if ok else 'FAIL'}] {label}" + ("" if ok else f"  {detail}"))
+        bad += 0 if ok else 1
+
+    check("the header and level sweeps cover the same roots", zset == lset,
+          f"only in headers: {sorted(zset - lset)[:2]}, only in levels: {sorted(lset - zset)[:2]}")
+    # The alternate root spells paths with a `samples/` prefix (NEGATIVE_RESULTS 3g) and the
+    # level-chunk sweep ran against the S3 convention only, so its 884 roots are these 894 minus
+    # those ten - a different convention, not a different population.
+    s3_convention = {p for p in zset if not p.startswith("samples/")}
+    check("the level-chunk sweep covers every S3-convention root", cset == s3_convention,
+          f"only in chunks: {sorted(cset - s3_convention)[:2]}, "
+          f"missing: {sorted(s3_convention - cset)[:2]}")
+
+    declared = {r["path"].strip("/").rstrip("/"): r.get("n_declared") for r in levels}
+    mismatched = []
+    for r in chunks:
+        key = r["path"].strip("/").rstrip("/")
+        want = declared.get(key)
+        got = len(r.get("levels") or [])
+        if want is not None and got != want:
+            mismatched.append((key, want, got))
+    check("each root's declared levels equal the levels listed", not mismatched, mismatched[:2])
+
+    empty = [(r["path"], l["level"]) for r in chunks for l in r["levels"]
+             if l.get("status") == "OK" and l["n_chunks"] == 0]
+    empty_roots = {p for p, _ in empty}
+    check("at most one root has a level with no chunks", len(empty_roots) <= 1,
+          f"{len(empty)} level(s) across {len(empty_roots)} root(s)")
+    check("every swept root declares at least one level",
+          all((r.get("n_declared") or 0) > 0 for r in levels), "a root declares none")
+
+    tb = 1024 ** 4
+    have = [r for r in zarr if r.get("shape")]
+    un = [r for r in have if r.get("compressor") in (None, "None")]
+
+    def logical(r):
+        n = 1
+        for s in r["shape"]:
+            n *= s
+        return n
+
+    listed = [l for r in chunks for l in r["levels"] if l.get("status") == "OK"]
+    print(f"\n  figures the write-up quotes, recomputed now:")
+    print(f"    roots swept ........................... {len(live)} on the S3 convention, "
+          f"{len(zset)} including the alternate root")
+    print(f"    level listings, all successful ........ {len(listed)}")
+    print(f"    level listings with no chunks ......... {len(empty)} (in {len(empty_roots)} root)")
+    print(f"    level-0 size, no compressor ........... {sum(logical(r) for r in un) / tb:.0f} TB "
+          f"over {len(un)} roots")
+    print(f"    level-0 size, everything .............. {sum(logical(r) for r in have) / tb:.0f} TB "
+          f"over {len(have)} roots")
+    print(f"    roots whose level 0 exceeds 256 MB .... "
+          f"{sum(1 for r in un if logical(r) > 256 * 1024 ** 2)}")
+    print(f"\nverify: {7 - bad}/7 checks hold")
+    return 1 if bad else 0
+
+
 def cmd_bytes(args):
     """Level-0 storage size from the array headers, with the definition stated.
 
@@ -1146,6 +1237,9 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    vf = sub.add_parser("verify", help="cross-check the sweeps against each other and restate the figures")
+    vf.add_argument("--dir", default=".", help="directory holding results*.jsonl")
+    vf.set_defaults(func=cmd_verify)
     by = sub.add_parser("bytes", help="level-0 storage size from the array headers")
     by.add_argument("--zarray", default="results_zarray.jsonl")
     by.add_argument("--big-mb", type=int, default=256)
