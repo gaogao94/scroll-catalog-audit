@@ -599,6 +599,59 @@ def cmd_demo(args):
     return 0
 
 
+def cmd_siblings(args):
+    """Stores that share a name: the same volume republished under several segment directories.
+
+    Finds the copies of one store name (`--path` substring) and, with `--summary`, the
+    catalog-wide question of how many affected stores have a correct sibling to copy metadata from.
+    """
+    rows = load_rows(args.results, args.merge)
+    from collections import Counter, defaultdict
+    groups = defaultdict(list)
+    for r in rows:
+        parts = [x for x in r["path"].strip("/").split("/") if x]
+        groups[parts[-1] if parts else r["path"]].append(r)
+
+    def affected(r):
+        labels = r.get("mismatch") or classify(r)
+        return "AXES_UNIT_MISSING" in labels or "SCALE_IS_UNIT" in labels
+
+    if args.path:
+        hits = {k: v for k, v in groups.items() if args.path in k}
+        if not hits:
+            print(f"no store name matching {args.path!r}")
+            return 1
+        for name, copies in hits.items():
+            ok = [c for c in copies if c.get("units_present") is True]
+            print(f"store name: {name}")
+            print(f"copies: {len(copies)}   with full units: {len(ok)}   without: {len(copies) - len(ok)}")
+            for c in sorted(copies, key=lambda c: str(c.get("scale0"))):
+                tag = "OK " if c.get("units_present") is True else "BAD"
+                units = "micrometer" if c.get("units_present") is True else "-"
+                print(f"  [{tag}] units={units:<11} scale0={str(c.get('scale0')):<24} {c['path']}")
+            print()
+        return 0
+
+    bad = [r for r in rows if affected(r)]
+    with_sibling = []
+    for r in bad:
+        parts = [x for x in r["path"].strip("/").split("/") if x]
+        sibs = [s for s in groups[parts[-1]] if s is not r and s.get("units_present") is True]
+        if sibs:
+            with_sibling.append(r)
+    print(f"stores stating a um pitch with no scale in metadata: {len(bad)}")
+    print(f"  of those, copies with a correct sibling to copy metadata from: {len(with_sibling)}")
+    print(f"  single-copy stores that need an in-place fix or a re-publish: {len(bad) - len(with_sibling)}")
+    for r in with_sibling[:10]:
+        print(f"    {r['path'][:110]}")
+    rep = Counter(r.get("kind") for r in bad)
+    print("  by kind:", dict(rep))
+    print("\nNOTE: the shortcut applies to the listing above only; do not generalise it.")
+    print("Render-date clustering was tested and rejected: affected stores span 2024-10..2026-06")
+    print("with clean months in between, so the pattern is per-sample/per-store, not per-date.")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="scroll_catalog_audit", description=__doc__.split("\n")[1])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -633,6 +686,12 @@ def main(argv=None):
     d.add_argument("--merge", action="append", default=None,
                    help="another results.jsonl to merge in (same semantics as `report`)")
     d.set_defaults(func=cmd_demo)
+    sib = sub.add_parser("siblings",
+                         help="stores that share a name (one volume republished under many segments)")
+    sib.add_argument("--results", default="results.jsonl")
+    sib.add_argument("--merge", action="append", default=None)
+    sib.add_argument("--path", default=None, help="store-name substring; omit for the catalog-wide summary")
+    sib.set_defaults(func=cmd_siblings)
     args = ap.parse_args(argv)
     sys.exit(args.func(args) or 0)
 

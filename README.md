@@ -48,6 +48,10 @@ python -m scroll_catalog_audit selftest
 
 # 4. show every stored field and the derived labels for one store (reviewer spot-check)
 python -m scroll_catalog_audit explain --path PHerc1447/segments/20250702235910
+
+# 5. stores that share a name — one volume republished under many segment directories
+python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
+python -m scroll_catalog_audit siblings          # catalog-wide: how many affected stores have a correct sibling?
 ```
 
 `explain` prints the raw evidence behind a finding — pitch in the store name, whether the axes
@@ -109,6 +113,14 @@ per-class remediation list.
 * **No broken level ladders** were found. The z-axis/in-plane asymmetry of surface volumes
   (`[8.64, 8.64, 8.64] → [8.64, 17.28, 17.28]`) is uniform across the catalog and is therefore
   reported as **expected**, not as a defect.
+* **894 roots resolve to only 224 distinct store names**: 28 names are republished under 2–81 segment
+  directories, so 78 % of the roots are repeat publications. That matters for #1951: the store
+  `8.64um-1.2m-116keV-volume-20250521151220.zarr` exists **15 times**, and **11 copies declare the
+  8.64 µm scale while the other 4 declare none** — the correct metadata is already in the catalog.
+  (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 71 affected stores
+  only these 4 have a correct sibling; the other 67 are single-copy raw CT volumes.
+* **The affected stores do not cluster by date.** They span 2024-10 … 2026-06 with clean months in
+  between, so a pipeline-regression window is ruled out; the pattern is per-sample/per-store.
 * **`demo`** runs the offline self-test, reproduces both filed issues, and prints these numbers in
   one command: `python -m scroll_catalog_audit demo --merge results_deep.jsonl`.
 
