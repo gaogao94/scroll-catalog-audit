@@ -49,6 +49,23 @@ The audit shows this is not a four-store accident:
 origin is resolved against the root it declares (`via` in the JSONL), so the ten volumes published
 on the alternate host are audited too rather than skipped.
 
+## Community uptake so far
+
+* The reporter of [#1892](https://github.com/ScrollPrize/villa/issues/1892) used this audit's bound
+  ("exactly one of 894 roots has no chunks at level 0") and its remediation options to settle on a
+  fix, and has said they will re-list the bucket's surface volumes once the manifest entry is
+  dropped: *"Option (b) … is the change that stops a reader being handed fill_value. I will re-list
+  the bucket's surface volumes after that entry is gone."* Their reply also corrected one of my two
+  proposed options — the mesh sits outside the 1 µm POI scan, so re-rendering cannot fill it — which
+  is recorded in the thread.
+* A maintainer scoping note on [#1760](https://github.com/ScrollPrize/villa/issues/1760) states that
+  data errors **in the open data bucket** are actionable while `dl.ash2txt.org` is not; every finding
+  here is in that bucket, and the remediation plans are written for it.
+* [Cross-check comment on #1727](https://github.com/ScrollPrize/villa/issues/1727#issuecomment-5970524776):
+  a second audit's 1,260 `(segment, surface volume)` pairs all resolve to stores in this sweep, and
+  the two defect classes were shown to be independent — so maintainers triaging both need not chase a
+  shared root cause.
+
 ## Two traps the tool handles (and that produced false findings before they were handled)
 
 1. **Access roots.** The catalog publishes some volumes twice, once on
