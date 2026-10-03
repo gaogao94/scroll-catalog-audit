@@ -62,6 +62,22 @@ Header format splits the corpus cleanly: **all 81 v3 stores are compressed and a
 uncompressed / 50 compressed. So "the catalog stores uncompressed" is true of the v2-era stores and
 false of anything published through the v3 path.
 
+## 3c. Referential integrity inside the full `metadata.json`
+
+The catalog publishes two files: `metadata.min.json` (67 KB, paths and physical properties) and
+`metadata.json` (1.4 MB gzipped, adds `creation.date`, `original_volume_id`, `properties.shape`,
+`data_format`, `volume_coverage`, and a `models` section). Checks below are on the **full** file.
+
+| reference | resolved |
+|---|---:|
+| `segment.original_volume_id` -> volume in the same sample | **323 / 323** |
+| `volume.scan_id` -> scan in the same sample | **73 / 73** |
+| `volume.properties.data_format` -> dtype of the published level 0 | **73 / 73** (all declare `uint8`, all are uint8) |
+| model `compatible_samples` -> sample | 16 / 17 — one entry lists the string `"none"` (filed as #1958) |
+
+All 13 model entries carry `data: []`, i.e. no origin. Whether that is deliberate (weights published
+off-catalog) is unknown to me and is asked as a question in #1958 rather than reported as a defect.
+
 ## 4. Path resolution
 
 | check | scope | result |
