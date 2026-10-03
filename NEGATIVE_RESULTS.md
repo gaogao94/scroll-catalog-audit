@@ -158,6 +158,19 @@ This matters because a completeness check that requests the declared path verbat
 ten missing, of which three are false positives. Any such check must try both spellings, which is also
 why this sweep resolves every origin against its own declared access root rather than against S3.
 
+## 3h. Where the tifxyz missing-point marker reaches a derived bounding box
+
+28 of the 29 PHercParis4 `w###` segments published 2026-07-01 carry a `meta.json` bbox whose lower
+corner is the tifxyz `-1` marker (#1618). In the catalog, `volume_coverage[<volume>].bbox_transformed`
+for exactly those segments carries a coordinate equal to **`-original_volume_downscale`** - which is
+`-4.0` on all three axes, since the downscale is 4 - so a consumer checking for `-1` receives `-4`
+(#1734).
+
+Bounded catalog-wide: of the 1,264 `bbox_transformed` entries, **28 carry this value and all 28 are in
+`PHercParis4`**. The 544 entries that contain *some* negative coordinate are a different thing (mostly
+`PHerc0500P2`, `PHerc0139`, `PHerc1667`) and are not this marker; 24 of the 323 segments carry
+`volume_coverage: null` rather than a dict, which is a third shape.
+
 ## 4. Path resolution
 
 | check | scope | result |

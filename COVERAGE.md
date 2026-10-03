@@ -65,6 +65,7 @@ only**, so it is a subset of that issue's 1.03 PB figure, not a competing number
 | `transforms` targets resolve / are invertible / are non-self | 28 | **0 dangling, 0 singular, 0 self** | `NEGATIVE_RESULTS.md` §3e |
 | model `compatible_samples` resolve | 17 | **16 / 17** — one lists the string `"none"` (#1958) | `NEGATIVE_RESULTS.md` §3c |
 | `metadata.min.json` vs `metadata.json` agree on paths and access roots | 894 | **894 / 894 identical** | `NEGATIVE_RESULTS.md` §3f |
+| `volume_coverage.bbox_transformed` entries carrying the tifxyz `-1` marker as `-downscale` | 1,264 entries | **28**, all in `PHercParis4` (#1734) | `NEGATIVE_RESULTS.md` §3h |
 | folder-name tokens versus `properties` (`pixel_size_um`) | 67 | **0 contradictions** | `NEGATIVE_RESULTS.md` §3b-ii |
 
 ## 6. Checks that were wrong first, and are recorded as such
