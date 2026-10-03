@@ -51,6 +51,13 @@ on the alternate host are audited too rather than skipped.
 
 ## Community uptake so far
 
+* **Independently reproduced by a second auditor.** The reporter of
+  [#1951](https://github.com/ScrollPrize/villa/issues/1951) re-swept the 73 raw `ome-zarr` volumes
+  with their own tooling and confirmed the three central claims — every resolvable raw volume carries
+  no `axes[].unit` and `scale [1,1,1]`; the manifest holds the pitch for all of them; the four stores
+  in that issue have eleven healthy siblings whose *metadata* (not payloads) should be copied. Their
+  write-up: `thevibestack/vesuvius-catalog-audit`.
+
 * The reporter of [#1892](https://github.com/ScrollPrize/villa/issues/1892) used this audit's bound
   ("exactly one of 894 roots has no chunks at level 0") and its remediation options to settle on a
   fix, and has said they will re-list the bucket's surface volumes once the manifest entry is
