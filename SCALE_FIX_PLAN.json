@@ -1,0 +1,7113 @@
+{
+  "plans": [
+    {
+      "path": "PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.401,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.401,
+          2.401,
+          2.401
+        ],
+        [
+          4.802,
+          4.802,
+          4.802
+        ],
+        [
+          9.604,
+          9.604,
+          9.604
+        ],
+        [
+          19.208,
+          19.208,
+          19.208
+        ],
+        [
+          38.416,
+          38.416,
+          38.416
+        ],
+        [
+          76.832,
+          76.832,
+          76.832
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0009B/volumes/20260319104112-2.401um-0.3m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.401,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.401,
+          2.401,
+          2.401
+        ],
+        [
+          4.802,
+          4.802,
+          4.802
+        ],
+        [
+          9.604,
+          9.604,
+          9.604
+        ],
+        [
+          19.208,
+          19.208,
+          19.208
+        ],
+        [
+          38.416,
+          38.416,
+          38.416
+        ],
+        [
+          76.832,
+          76.832,
+          76.832
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0125/volumes/20250821151825-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20250820105138-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20250822062710-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20251107132835-9.362um-1.2m-113keV-pag0-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20251107135911-9.362um-1.2m-113keV-pag50-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20260102150214-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20260319133050-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20260319133554-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 1.129,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          1.129,
+          1.129,
+          1.129
+        ],
+        [
+          2.258,
+          2.258,
+          2.258
+        ],
+        [
+          4.516,
+          4.516,
+          4.516
+        ],
+        [
+          9.032,
+          9.032,
+          9.032
+        ],
+        [
+          18.064,
+          18.064,
+          18.064
+        ],
+        [
+          36.128,
+          36.128,
+          36.128
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0172/volumes/20241024131838-7.910um-53keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0172/volumes/20241024131839-7.910um-53keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0175A/volumes/20250521115057-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0175B/volumes/20250521125822-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0191/volumes/20250821151635-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0211/volumes/20250821151803-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0257/volumes/20250821151750-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0268/volumes/20251110183117-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0306B/volumes/20250521133212-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0332/volumes/20251211183505-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0343/volumes/20250521140437-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0343P/volumes/20250521134555-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0343P/volumes/20260304131111-2.215um-0.4m-111keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.215,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.215,
+          2.215,
+          2.215
+        ],
+        [
+          4.43,
+          4.43,
+          4.43
+        ],
+        [
+          8.86,
+          8.86,
+          8.86
+        ],
+        [
+          17.72,
+          17.72,
+          17.72
+        ],
+        [
+          35.44,
+          35.44,
+          35.44
+        ],
+        [
+          70.88,
+          70.88,
+          70.88
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0358/volumes/20250821151737-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0483A/volumes/20250521140913-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0483B/volumes/20251124083638-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0490A/volumes/20250521151210-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0490B/volumes/20250521151215-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.215,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.215,
+          2.215,
+          2.215
+        ],
+        [
+          4.43,
+          4.43,
+          4.43
+        ],
+        [
+          8.86,
+          8.86,
+          8.86
+        ],
+        [
+          17.72,
+          17.72,
+          17.72
+        ],
+        [
+          35.44,
+          35.44,
+          35.44
+        ],
+        [
+          70.88,
+          70.88,
+          70.88
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0500P2/volumes/20250528085330-4.317um-1.2m-111keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 4.317,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          4.317,
+          4.317,
+          4.317
+        ],
+        [
+          8.634,
+          8.634,
+          8.634
+        ],
+        [
+          17.268,
+          17.268,
+          17.268
+        ],
+        [
+          34.536,
+          34.536,
+          34.536
+        ],
+        [
+          69.072,
+          69.072,
+          69.072
+        ],
+        [
+          138.144,
+          138.144,
+          138.144
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0500P2/volumes/20250820143440-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 0.55,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          0.55,
+          0.55,
+          0.55
+        ],
+        [
+          1.1,
+          1.1,
+          1.1
+        ],
+        [
+          2.2,
+          2.2,
+          2.2
+        ],
+        [
+          4.4,
+          4.4,
+          4.4
+        ],
+        [
+          8.8,
+          8.8,
+          8.8
+        ],
+        [
+          17.6,
+          17.6,
+          17.6
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0800/volumes/20250521135224-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0813/volumes/20250821151723-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0814/volumes/20250804134230-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0814/volumes/20260521123630-1.129um-0.2m-59keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 1.129,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          1.129,
+          1.129,
+          1.129
+        ],
+        [
+          2.258,
+          2.258,
+          2.258
+        ],
+        [
+          4.516,
+          4.516,
+          4.516
+        ],
+        [
+          9.032,
+          9.032,
+          9.032
+        ],
+        [
+          18.064,
+          18.064,
+          18.064
+        ],
+        [
+          36.128,
+          36.128,
+          36.128
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0826/volumes/20250821151701-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0841/volumes/20250821151531-9.366um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.366,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.366,
+          9.366,
+          9.366
+        ],
+        [
+          18.732,
+          18.732,
+          18.732
+        ],
+        [
+          37.464,
+          37.464,
+          37.464
+        ],
+        [
+          74.928,
+          74.928,
+          74.928
+        ],
+        [
+          149.856,
+          149.856,
+          149.856
+        ],
+        [
+          299.712,
+          299.712,
+          299.712
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0841/volumes/20260319124803-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0846A/volumes/20250728152254-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0846A/volumes/20260319102732-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc0846B/volumes/20250804142305-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1203/volumes/20260319130212-2.403um-0.2m-77keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.403,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1218/volumes/20250521120456-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1299/volumes/20260309130042-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1447/segments/20250702235910-auto_grown_20250702235910292/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "status": "PLAN",
+      "confidence": "COPY_FROM_SIBLING",
+      "source": "PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          8.64,
+          17.28,
+          17.28
+        ],
+        [
+          8.64,
+          34.56,
+          34.56
+        ],
+        [
+          8.64,
+          69.12,
+          69.12
+        ],
+        [
+          8.64,
+          138.24,
+          138.24
+        ],
+        [
+          8.64,
+          276.48,
+          276.48
+        ]
+      ]
+    },
+    {
+      "path": "PHerc1447/segments/20250703025628-auto_grown_20250703025628283/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "status": "PLAN",
+      "confidence": "COPY_FROM_SIBLING",
+      "source": "PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          8.64,
+          17.28,
+          17.28
+        ],
+        [
+          8.64,
+          34.56,
+          34.56
+        ],
+        [
+          8.64,
+          69.12,
+          69.12
+        ],
+        [
+          8.64,
+          138.24,
+          138.24
+        ],
+        [
+          8.64,
+          276.48,
+          276.48
+        ]
+      ]
+    },
+    {
+      "path": "PHerc1447/segments/20250703034159-auto_grown_20250703034159599/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "status": "PLAN",
+      "confidence": "COPY_FROM_SIBLING",
+      "source": "PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          8.64,
+          17.28,
+          17.28
+        ],
+        [
+          8.64,
+          34.56,
+          34.56
+        ],
+        [
+          8.64,
+          69.12,
+          69.12
+        ],
+        [
+          8.64,
+          138.24,
+          138.24
+        ],
+        [
+          8.64,
+          276.48,
+          276.48
+        ]
+      ]
+    },
+    {
+      "path": "PHerc1447/segments/20251105093211-z_dbg_gen_00320/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "status": "PLAN",
+      "confidence": "COPY_FROM_SIBLING",
+      "source": "PHerc1447/segments/20250502180708-auto_grown_20250502160708188/surface-volumes/8.64um-1.2m-116keV-volume-20250521151220.zarr/",
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          8.64,
+          17.28,
+          17.28
+        ],
+        [
+          8.64,
+          34.56,
+          34.56
+        ],
+        [
+          8.64,
+          69.12,
+          69.12
+        ],
+        [
+          8.64,
+          138.24,
+          138.24
+        ],
+        [
+          8.64,
+          276.48,
+          276.48
+        ]
+      ]
+    },
+    {
+      "path": "PHerc1447/volumes/20250521151220-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1451/volumes/20250521151225-8.640um-1.2m-116keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 8.64,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1451/volumes/20260319101107-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1545/volumes/20250821151648-9.362um-1.2m-113keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 9.362,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1667/volumes/20251217075048-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHerc1667/volumes/20260323082859-1.129um-0.2m-59keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 1.129,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          1.129,
+          1.129,
+          1.129
+        ],
+        [
+          2.258,
+          2.258,
+          2.258
+        ],
+        [
+          4.516,
+          4.516,
+          4.516
+        ],
+        [
+          9.032,
+          9.032,
+          9.032
+        ],
+        [
+          18.064,
+          18.064,
+          18.064
+        ],
+        [
+          36.128,
+          36.128,
+          36.128
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercMAN5/volumes/20260311104824-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercMANB/volumes/20260323091048-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercMANBp/volumes/20251216152116-2.399um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.399,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercMANBp/volumes/20260427100434-1.129um-0.2m-59keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 1.129,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          1.129,
+          1.129,
+          1.129
+        ],
+        [
+          2.258,
+          2.258,
+          2.258
+        ],
+        [
+          4.516,
+          4.516,
+          4.516
+        ],
+        [
+          9.032,
+          9.032,
+          9.032
+        ],
+        [
+          18.064,
+          18.064,
+          18.064
+        ],
+        [
+          36.128,
+          36.128,
+          36.128
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis3/volumes/20260427095331-2.400um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.4,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/representations/predictions/surfaces/20260411134726-surface-20260413141734-surface-recto-2um-ps256-L0-th0.45.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.4,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 45.532,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          45.532,
+          45.532,
+          45.532
+        ],
+        [
+          91.064,
+          91.064,
+          91.064
+        ],
+        [
+          182.128,
+          182.128,
+          182.128
+        ],
+        [
+          364.256,
+          364.256,
+          364.256
+        ],
+        [
+          728.512,
+          728.512,
+          728.512
+        ],
+        [
+          1457.024,
+          1457.024,
+          1457.024
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 45.532,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          45.532,
+          45.532,
+          45.532
+        ],
+        [
+          91.064,
+          91.064,
+          91.064
+        ],
+        [
+          182.128,
+          182.128,
+          182.128
+        ],
+        [
+          364.256,
+          364.256,
+          364.256
+        ],
+        [
+          728.512,
+          728.512,
+          728.512
+        ],
+        [
+          1457.024,
+          1457.024,
+          1457.024
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.4,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 2.4,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://vesuvius-challenge-open-data.s3.amazonaws.com",
+      "manifest_pitch_um": 1.129,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          1.129,
+          1.129,
+          1.129
+        ],
+        [
+          2.258,
+          2.258,
+          2.258
+        ],
+        [
+          4.516,
+          4.516,
+          4.516
+        ],
+        [
+          9.032,
+          9.032,
+          9.032
+        ],
+        [
+          18.064,
+          18.064,
+          18.064
+        ],
+        [
+          36.128,
+          36.128,
+          36.128
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHerc0332/volumes/20231027191953-3.240um-53keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 3.24,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          3.24,
+          3.24,
+          3.24
+        ],
+        [
+          6.48,
+          6.48,
+          6.48
+        ],
+        [
+          12.96,
+          12.96,
+          12.96
+        ],
+        [
+          25.92,
+          25.92,
+          25.92
+        ],
+        [
+          51.84,
+          51.84,
+          51.84
+        ],
+        [
+          103.68,
+          103.68,
+          103.68
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHerc0332/volumes/20231117143551-7.910um-53keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHerc0332/volumes/20231201141544-3.240um-70keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 3.24,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          3.24,
+          3.24,
+          3.24
+        ],
+        [
+          6.48,
+          6.48,
+          6.48
+        ],
+        [
+          12.96,
+          12.96,
+          12.96
+        ],
+        [
+          25.92,
+          25.92,
+          25.92
+        ],
+        [
+          51.84,
+          51.84,
+          51.84
+        ],
+        [
+          103.68,
+          103.68,
+          103.68
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHerc1667/volumes/20231107190228-3.240um-88keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 3.24,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          3.24,
+          3.24,
+          3.24
+        ],
+        [
+          6.48,
+          6.48,
+          6.48
+        ],
+        [
+          12.96,
+          12.96,
+          12.96
+        ],
+        [
+          25.92,
+          25.92,
+          25.92
+        ],
+        [
+          51.84,
+          51.84,
+          51.84
+        ],
+        [
+          103.68,
+          103.68,
+          103.68
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHercParis4/volumes/20230206171837-7.910um-54keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 7.91,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          7.91,
+          7.91,
+          7.91
+        ],
+        [
+          15.82,
+          15.82,
+          15.82
+        ],
+        [
+          31.64,
+          31.64,
+          31.64
+        ],
+        [
+          63.28,
+          63.28,
+          63.28
+        ],
+        [
+          126.56,
+          126.56,
+          126.56
+        ],
+        [
+          253.12,
+          253.12,
+          253.12
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 45.532,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          45.532,
+          45.532,
+          45.532
+        ],
+        [
+          91.064,
+          91.064,
+          91.064
+        ],
+        [
+          182.128,
+          182.128,
+          182.128
+        ],
+        [
+          364.256,
+          364.256,
+          364.256
+        ],
+        [
+          728.512,
+          728.512,
+          728.512
+        ],
+        [
+          1457.024,
+          1457.024,
+          1457.024
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHercParis4/volumes/20260310173927-45.532um-11.0m-110keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 45.532,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          45.532,
+          45.532,
+          45.532
+        ],
+        [
+          91.064,
+          91.064,
+          91.064
+        ],
+        [
+          182.128,
+          182.128,
+          182.128
+        ],
+        [
+          364.256,
+          364.256,
+          364.256
+        ],
+        [
+          728.512,
+          728.512,
+          728.512
+        ],
+        [
+          1457.024,
+          1457.024,
+          1457.024
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    },
+    {
+      "path": "samples/PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr",
+      "status": "PLAN",
+      "via": "https://data.aws.ash2txt.org",
+      "manifest_pitch_um": 2.4,
+      "axes_now": [
+        null,
+        null,
+        null
+      ],
+      "axes_proposed": [
+        "micrometer",
+        "micrometer",
+        "micrometer"
+      ],
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "level_ratios": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0,
+        32.0
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch from the manifest applied to this store's own level ratios; the manifest records in-plane pixel size only, so the z spacing is an assumption that needs a maintainer's confirmation"
+    }
+  ],
+  "summary": {
+    "affected": 81,
+    "plans": 81,
+    "copy_from_sibling": 4,
+    "derived_unverified": 77,
+    "skipped": 0
+  }
+}
