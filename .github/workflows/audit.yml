@@ -78,13 +78,29 @@ jobs:
           found = {f"{m.group(1)} {m.group(2)}"
                    for m in re.finditer(r"^\s*\[(ERROR|WARN)\] ([A-Z_]+):", text, re.M)}
           print("codes:", sorted(found))
-          # Equality, not "no surprises". A subset check passes when a finding *disappears*, which is
-          # what happens the moment someone fixes one - and the documents would go on claiming the
-          # defect exists. So a fix fails this build too, on purpose: update the numbers, close the
-          # issue, then update this set.
+          # Equality of the *set* is not enough: a second output-path mismatch would keep the same code
+          # and change the count, leaving the published "1 mismatched" wrong while the build stayed
+          # green. Codes and counts are both asserted, and so is the provenance summary line.
+          counts = {f"{m.group(1)} {m.group(2)}": int(m.group(3))
+                    for m in re.finditer(r"^\s*\[(ERROR|WARN)\] ([A-Z_]+): (\d+)", text, re.M)}
+          expected_counts = {
+              "ERROR MODEL_SAMPLE_MISSING": 1,
+              "WARN PROVENANCE_DIRTY_ALWAYS": 1,
+              "WARN PROVENANCE_OUTPUT_MISMATCH": 1,
+          }
           assert found == allowed, (
               f"manifest findings changed: missing {sorted(allowed - found)}, "
               f"new {sorted(found - allowed)} - update the documents and this list"
+          )
+          assert counts == expected_counts, (
+              f"manifest finding counts changed: {counts} - update the documents and this list"
+          )
+          summary = re.search(
+              r"provenance: (\d+) records, (\d+) with atlas_git_dirty=true, "
+              r"(\d+) output-paths compared, (\d+) mismatched", text)
+          assert summary, "the provenance summary line is missing"
+          assert summary.groups() == ("3839", "3834", "2500", "1"), (
+              f"provenance summary changed: {summary.groups()} - update the documents and this list"
           )
           PY
 
