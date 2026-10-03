@@ -137,9 +137,14 @@ z-axis/in-plane asymmetry of surface volumes is uniform — so future audits do 
 
 ## Links
 
-* Repository: `<to be published>`
-* Findings: `FINDINGS.md`
-* Related issues: #1951 (addendum with the catalog-wide numbers), #1892 (reproduced)
+* Repository: <https://github.com/gaogao94/scroll-catalog-audit>
+* Findings: `FINDINGS.md`; every check with its scope and result: `COVERAGE.md`
+* Filed by this work: [#1957](https://github.com/ScrollPrize/villa/issues/1957) (the manifest records the pitch the store does not publish),
+  [#1958](https://github.com/ScrollPrize/villa/issues/1958) (a model entry listing `"none"` as a compatible sample),
+  [#1959](https://github.com/ScrollPrize/villa/issues/1959) (provenance: the dirty flag on every record, and one artifact whose parameters contradict its filename)
+* Pull requests: [#1954](https://github.com/ScrollPrize/villa/pull/1954), [#1955](https://github.com/ScrollPrize/villa/pull/1955), [#1956](https://github.com/ScrollPrize/villa/pull/1956)
+* Reproduced or bounded: [#1892](https://github.com/ScrollPrize/villa/issues/1892) (reproduced), [#1951](https://github.com/ScrollPrize/villa/issues/1951) (catalog-wide addendum),
+  [#1730](https://github.com/ScrollPrize/villa/issues/1730), [#1949](https://github.com/ScrollPrize/villa/issues/1949), [#1950](https://github.com/ScrollPrize/villa/issues/1950), [#1734](https://github.com/ScrollPrize/villa/issues/1734)
 
 ## Status / limits (stated up front)
 
