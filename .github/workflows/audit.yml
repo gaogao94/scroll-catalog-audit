@@ -24,6 +24,16 @@ jobs:
         # but a catalog that starts filling blanks with a non-zero value, or publishing a chunk
         # larger than its array, does. Covers the headers and levels evidence, not just the catalog.
         run: python -m scroll_catalog_audit.asserts
+      - name: The commands the README tells people to run
+        # A fresh clone runs these first. Without scroll_catalog_audit/__main__.py the documented
+        # `python -m scroll_catalog_audit <sub>` form fails while the CI form keeps working, so both
+        # spellings are exercised here rather than trusted.
+        run: |
+          python -m scroll_catalog_audit selftest
+          python -m scroll_catalog_audit.asserts
+          python -m scroll_catalog_audit demo
+          python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
+          python -m scroll_catalog_audit.audit selftest
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible
