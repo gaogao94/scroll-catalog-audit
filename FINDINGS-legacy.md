@@ -45,6 +45,15 @@ catalog where the pitch appears, so anyone repairing them has to take the value 
 the scan parameters documented outside the catalog. That is a materially weaker position than the
 bucket's 77, and worth knowing before the host goes away.
 
+**Scope, because the host holds more than this.** `/fragments/` has nine sample directories, not six:
+the ones above plus `PHerc0009B`, `PHerc0343P` and `PHerc0500P2`. Those three are catalogued *and*
+published - 3/19, 2/8 and 4/46 volumes and segments on the bucket respectively - and carry no
+`legacy_data_url`, so the copies here are duplicates rather than the only copy, and they are not audited
+above. The host's top level also holds `full-scrolls/` (Scroll1-5, all five catalogued and published),
+`community-uploads/`, `datasets/`, `ml-models/` and `other/`, none of which this probe touches. The 28
+roots in the table are therefore the ones for which the catalog points here *and* publishes nothing
+itself, which is the population the question was about.
+
 The contrast inside the manifest is stark and reproducible: of the ten samples that carry a legacy URL,
 the four scrolls (`/full-scrolls/`) all have a `pixel_size_um` recorded, and the six fragments
 (`/fragments/`) have none. `python -m scroll_catalog_audit manifest` prints both lines.
