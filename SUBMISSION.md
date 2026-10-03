@@ -132,6 +132,8 @@ on all three physical parameters, and the two provenance observations - are now
 exactly the three already filed. Someone who doubts any of it can re-run one command rather than
 re-derive it.
 
+Coverage is checked in both directions: everything the catalog declares is published - 894 roots, 88 photo and photo-mask origins, 10 legacy URLs, all resolve - and the bucket's single extra top-level prefix is the website's thumbnail cache, which no sample record describes.
+
 ## Evidence / reproducibility
 
 * `python -m scroll_catalog_audit scan --workers 10` — full catalog, metadata only, resumable.
