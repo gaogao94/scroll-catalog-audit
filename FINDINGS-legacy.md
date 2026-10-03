@@ -34,8 +34,16 @@ reproduced here with a different tool and independently of the tool that reporte
 - including Frag3's own 54 keV siblings - have all declared levels.
 
 So the damage in this corner is bounded: one energy of one fragment is missing its pyramid, everything
-else is present but needs the pitch from the name (or from the catalog's manifest entry, which records
-`pixel_size_um` for these samples even though no store is published).
+else is present but unitless.
+
+**And unlike the bucket, there is nothing to copy the pitch from.** For the 81 unitless stores the
+catalog publishes, 77 have `properties.pixel_size_um` recorded in the manifest, which is what makes the
+repair a metadata copy rather than a re-derivation. These six samples have no such entry: each carries
+only `type`, `legacy_data_url`, `description` and one photo object, with no `pixel_size_um` anywhere in
+the sample record. For the 28 legacy roots the file name (`3.24um`, `7.91um`, …) is the only place in the
+catalog where the pitch appears, so anyone repairing them has to take the value from the name or from
+the scan parameters documented outside the catalog. That is a materially weaker position than the
+bucket's 77, and worth knowing before the host goes away.
 
 The 10 declared-but-absent levels above are counted per root, not per level: each of the two affected
 roots is missing levels 1 through 5.

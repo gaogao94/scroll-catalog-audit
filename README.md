@@ -37,8 +37,9 @@ nowhere: their `legacy_data_url` points at `dl.ash2txt.org`, which is no longer 
 audits that host anyway, because for those six it is the only copy and fragments are training material:
 **28 Zarr roots, all 28 carrying no `axes[].unit` and a level-0 scale of `[1,1,1]`** - the same defect at
 100 % rather than the catalog's 14 % - and **Frag3's 88 keV store declares six levels with only level 0
-present**, reproducing #1755 with a different tool. The other 26 roots have every declared level. See
-[FINDINGS-legacy.md](FINDINGS-legacy.md).
+present**, reproducing #1755 with a different tool. The other 26 roots have every declared level.
+Unlike the bucket's 77 repairable stores, **the manifest records no pitch for any of these six**, so the
+file name is the only place in the catalog the value appears. See [FINDINGS-legacy.md](FINDINGS-legacy.md).
 
 **What others did with it.** Two cases where the audit changed someone else's conclusion rather than
 just adding a comment. The reporter of
