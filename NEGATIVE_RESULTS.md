@@ -133,7 +133,8 @@ The two published figures are complementary, not overlapping:
 |---|---:|
 | state a micrometre pitch **in the name**, no `axes[].unit` | 81 (76 raw CT, 4 surface volumes, 1 prediction) |
 | no pitch in the name and no unit either | 43 (42 surface predictions, 1 ink-detection-3d) |
-| **total stores with no `axes[].unit`** | **124** |
+| **total stores whose readable metadata declares no `axes[].unit`** | **124** (81 + 43) |
+| **total stores with no usable unit at all** | **139** (124 + 15 unreadable) |
 
 ## 3e. Coordinate transforms
 

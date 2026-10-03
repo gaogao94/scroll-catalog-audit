@@ -12,7 +12,8 @@ No chunk bytes are ever downloaded — only `ListObjectsV2` listings and small m
 about 1,800 requests and 20 minutes on one machine; the header, pyramid-level and level-chunk layers
 bring the whole evidence set to roughly ten thousand metadata requests. None of them is image data.
 
-**What it found.** 124 stores publish no `axes[].unit` at all, and **81 of them state a micrometre
+**What it found.** 124 stores publish metadata that declares no `axes[].unit` (a further 15 publish no
+readable metadata object at all), and **81 of them state a micrometre
 pitch in their own name** — 76 raw CT volumes, the input to every downstream step, across 39 samples.
 For **77 of those 81 the correct pitch is already in the catalog manifest**, so the repair is a
 metadata copy rather than a re-render. The other 43 are prediction stores with no pitch in the name.

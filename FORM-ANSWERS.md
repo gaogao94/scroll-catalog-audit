@@ -132,7 +132,7 @@ each patch adds tests in the repository's existing style and applies cleanly to 
    already in `metadata.min.json` and simply is not propagated, so the repair is mechanical rather
    than archaeological. No existing tool cross-references manifest and store metadata; that
    comparison is what produced issues #1957, #1958 and #1959 and the fix plans committed with this
-   repository. In total 124 stores publish no axis unit at all: 81 state a pitch in the name, and 43
+   repository. In total 124 stores publish metadata that declares no axis unit: 81 state a pitch in the name, and 43
    are prediction stores with no pitch in the name.
    The three upstream pull requests are the fixes the audit motivated.
 
