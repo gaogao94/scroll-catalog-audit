@@ -49,6 +49,19 @@ level by scale compute coordinates off by the level ratio — silently.
 showed `0/.zarray` present (HTTP 200) with 297 chunk keys on the first page — a transient fetch
 failure, not a defect. Details in `GEOMETRY_PROBE.md`.
 
+## 3b. Array headers (`.zarray` / `zarr.json`, level 0 of every root)
+
+| check | scope | result |
+|---|---|---|
+| non-zero `fill_value` | 894 roots | **0** — every store fills with `0`, so blank regions cannot read as bright and be mistaken for ink |
+| chunk shape larger than the array shape | 894 roots | **0** |
+| dtype outside uint8 | 894 roots | **0** (`\|u1` in v2, `uint8` in v3 — same type, different notation) |
+
+Header format splits the corpus cleanly: **all 81 v3 stores are compressed and all are predictions**
+(`sharding_indexed` for ink predictions, blosc for surface predictions), while the v2 stores are 763
+uncompressed / 50 compressed. So "the catalog stores uncompressed" is true of the v2-era stores and
+false of anything published through the v3 path.
+
 ## 4. Path resolution
 
 | check | scope | result |

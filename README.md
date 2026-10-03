@@ -160,6 +160,10 @@ handful of stores move between classes purely because of transient fetch failure
 those `LIST_ERROR` / `META_ERROR` and they are re-run rather than reported), so treat a difference of
 a few stores between runs as noise, not as a catalog change.
 
+The raw per-store output of every sweep is committed: `results.jsonl` (catalog),
+`results_alt.jsonl` (alternate root), `results_deep*.jsonl` (per-level probes) and
+`results_zarray.jsonl` (array headers).
+
 See `FINDINGS.md` for the enumerated list and the per-sample summary, and `NEGATIVE_RESULTS.md`
 for every check that came back clean, with the scope each one actually covered.
 
