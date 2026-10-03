@@ -93,6 +93,38 @@ The catalog publishes two files: `metadata.min.json` (67 KB, paths and physical 
 All 13 model entries carry `data: []`, i.e. no origin. Whether that is deliberate (weights published
 off-catalog) is unknown to me and is asked as a question in #1958 rather than reported as a defect.
 
+## 3d. Declared pyramid levels versus what exists - all 894 roots
+
+Extended from the 180-store sample to the whole catalog, reading `multiscales` from `.zattrs` (v2)
+and from `attributes.multiscales` (v3), then fetching the header of each store's **last** declared
+level:
+
+| check | scope | result |
+|---|---:|---|
+| every store declares the same pyramid depth | 894 | all declare 6 levels |
+| the last declared level has a header | 894 | **0 failures** |
+| declared level paths are contiguous from 0 | 894 | **0 failures** |
+| declared depth agrees with the level count actually probed | 107 | **0 disagreements** |
+
+v3 stores carry a different axes set (`y, x` with a canvas size) than v2 stores (`z, y, x`), which is
+expected for canvas-based predictions but is why a reader that only looks at `.zattrs` sees nothing
+for them.
+
+**A note on how this check nearly went wrong.** The first pass read `multiscales` from the top level of
+`zarr.json` and therefore classified all 81 v3 stores as having no pyramid metadata at all - a clean
+"0 failures" over a set that had silently shrunk to 813. The corrected parser reads
+`attributes.multiscales`, and the run above is the corrected one.
+
+### How the unitless stores partition
+
+The two published figures are complementary, not overlapping:
+
+| group | count |
+|---|---:|
+| state a micrometre pitch **in the name**, no `axes[].unit` | 81 (76 raw CT, 4 surface volumes, 1 prediction) |
+| no pitch in the name and no unit either | 43 (42 surface predictions, 1 ink-detection-3d) |
+| **total stores with no `axes[].unit`** | **124** |
+
 ## 4. Path resolution
 
 | check | scope | result |
