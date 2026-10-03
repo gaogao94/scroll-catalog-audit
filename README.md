@@ -20,6 +20,17 @@ Separately, one published surface volume declares six levels and holds no chunks
 `fill_value` everywhere with no error. Everything else came back clean, and [COVERAGE.md](COVERAGE.md)
 lists each check with the scope it actually covered.
 
+**What came out of it.** Three upstream issues — [#1957](https://github.com/ScrollPrize/villa/issues/1957)
+(the manifest already records the pitch the published metadata omits),
+[#1958](https://github.com/ScrollPrize/villa/issues/1958) (a model entry whose `compatible_samples` is
+`["none"]`) and [#1959](https://github.com/ScrollPrize/villa/issues/1959) (a provenance flag set on
+every record, and one artifact whose parameters contradict its own path) — plus three pull requests
+that turn the silent `1.0` defaults above into warnings:
+[#1954](https://github.com/ScrollPrize/villa/pull/1954),
+[#1955](https://github.com/ScrollPrize/villa/pull/1955),
+[#1956](https://github.com/ScrollPrize/villa/pull/1956). Five existing threads were independently
+reproduced, corrected or bounded with evidence: #1730, #1734, #1949, #1950, #1951.
+
 ## Why
 
 The catalog is published as OME-Zarr stores produced by many different pipelines over several
