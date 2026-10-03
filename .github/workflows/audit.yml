@@ -75,9 +75,14 @@ jobs:
           found = {f"{m.group(1)} {m.group(2)}"
                    for m in re.finditer(r"^\s*\[(ERROR|WARN)\] ([A-Z_]+):", text, re.M)}
           print("codes:", sorted(found))
-          assert found, "the manifest step produced no findings at all"
-          unexpected = found - allowed
-          assert not unexpected, f"unexpected manifest finding(s): {sorted(unexpected)}"
+          # Equality, not "no surprises". A subset check passes when a finding *disappears*, which is
+          # what happens the moment someone fixes one - and the documents would go on claiming the
+          # defect exists. So a fix fails this build too, on purpose: update the numbers, close the
+          # issue, then update this set.
+          assert found == allowed, (
+              f"manifest findings changed: missing {sorted(allowed - found)}, "
+              f"new {sorted(found - allowed)} - update the documents and this list"
+          )
           PY
 
   docs-in-sync:
