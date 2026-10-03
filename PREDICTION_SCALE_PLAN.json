@@ -1,0 +1,3061 @@
+{
+  "plans": [
+    {
+      "path": "PHerc0009B/representations/predictions/surfaces/20260319104112-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.401,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.401,
+          2.401,
+          2.401
+        ],
+        [
+          4.802,
+          4.802,
+          4.802
+        ],
+        [
+          9.604,
+          9.604,
+          9.604
+        ],
+        [
+          19.208,
+          19.208,
+          19.208
+        ],
+        [
+          38.416,
+          38.416,
+          38.416
+        ],
+        [
+          76.832,
+          76.832,
+          76.832
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0125/representations/predictions/surfaces/20250821151825-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0139/representations/predictions/surfaces/20250728140407-surface-20250701154204-surface-recto-090.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0139/representations/predictions/surfaces/20250728140407-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0175A/representations/predictions/surfaces/20250521115057-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0175B/representations/predictions/surfaces/20250521125822-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0191/representations/predictions/surfaces/20250821151635-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0211/representations/predictions/surfaces/20250821151803-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0257/representations/predictions/surfaces/20250821151750-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0268/representations/predictions/surfaces/20251110183117-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0306B/representations/predictions/surfaces/20250521133212-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0332/representations/predictions/surfaces/20251211183505-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0343/representations/predictions/surfaces/20250521140437-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0343P/representations/predictions/surfaces/20260304131111-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.215,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.215,
+          2.215,
+          2.215
+        ],
+        [
+          4.43,
+          4.43,
+          4.43
+        ],
+        [
+          8.86,
+          8.86,
+          8.86
+        ],
+        [
+          17.72,
+          17.72,
+          17.72
+        ],
+        [
+          35.44,
+          35.44,
+          35.44
+        ],
+        [
+          70.88,
+          70.88,
+          70.88
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0358/representations/predictions/surfaces/20250821151737-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0483A/representations/predictions/surfaces/20250521140913-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0483B/representations/predictions/surfaces/20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0490A/representations/predictions/surfaces/20250521151210-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0490B/representations/predictions/surfaces/20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0500P2/representations/predictions/surfaces/20250526151718-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.215,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.215,
+          2.215,
+          2.215
+        ],
+        [
+          4.43,
+          4.43,
+          4.43
+        ],
+        [
+          8.86,
+          8.86,
+          8.86
+        ],
+        [
+          17.72,
+          17.72,
+          17.72
+        ],
+        [
+          35.44,
+          35.44,
+          35.44
+        ],
+        [
+          70.88,
+          70.88,
+          70.88
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0500P2/representations/predictions/surfaces/20250820143440-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0800/representations/predictions/surfaces/20250521135224-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0813/representations/predictions/surfaces/20250821151723-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0814/representations/predictions/surfaces/20250804134230-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0814/representations/predictions/surfaces/20260309142202-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0826/representations/predictions/surfaces/20250821151701-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0841/representations/predictions/surfaces/20250821151531-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.366,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.366,
+          9.366,
+          9.366
+        ],
+        [
+          18.732,
+          18.732,
+          18.732
+        ],
+        [
+          37.464,
+          37.464,
+          37.464
+        ],
+        [
+          74.928,
+          74.928,
+          74.928
+        ],
+        [
+          149.856,
+          149.856,
+          149.856
+        ],
+        [
+          299.712,
+          299.712,
+          299.712
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0841/representations/predictions/surfaces/20260319124803-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.403,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0846A/representations/predictions/surfaces/20250728152254-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0846A/representations/predictions/surfaces/20260319102732-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.403,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc0846B/representations/predictions/surfaces/20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1203/representations/predictions/surfaces/20250820131727-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1203/representations/predictions/surfaces/20260319130212-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.403,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.403,
+          2.403,
+          2.403
+        ],
+        [
+          4.806,
+          4.806,
+          4.806
+        ],
+        [
+          9.612,
+          9.612,
+          9.612
+        ],
+        [
+          19.224,
+          19.224,
+          19.224
+        ],
+        [
+          38.448,
+          38.448,
+          38.448
+        ],
+        [
+          76.896,
+          76.896,
+          76.896
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1218/representations/predictions/surfaces/20250521120456-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1299/representations/predictions/surfaces/20260309130042-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1447/representations/predictions/surfaces/20250521151220-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 8.64,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          8.64,
+          8.64,
+          8.64
+        ],
+        [
+          17.28,
+          17.28,
+          17.28
+        ],
+        [
+          34.56,
+          34.56,
+          34.56
+        ],
+        [
+          69.12,
+          69.12,
+          69.12
+        ],
+        [
+          138.24,
+          138.24,
+          138.24
+        ],
+        [
+          276.48,
+          276.48,
+          276.48
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1451/representations/predictions/surfaces/20260319101107-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHerc1545/representations/predictions/surfaces/20250821151648-surface-20260413222639-surface-m7-L0-th0.2.zarr/",
+      "manifest_pitch_um": 9.362,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          9.362,
+          9.362,
+          9.362
+        ],
+        [
+          18.724,
+          18.724,
+          18.724
+        ],
+        [
+          37.448,
+          37.448,
+          37.448
+        ],
+        [
+          74.896,
+          74.896,
+          74.896
+        ],
+        [
+          149.792,
+          149.792,
+          149.792
+        ],
+        [
+          299.584,
+          299.584,
+          299.584
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHercMAN5/representations/predictions/surfaces/20260311104824-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHercMANB/representations/predictions/surfaces/20260323091048-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHercMANBp/representations/predictions/surfaces/20251216152116-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.399,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.399,
+          2.399,
+          2.399
+        ],
+        [
+          4.798,
+          4.798,
+          4.798
+        ],
+        [
+          9.596,
+          9.596,
+          9.596
+        ],
+        [
+          19.192,
+          19.192,
+          19.192
+        ],
+        [
+          38.384,
+          38.384,
+          38.384
+        ],
+        [
+          76.768,
+          76.768,
+          76.768
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHercParis4/representations/predictions/surfaces/20260411134726-surface-20260413141734-surface-recto-2um-ps256-L0-th0.45.zarr/",
+      "manifest_pitch_um": 2.4,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    },
+    {
+      "path": "PHercParis4/representations/predictions/surfaces/20260411134726-surface-20260413222639-surface-m7-L2-th0.2.zarr/",
+      "manifest_pitch_um": 2.4,
+      "manifest_section": "volumes",
+      "scales_now": [
+        [
+          1.0,
+          1.0,
+          1.0
+        ],
+        [
+          2.0,
+          2.0,
+          2.0
+        ],
+        [
+          4.0,
+          4.0,
+          4.0
+        ],
+        [
+          8.0,
+          8.0,
+          8.0
+        ],
+        [
+          16.0,
+          16.0,
+          16.0
+        ],
+        [
+          32.0,
+          32.0,
+          32.0
+        ]
+      ],
+      "scales_proposed": [
+        [
+          2.4,
+          2.4,
+          2.4
+        ],
+        [
+          4.8,
+          4.8,
+          4.8
+        ],
+        [
+          9.6,
+          9.6,
+          9.6
+        ],
+        [
+          19.2,
+          19.2,
+          19.2
+        ],
+        [
+          38.4,
+          38.4,
+          38.4
+        ],
+        [
+          76.8,
+          76.8,
+          76.8
+        ]
+      ],
+      "confidence": "DERIVED_UNVERIFIED",
+      "note": "pitch taken from the manifest entry that declares this store, applied to its own level ratios; the manifest records in-plane pixel size, so z spacing is an assumption"
+    }
+  ],
+  "summary": {
+    "stores": 43,
+    "with_plan": 43
+  }
+}
