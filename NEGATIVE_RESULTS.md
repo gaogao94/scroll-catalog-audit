@@ -72,6 +72,17 @@ Header format splits the corpus cleanly: **all 81 v3 stores are compressed and a
 uncompressed / 50 compressed. So "the catalog stores uncompressed" is true of the v2-era stores and
 false of anything published through the v3 path.
 
+## 3b-iii. A field that exists in two places, populated in one of them
+
+`samples.<name>.sample` can carry `description` at the top level, inside `properties`, or both. Across the
+45 samples: **11 have one**, always at the top level, and **6 of those 11 also duplicate it into
+`properties`**. Thirty-four have none. A consumer reading `properties.description` therefore sees 6 of the
+11 that exist, while reading the top level sees all 11.
+
+Nothing is wrong with the file, but the two paths disagree in coverage, which is the shape of problem
+worth knowing before writing a parser - the same family as the `compatible_samples` placement in #1958.
+The safe rule is to read the top level and treat the `properties` copy as an optional duplicate.
+
 ## 3b-ii. Folder-name tokens versus `properties`
 
 Volume folder names encode three physical parameters (`<pitch>um-<distance>m-<energy>keV`). Compared
