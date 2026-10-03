@@ -44,9 +44,10 @@ The audit shows this is not a four-store accident:
 ## What the tool does
 
 `scan` → per-store JSONL; `report` → tables. Findings: `PATH_MISSING`, `NO_METADATA`,
-`AXES_UNIT_MISSING`, `SCALE_IS_UNIT`, `EMPTY_PYRAMID` (with `--deep`), `NON_MONOTONIC` /
-`NON_INTEGRAL_RATIO`, plus `LIST_ERROR` for retryable network failures and `ALT_HOST_ORIGIN` for
-roots that declare a non-S3 access root.
+`AXES_UNIT_MISSING`, `SCALE_IS_UNIT`, `EMPTY_PYRAMID` / `PARTIAL_LEVELS_MISSING` (with `--deep`),
+`NON_MONOTONIC` / `NON_INTEGRAL_RATIO`, plus `LIST_ERROR` for retryable network failures. Every
+origin is resolved against the root it declares (`via` in the JSONL), so the ten volumes published
+on the alternate host are audited too rather than skipped.
 
 ## Two traps the tool handles (and that produced false findings before they were handled)
 

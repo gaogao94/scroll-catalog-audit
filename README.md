@@ -79,7 +79,7 @@ each declared level for chunks (slower), `--catalog local.json` to audit a pinne
 | `EMPTY_PYRAMID` | every declared level exists as a header but contains no chunks (`--deep`) |
 | `PARTIAL_LEVELS_MISSING` | some declared levels contain no chunks — a reader that picks a coarser level silently gets `fill_value` (`--deep`) |
 | `NON_MONOTONIC` / `NON_INTEGRAL_RATIO` | the per-level scale ladder is broken |
-| `ALT_HOST_ORIGIN` | the origin declares a non-S3 access root, so this run skipped it (by design) |
+| `ALT_HOST_ORIGIN` | *(retired)* a non-S3 access root is now fetched from that root instead of being skipped, so this label is no longer produced |
 
 Two details that are easy to get wrong, and that this tool handles:
 
