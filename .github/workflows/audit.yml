@@ -35,6 +35,16 @@ jobs:
           python -m scroll_catalog_audit demo
           python -m scroll_catalog_audit siblings --path 8.64um-1.2m-116keV-volume-20250521151220
           python -m scroll_catalog_audit.audit selftest
+      - name: The guards still guard
+        # Both of these were wrong once: `--limit 0` was falsy and therefore ran the whole catalog
+        # (~1,860 requests), and a missing results file produced a traceback instead of a sentence.
+        run: |
+          if python -m scroll_catalog_audit scan --limit 0 --results /tmp/never.jsonl; then
+            echo "::error::--limit 0 was accepted and would scan everything"; exit 1
+          fi
+          if python -m scroll_catalog_audit report --results /tmp/does-not-exist.jsonl --out /tmp/y.md; then
+            echo "::error::a missing results file was not reported"; exit 1
+          fi
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible

@@ -364,7 +364,15 @@ def cmd_scan(args):
         import random as _random
         rnd = _random.Random(args.seed)
         todo = rnd.sample(todo, min(args.random, len(todo)))
-    if args.limit:
+    if args.limit is not None:
+        # `--limit 0` used to be falsy and therefore meant "no limit", so asking for zero stores ran
+        # the whole catalog - 894 roots, ~1,860 requests, three minutes. Say so instead.
+        if args.limit < 0:
+            print("--limit must not be negative", file=sys.stderr)
+            return 2
+        if args.limit == 0:
+            print("--limit 0 would check nothing; omit --limit to check every store", file=sys.stderr)
+            return 2
         todo = todo[: args.limit]
     print(f"scanning {len(todo)} (already done: {len(done)}) deep={args.deep} workers={args.workers}"
           + (f" kind~{args.kind}" if args.kind else "")
@@ -415,7 +423,26 @@ def load_rows(results, merges=None):
     return rows
 
 
+def _results_files_missing(paths) -> list[str]:
+    """Names among `paths` that are not on disk.
+
+    Every subcommand used to open these directly, so a typo produced a FileNotFoundError traceback
+    instead of a sentence.
+    """
+    return [p for p in paths if p and not os.path.exists(p)]
+
+
+def _fail_missing(paths) -> bool:
+    missing = _results_files_missing(paths)
+    if missing:
+        print(f"results file not found: {', '.join(missing)}", file=sys.stderr)
+        return True
+    return False
+
+
 def cmd_report(args):
+    if _fail_missing([args.results, *(args.merge or [])]):
+        return 2
     rows = load_rows(args.results, args.merge)
     from collections import Counter, defaultdict
     agg = Counter()
@@ -548,6 +575,8 @@ def cmd_selftest(_args):
 def cmd_explain(args):
     """Show every stored field and the derived labels for one store, so a reviewer can
     spot-check a claim without parsing the JSONL."""
+    if _fail_missing([args.results]):
+        return 2
     rows = [json.loads(l) for l in open(args.results, encoding="utf-8") if l.strip()]
     hits = [r for r in rows if args.path in r["path"]]
     if not hits:
@@ -594,6 +623,8 @@ def cmd_drift(args):
     catalog edit can be followed up with a few requests instead of a full re-scan. This is how a fix
     to a single store (e.g. an entry removed from the manifest) is confirmed.
     """
+    if _fail_missing([args.results]):
+        return 2
     rows = [json.loads(l) for l in open(args.results, encoding="utf-8") if l.strip()]
     have = {r["path"] for r in rows}
     catalog = load_catalog(args.catalog)
@@ -690,6 +721,8 @@ def cmd_siblings(args):
     Finds the copies of one store name (`--path` substring) and, with `--summary`, the
     catalog-wide question of how many affected stores have a correct sibling to copy metadata from.
     """
+    if _fail_missing([args.results]):
+        return 2
     rows = load_rows(args.results, args.merge)
     from collections import Counter, defaultdict
     groups = defaultdict(list)
