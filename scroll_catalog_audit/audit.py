@@ -680,6 +680,52 @@ def cmd_manifest(args):
     return 1 if err else 0
 
 
+def cmd_bytes(args):
+    """Level-0 storage size from the array headers, with the definition stated.
+
+    This exists because the figure was once computed by hand and published as 909 TB, a number that does
+    not reproduce under any definition tried here. Anything quoted in the documents now comes from this
+    command instead.
+    """
+    import math
+    from collections import defaultdict
+    rows = [json.loads(l) for l in open(args.zarray, encoding="utf-8") if l.strip()]
+    tb = 1024 ** 4
+
+    def logical(r):
+        n = 1
+        for s in r["shape"]:
+            n *= s
+        return n
+
+    def padded(r):
+        n = 1
+        for s, c in zip(r["shape"], r["chunks"]):
+            n *= math.ceil(s / c) * c
+        return n
+
+    have = [r for r in rows if r.get("shape")]
+    uncompressed = [r for r in have if r.get("compressor") in (None, "None")]
+    print(f"level-0 logical size (sum of shape, dtype is 1 byte for every store): "
+          f"{sum(logical(r) for r in have) / tb:.1f} TB over {len(have)} roots")
+    print(f"  of which no compressor declared: {sum(logical(r) for r in uncompressed) / tb:.1f} TB "
+          f"over {len(uncompressed)} roots")
+    both = [r for r in uncompressed if r.get("chunks")]
+    print(f"  same set, padded to the chunk grid (an upper bound): "
+          f"{sum(padded(r) for r in both) / tb:.1f} TB")
+    by = defaultdict(int)
+    n_by = defaultdict(int)
+    for r in uncompressed:
+        by[r["kind"]] += logical(r)
+        n_by[r["kind"]] += 1
+    for k in sorted(by, key=lambda k: -by[k]):
+        print(f"  {k:<34} {by[k] / tb:7.1f} TB  ({n_by[k]} roots)")
+    big = [r for r in uncompressed if logical(r) > args.big_mb * 1024 ** 2]
+    print(f"  roots above {args.big_mb} MB: {len(big)}")
+    print("  each root's level 0 only; levels 1..5 add about one seventh for a halving pyramid")
+    return 0
+
+
 def cmd_report(args):
     if _fail_missing([args.results, *(args.merge or [])]):
         return 2
@@ -1100,6 +1146,10 @@ def main(argv=None):
     dr.add_argument("--limit", type=int, default=25)
     dr.add_argument("--emit-json", default="", help="write the added/removed lists here")
     dr.set_defaults(func=cmd_drift)
+    by = sub.add_parser("bytes", help="level-0 storage size from the array headers")
+    by.add_argument("--zarray", default="results_zarray.jsonl")
+    by.add_argument("--big-mb", type=int, default=256)
+    by.set_defaults(func=cmd_bytes)
     fr = sub.add_parser("freshness", help="re-probe a sample and report any store whose findings changed")
     fr.add_argument("--results", default="results.jsonl")
     fr.add_argument("--merge", action="append", default=None)
