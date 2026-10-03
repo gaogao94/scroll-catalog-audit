@@ -36,7 +36,7 @@ the base pitch, in-plane doubling) rather than forcing an isotropic one.
 
 ## Status
 
-Verified: 10 unit tests (`python -m unittest test_fix_omezarr_scale`), and a dry run against a real
+Verified: 13 unit tests (`python -m unittest test_fix_omezarr_scale`), and a dry run against a real
 store in the published catalog:
 
 ```

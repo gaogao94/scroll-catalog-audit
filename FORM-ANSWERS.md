@@ -140,7 +140,7 @@ each patch adds tests in the repository's existing style and applies cleanly to 
    README (usage, every finding class, both traps that produced false findings before they were
    handled), NEGATIVE_RESULTS.md (every check that came back clean, with the scope it covered and
    its limits), REMEDIATION.md and the two machine-readable fix plans, plus contrib/ which carries
-   the upstream issue texts and patches. 12 offline unit checks; a CI job regenerates every
+   the upstream issue texts and patches. 13 offline unit checks; a CI job regenerates every
    committed report from the committed per-store data and fails on any diff, so no number can be
    hand-edited.
 
