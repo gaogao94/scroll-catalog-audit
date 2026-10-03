@@ -56,6 +56,16 @@ failure, not a defect. Details in `GEOMETRY_PROBE.md`.
 | non-zero `fill_value` | 894 roots | **0** — every store fills with `0`, so blank regions cannot read as bright and be mistaken for ink |
 | chunk shape larger than the array shape | 894 roots | **0** |
 | dtype outside uint8 | 894 roots | **0** (`\|u1` in v2, `uint8` in v3 — same type, different notation) |
+| array `order` other than C | 894 roots | **0** — 813 v2 stores say `"C"` and the 81 v3 stores omit the field, which v3 removed; no store is column-major, so no reader can walk one the wrong way |
+| unexpected `filters` | 894 roots | **0** — 813 v2 stores carry `[]`, the 81 v3 stores carry `["sharding_indexed"]`, the standard v3 sharding codec rather than a surprise |
+
+`order` and `filters` were collected by the first sweep and reported for the first time here. Both fail
+*silently* when wrong: a column-major store, or one carrying a codec the reader has not implemented,
+shows a perfectly ordinary shape and dtype. Neither occurs in the catalog.
+
+One detail that is not a defect but matters when comparing two stores: `fill_value` is written as the
+integer `0` in 809 stores and as the float `0.0` in 85 - all numerically zero. Compare fill values
+numerically rather than by repr.
 
 Header format splits the corpus cleanly: **all 81 v3 stores are compressed and all are predictions**
 (`sharding_indexed` for ink predictions, blosc for surface predictions), while the v2 stores are 763
