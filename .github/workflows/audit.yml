@@ -164,10 +164,12 @@ jobs:
       - name: Calibration cases must still reproduce the filed issues
         run: |
           set -eux
-          # #1892: a store that declares levels but has no chunks
-          python -m scroll_catalog_audit.audit explain \
-            --results results.jsonl --path 20260226123353 | tee /tmp/cal1.txt
-          grep -q "NO_CHUNKS_IN_FIRST_PAGE" /tmp/cal1.txt
+          # #1892: the store that declared levels with no chunks was withdrawn upstream on 2026-10-05,
+          # declaration included, so there is no live case left to point at. The calibration asserts the
+          # outcome instead: no record in the sweep carries that class any more, and the withdrawn path is
+          # absent from it. If the class comes back this fails, which is the point of a calibration case.
+          ! grep -q "NO_CHUNKS_IN_FIRST_PAGE" results.jsonl
+          ! grep -q "20260226123353-auto_grown_20260226123353106/surface-volumes/1.129um" results.jsonl
           # #1951: a store whose name states a pitch the metadata does not carry
           python -m scroll_catalog_audit.audit explain \
             --results results.jsonl --path PHerc1447/segments/20250702235910 | tee /tmp/cal2.txt
@@ -180,14 +182,21 @@ jobs:
           import json, re, sys
           rows = [json.loads(l) for l in open("results.jsonl", encoding="utf-8") if l.strip()]
           text = open("FINDINGS.md", encoding="utf-8").read()
-          s3 = [r for r in rows if not r.get("skipped")]
+          # Exclude the 10 stores that live on the alternate root: they are fetched there and are live
+          # rows, so "not skipped" alone counts 894 where the S3 convention has 884.
+          s3 = [r for r in rows if not r.get("skipped")
+                and not (r.get("via") and r["via"] != "https://vesuvius-challenge-open-data.s3.amazonaws.com")]
           units = sum(1 for r in s3 if r.get("units_present"))
           counts = {m: text.count(f"`{m}`") for m in
                     ("AXES_UNIT_MISSING", "SCALE_IS_UNIT", "NO_CHUNKS_IN_FIRST_PAGE")}
           print("S3 origins:", len(s3), "with units:", units, counts)
           assert len(s3) == 884, len(s3)
-          assert units == 755, units
-          assert counts["NO_CHUNKS_IN_FIRST_PAGE"] >= 1
+          # 763 after the 2026-10-06 sweep: a new PHerc0139 volume was published without units, and the
+          # withdrawn store left the denominator alone (it never had units to begin with).
+          assert units == 763, units
+          # Zero, not "at least one": the one store in this class was removed upstream on 2026-10-05.
+          assert counts["NO_CHUNKS_IN_FIRST_PAGE"] == 0, counts
+          assert counts["AXES_UNIT_MISSING"] >= 1 and counts["SCALE_IS_UNIT"] >= 1, counts
           PY
 
   scan:
