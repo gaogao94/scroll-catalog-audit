@@ -13,7 +13,7 @@ Snapshot: `metadata.min.json`, `Last-Modified 2026-09-29`, 894 declared Zarr roo
 |---|---:|---|---|
 | every declared root resolves at its own declared access root | 894 | **894 / 894** | `results.jsonl`, `results_alt.jsonl` |
 | roots carrying an OME metadata object | 894 | 14 carry none | `results.jsonl` |
-| roots whose level 0 lists no chunks | 884 listable (the alternate root has no listing API) | **1** (#1892) | `results.jsonl` |
+| roots whose level 0 lists no chunks | 884 listable (the alternate root has no listing API) | **1** (#1892) | `results.jsonl` | — **removed upstream 2026-10-05, see NEGATIVE_RESULTS.md §3m**
 | declared store names that are republished under several paths | 224 names | 28 names, 2–81 paths each | `siblings` |
 | bucket top-level prefixes accounted for | 46 prefixes | all accounted for; the 7 not in the manifest hold no Zarr | `FINDINGS.md` |
 

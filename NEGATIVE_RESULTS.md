@@ -319,6 +319,29 @@ it. The four top-level files are `metadata.json`, `metadata.min.json`, `LICENSE.
 So the audit's scope statement can be exact in both directions: everything the catalog declares is
 published, and the bucket additionally carries a thumbnail cache the catalog does not describe.
 
+## 3m. The one empty store was removed upstream (2026-10-05), and two manifest entries remain
+
+The store this repository reports in 3d-ii - six levels, headers only, empty at all six - was acted on.
+On 2026-10-05 the maintainer wrote in #1892: *"After all, I removed the empty artifacts and updated the
+coverage rules and handling (because they were worthwhile for other reasons)."*
+
+Verified here, not taken on trust:
+
+| check | result |
+|---|---|
+| `freshness --label NO_CHUNKS_IN_FIRST_PAGE --sample 1` | the store's finding flips `NO_CHUNKS_IN_FIRST_PAGE` → **`PATH_MISSING`** |
+| `.zattrs` / `zarr.json` / `0/.zarray` at that path | **404** |
+| its two sibling surface volumes and its `mesh/` objects | **200** - only the empty one and its ink-detection artifact went |
+| the catalog's declared root set | **unchanged** at 894, which is why `drift` reports no drift |
+
+That last row is the interesting one. The manifest still declares two `data` entries that point at the
+removed artifacts - the `layers-zarr` store and its matching `ink-detection` `.tif` under segment
+`20260226123353` - so a consumer that walks the manifest and fetches what it declares gets two 404s
+where the catalog says the files are. Reported in #1892 with the paths.
+
+Nothing in this repository needs to change for that; it is recorded because the audit is a snapshot and
+the snapshot's most-quoted finding is now history rather than state.
+
 ## 4. Path resolution
 
 | check | scope | result |

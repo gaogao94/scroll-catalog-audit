@@ -37,7 +37,7 @@ and by hand against four published stores:
 | store | result |
 |---|---|
 | `PHerc0009B/.../8.64um-1.2m-116keV-volume-20250521125136.zarr` | no findings |
-| `PHerc0814/.../1.129um-0.22m-59keV-volume-20260521123630-L1.zarr` | `NO_CHUNKS` |
+| `PHerc0814/.../1.129um-0.22m-59keV-volume-20260521123630-L1.zarr` | `NO_CHUNKS` — **removed upstream 2026-10-05**, so this row is the one that no longer reproduces; the check still detects the class |
 | `PHerc1447/.../8.64um-1.2m-116keV-volume-20250521151220.zarr` | `UNITS_MISSING_PITCH_IN_NAME`, `SCALE_IS_UNIT` |
 | `PHerc0332/volumes/20251211183505-2.399um-0.2m-78keV-masked.zarr` | `UNITS_MISSING_PITCH_IN_NAME`, `SCALE_IS_UNIT` (correct: all 76 raw CT volumes are unitless) |
 

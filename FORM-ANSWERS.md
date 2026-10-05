@@ -48,11 +48,12 @@ with the scale its OME metadata carries.
 Findings (2026-10-03 snapshot, two sweeps merged per store):
 - 81 stores state a um pitch in their own name while their OME metadata carries no scale;
   76 of them are raw CT volumes -- the input to every downstream step -- across 39 samples.
-- 1 store declares six pyramid levels and holds no chunks (reproduces issue #1892).
+- 1 store declared six pyramid levels and held no chunks (reproduces issue #1892). The maintainer
+  confirmed the analysis and removed the empty artifacts on 2026-10-05; the removal was verified here.
 - 14 stores carry no metadata object at all.
 - Negative result: no broken level ladders; every declared level of every root was listed and counted
-  (884 roots, 5,304 level listings, all successful) and only six levels hold a header with no chunks -
-  the six levels of one store (#1892).
+  (884 roots, 5,304 level listings, all successful) and only six levels held a header with no chunks -
+  the six levels of one store (#1892), removed upstream on 2026-10-05 and verified gone here.
 
 Reproducibility: `python -m scroll_catalog_audit demo` runs the offline self-test, reproduces both
 already-filed issues, and prints every headline number. A CI job regenerates all committed reports

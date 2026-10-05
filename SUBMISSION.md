@@ -37,7 +37,11 @@ The audit shows this is not a four-store accident:
   **14 stores with no metadata object at all**.
 * Every declared level of **every root** listed and counted - 884 roots, six levels each, **5,304 level
   listings, all successful** - found **6** levels with a header and no chunks, and they are the six
-  levels of one store (#1892). An earlier **deep sweep of all 120 raw volumes** — every declared level probed for chunks — found **no
+  levels of one store (#1892). **That store was removed upstream on 2026-10-05** after the maintainer
+  confirmed the analysis in the issue (*"there's no bug here because we publish valid empty data. It's
+  just surprising"*, then *"After all, I removed the empty artifacts and updated the coverage rules and
+  handling"*). This repository verified the removal (`freshness` flips that store to `PATH_MISSING`, its
+  siblings still return 200) and reported two manifest entries that still point at the removed paths. An earlier **deep sweep of all 120 raw volumes** — every declared level probed for chunks — found **no
   header-only level**, so the empty-pyramid problem is confined to derived stores, not the primary
   data. No broken level ladders exist either (see negative results).
 * Counts come from two independent sweeps merged per store (the run that obtained metadata wins),

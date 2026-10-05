@@ -17,7 +17,8 @@ nothing readable at all), and **81 of them state a micrometre pitch in their own
 volumes, the input to every downstream step, across 39 samples. For **77 of those 81 the correct pitch
 is already in the catalog manifest**, so the repair is a metadata copy rather than a re-render. The
 other 43 are prediction stores with no pitch in the name. Separately, one published surface volume
-declares six levels and holds no chunks, so a reader gets `fill_value` everywhere with no error.
+declared six levels and held no chunks, so a reader got `fill_value` everywhere with no error - **and
+that one was acted on: the maintainer removed the empty artifacts on 2026-10-05**, see below.
 Everything else came back clean, and [COVERAGE.md](COVERAGE.md) lists each check with the scope it
 actually covered.
 
@@ -197,14 +198,18 @@ per-class remediation list.
 * **1 store** declares six pyramid levels and contains no chunks at all (reproduces
   [#1892](https://github.com/ScrollPrize/villa/issues/1892) exactly), and **14 stores** carry no
   metadata object at all.
-* **Header-only levels are rare.** Level 0 was checked on **every** root (894) and exactly one store
-  has no chunks there. Listing every declared level of every root - **884 roots, 5,304 level listings,
-all successful** - leaves exactly those six levels, and no others, holding a header with no chunks. A
-separate deep probe covers *header* existence on all **120 raw volumes**
-  and on a reproducible random sample of **60 segment surface volumes** (8.7 % of that family,
-  `--random 60 --seed 20261003`) — **no header-only level in either**. With 0 hits in 60 draws, the
-  segment family's rate is bounded at <5 % (95 %, rule of three), so this is a bound rather than
-  proof of absence; the one known case is a segment store, so the class is real but rare.
+* **Header-only levels were rare, and the one case is gone.** Level 0 was checked on **every** root
+  (894) and exactly one store had no chunks there. Listing every declared level of every root - **884
+  roots, 5,304 level listings, all successful** - left exactly those six levels, and no others, holding
+  a header with no chunks. It was filed as #1892, the maintainer confirmed the analysis (**"there's no
+  bug here because we publish valid empty data. It's just surprising"**) and **removed the empty
+  artifacts on 2026-10-05**. This repository verified that independently rather than taking it on trust:
+  `freshness` flips that store from `NO_CHUNKS_IN_FIRST_PAGE` to `PATH_MISSING`, its two sibling surface
+  volumes and its `mesh/` objects still return 200, and **two manifest entries still point at the
+  removed paths** - reported back on the same issue. A separate deep probe covers *header* existence on
+  all **120 raw volumes** and on a reproducible random sample of **60 segment surface volumes** (8.7 %
+  of that family, `--random 60 --seed 20261003`) - no header-only level in either, which bounds anything
+  unnoticed in that family at <5 % (95 %, rule of three).
 * **No broken level ladders** were found. The z-axis/in-plane asymmetry of surface volumes
   (`[8.64, 8.64, 8.64] → [8.64, 17.28, 17.28]`) is uniform across the catalog and is therefore
   reported as **expected**, not as a defect.

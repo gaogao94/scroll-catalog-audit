@@ -9,7 +9,7 @@ only a description. **Nothing here has been written to the bucket** — these ar
 |---|---:|---|---|
 | A · no physical scale, pitch in the name | 81 | `SCALE_FIX_PLAN.md` / `.json` | 4 copy-from-sibling, 77 derived |
 | B · prediction outputs with no scale at all | 43 | `PREDICTION_SCALE_PLAN.json` | all derived |
-| C · declares six levels, holds no chunks | 1 | options below | — |
+| C · declares six levels, holds no chunks | 1 | **resolved upstream 2026-10-05** (artifacts removed) | — |
 
 ---
 
