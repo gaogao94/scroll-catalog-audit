@@ -47,9 +47,9 @@ Snapshot: `metadata.min.json`, `Last-Modified 2026-09-29`, 894 declared Zarr roo
 | v2 stores uncompressed / compressed | 813 | 763 / 50 | `results_zarray.jsonl` |
 | array `order` is not C (column-major) | 894 | **0** — 813 say `C`, the 81 v3 stores omit it | `results_zarray.jsonl` |
 | `filters` carrying a codec a reader may not implement | 894 | **0** — `[]` or the standard v3 `sharding_indexed` | `results_zarray.jsonl` |
-| level-0 size, no compressor declared (level 0 only) | 894 | **827 TB** over 763 roots; 626 of them above 256 MB (1010 TB if compressed stores are included) | `results_zarray.jsonl`, `python -m scroll_catalog_audit bytes` |
+| level-0 size, no compressor declared (level 0 only) | 894 | **876 TB** over 763 roots; 626 of them above 256 MB (1,059 TB if compressed stores are included) | `results_zarray.jsonl`, `python -m scroll_catalog_audit bytes` |
 
-The 827 TB corroborates the catalog-wide uncompressed-storage finding in
+The 876 TB corroborates the catalog-wide uncompressed-storage finding in
 [#1950](https://github.com/ScrollPrize/villa/issues/1950) from a different tool; it covers **level 0
 only**, so it is a subset of that issue's 1.03 PB figure, not a competing number.
 

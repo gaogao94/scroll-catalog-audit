@@ -14,7 +14,7 @@ Run B - small segment sample (--limit 30):
   status        : {'OK': 30}
   mismatches    : 0
 
-Run C - the 81 stores carrying the units defect (--all --affected):
+Run C - the 82 stores carrying the units defect (--all --affected):
   stores probed : 81
   status        : {'OK': 81}
   mismatches    : 0

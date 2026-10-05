@@ -4,7 +4,7 @@
 affected stores it lists the `axes[].unit` and per-level `scale` that would make the store's OME
 metadata agree with the pitch the catalog manifest already records. It exists because the
 maintainer note closing [#1760](https://github.com/ScrollPrize/villa/issues/1760) says data errors in
-**the open data bucket** are actionable (while `dl.ash2txt.org` is not), and all 81 stores are in
+**the open data bucket** are actionable (while `dl.ash2txt.org` is not), and all 82 stores are in
 that bucket.
 
 ## Two rules, two confidence levels — and why the difference matters
@@ -64,6 +64,6 @@ working repository.
 
 1. Whether Rule B's isotropic ladder is right for raw CT volumes, or whether z should stay constant
    as it does for surface volumes. One sentence settles it; after that the plan is mechanical.
-2. Whether to fix the 81 stores in place, or to fix the publisher so the manifest value is written
+2. Whether to fix the 82 stores in place, or to fix the publisher so the manifest value is written
    into the metadata at publish time (which would also stop new instances — see
    [#1957](https://github.com/ScrollPrize/villa/issues/1957)).

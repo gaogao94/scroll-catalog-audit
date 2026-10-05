@@ -12,7 +12,7 @@ No chunk bytes are ever downloaded — only `ListObjectsV2` listings and small m
 about 1,800 requests and 20 minutes on one machine; the header, pyramid-level and level-chunk layers
 bring the whole evidence set to roughly ten thousand metadata requests. None of them is image data.
 
-**What it found.** 124 stores publish metadata that declares no `axes[].unit` (a further 15 publish
+**What it found.** 125 stores publish metadata that declares no `axes[].unit` (a further 15 publish
 nothing readable at all), and **81 of them state a micrometre pitch in their own name** — 76 raw CT
 volumes, the input to every downstream step, across 39 samples. For **77 of those 81 the correct pitch
 is already in the catalog manifest**, so the repair is a metadata copy rather than a re-render. The
@@ -191,7 +191,7 @@ per-class remediation list.
 
 * **894** zarr roots published by the catalog (884 with an S3 access root); **755 (85.4 %)** carry
   full physical units.
-* **81 stores** state a µm pitch in the store name while their OME metadata carries none — **76 of
+* **82 stores** state a µm pitch in the store name while their OME metadata carries none — **76 of
   them raw CT volumes** (`volumes/*-masked.zarr`), 4 surface volumes, 1 surface prediction — across
   **39 samples**. This is the class tracked for four PHerc1447 volumes in
   [#1951](https://github.com/ScrollPrize/villa/issues/1951).
@@ -215,7 +215,7 @@ per-class remediation list.
   reported as **expected**, not as a defect.
 * **Declared scales match the actual array shapes.** A prototype check (each level's `.zarray`
   compared against `shape_0 / (scale_i / scale_0)`, 1 % tolerance) ran over **every declared level**
-  of all **120 volume roots** and of the 81 stores carrying the units defect: no level contradicts
+  of all **120 volume roots** and of the 82 stores carrying the units defect: no level contradicts
   its own geometry. So for the catalog in this bucket, the "coordinates off by the level ratio"
   failure mode does not occur — which is worth stating, because it is a class that is otherwise
   silent when it does.
@@ -223,7 +223,7 @@ per-class remediation list.
   directories, so 78 % of the roots are repeat publications. That matters for #1951: the store
   `8.64um-1.2m-116keV-volume-20250521151220.zarr` exists **15 times**, and **11 copies declare the
   8.64 µm scale while the other 4 declare none** — the correct metadata is already in the catalog.
-  (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 81 affected stores
+  (`siblings --path <name>` lists them.) Do not generalise the shortcut: of all 82 affected stores
   only these 4 have a correct sibling; the other 77 are single-copy raw CT volumes.
 * **The catalog already knows the missing pitch.** For **77 of the 81** affected stores the manifest
   entry carries `properties.pixel_size_um`, and it matches the µm token in the store name exactly

@@ -1,3 +1,6 @@
+<!-- 文本副本：这是实际发布到 GitHub 的文本，数字为发布当时的值。 -->
+> **文本副本** —— 以下是实际发布到 GitHub 的文本，数字为**发布当时**的值；后续目录变化以 [README](../README.md) / [COVERAGE](../COVERAGE.md) 为准。
+
 # 待提交材料 · #1951 补充证据（定稿）
 
 > 状态：**已定稿（数字已按最终全量重扫刷新），等 G1（GitHub 身份）解锁后作为 comment 提交到 [ScrollPrize/villa#1951](https://github.com/ScrollPrize/villa/issues/1951)**。

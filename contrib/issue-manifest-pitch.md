@@ -1,3 +1,6 @@
+<!-- 文本副本：这是实际发布到 GitHub 的文本，数字为发布当时的值。 -->
+> **文本副本** —— 以下是实际发布到 GitHub 的文本，数字为**发布当时**的值；后续目录变化以 [README](../README.md) / [COVERAGE](../COVERAGE.md) 为准。
+
 **The manifest knows the pitch; the published OME metadata does not**
 
 ### What was checked

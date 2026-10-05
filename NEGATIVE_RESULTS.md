@@ -42,7 +42,7 @@ level by scale compute coordinates off by the level ratio — silently.
 | check | scope | result |
 |---|---|---|
 | `shape_i ≈ shape_0 / (scale_i / scale_0)`, tolerance `max(1 voxel, 1 %)` | 120 volume roots | **0** mismatches |
-| same | the 81 stores carrying the units defect | **0** mismatches |
+| same | the 82 stores carrying the units defect | **0** mismatches |
 | same | 30 segment surface volumes | **0** mismatches |
 
 231 store-probes, 0 mismatches. One store initially reported `INCOMPLETE`; re-checking it directly
@@ -145,7 +145,7 @@ The two published figures are complementary, not overlapping:
 | state a micrometre pitch **in the name**, no `axes[].unit` | 81 (76 raw CT, 4 surface volumes, 1 prediction) |
 | no pitch in the name and no unit either | 43 (42 surface predictions, 1 ink-detection-3d) |
 | **total stores whose readable metadata declares no `axes[].unit`** | **124** (81 + 43) |
-| **total stores with no usable unit at all** | **139** (124 + 15 unreadable) |
+| **total stores with no usable unit at all** | **139** (124 + 6 unreadable) |
 
 ## 3e. Coordinate transforms
 
@@ -376,7 +376,7 @@ into the published OME metadata, not that they are wrong.
 
 | hypothesis | how it was tested | result |
 |---|---|---|
-| the units defect is a pipeline regression in a date window | rendered-month distribution of the 81 affected stores vs the whole catalog | **rejected** — affected stores span 2024-10 → 2026-06 with clean months in between (2025-09: 135 stores, none affected) |
+| the units defect is a pipeline regression in a date window | rendered-month distribution of the 82 affected stores vs the whole catalog | **rejected** — affected stores span 2024-10 → 2026-06 with clean months in between (2025-09: 135 stores, none affected) |
 | the units defect explains [#1727](https://github.com/ScrollPrize/villa/issues/1727)'s non-reproducible renders | cross-tabulated ge-al's `match_renderer` against this audit's unitless flag | **rejected** — only 4 of 1,113 non-reproducible entries are unitless, so the two classes are independent |
 | a second access root hosts different data | all 10 alternate-root stores fetched from their own root | **no** — same pattern (no unit, `scale [1,1,1]`), 7 of them published *only* there |
 

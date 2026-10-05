@@ -46,7 +46,7 @@ root, checks pyramid levels for chunks, and compares the physical pitch stated i
 with the scale its OME metadata carries.
 
 Findings (2026-10-03 snapshot, two sweeps merged per store):
-- 81 stores state a um pitch in their own name while their OME metadata carries no scale;
+- 82 stores state a um pitch in their own name while their OME metadata carries no scale;
   76 of them are raw CT volumes -- the input to every downstream step -- across 39 samples.
 - 1 store declared six pyramid levels and held no chunks (reproduces issue #1892). The maintainer
   confirmed the analysis and removed the empty artifacts on 2026-10-05; the removal was verified here.
@@ -120,20 +120,20 @@ each patch adds tests in the repository's existing style and applies cleanly to 
 ```
 1. Problem identification and solution
    Challenge: the published catalog is not self-describing. A metadata-only sweep of all 894 Zarr
-   roots shows 81 stores whose own name states a micrometre pitch while their OME metadata carries
+   roots shows 82 stores whose own name states a micrometre pitch while their OME metadata carries
    no scale (76 of them raw CT volumes, the input to every downstream step, across 39 samples), 43
-   prediction stores with no scale at all, 14 stores with no metadata object, and one store that
+   prediction stores with no scale at all, 6 stores with no metadata object, and one store that
    declares six levels and holds no chunks.
    Implementation path: `scan` (metadata only, resumable) -> `report` (FINDINGS.md + machine-readable
    fixlist.json) -> `explain` for a single store. One command reproduces the two already-filed issues
    offline: `python -m scroll_catalog_audit demo`.
    Advantages over existing solutions: the identity of the failure is not the pyramid geometry
    (checked elsewhere, and clean here) but the metadata layer - and specifically the gap between what
-   the catalog manifest records and what the store publishes. For 77 of the 81 stores the pitch is
+   the catalog manifest records and what the store publishes. For 77 of the 82 stores the pitch is
    already in `metadata.min.json` and simply is not propagated, so the repair is mechanical rather
    than archaeological. No existing tool cross-references manifest and store metadata; that
    comparison is what produced issues #1957, #1958 and #1959 and the fix plans committed with this
-   repository. In total 124 stores publish metadata that declares no axis unit: 81 state a pitch in the name, and 43
+   repository. In total 125 stores publish metadata that declares no axis unit: 81 state a pitch in the name, and 43
    are prediction stores with no pitch in the name.
    The three upstream pull requests are the fixes the audit motivated.
 

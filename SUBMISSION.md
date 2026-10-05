@@ -27,14 +27,14 @@ surface volumes are already tracked in
 
 The audit shows this is not a four-store accident:
 
-* **81 stores** state a µm pitch in their name while their metadata carries none.
+* **82 stores** state a µm pitch in their name while their metadata carries none.
 * **76 of them are raw CT volumes** (`volumes/*-masked.zarr`) — the input to every downstream step.
 * They span **39 samples**.
 * Meanwhile 85.4 % of stores (755 of 884 S3 origins) *do* carry correct units, so the catalog is
   not uniformly unitless and a consumer cannot rely on either behaviour.
 * The same sweep also found **1 store that declares six pyramid levels and contains no chunks at
   all** (header-only; reads back as `fill_value` with exit 0 — reproduces #1892 exactly) and
-  **14 stores with no metadata object at all**.
+  **6 stores with no metadata object at all**.
 * Every declared level of **every root** listed and counted - 884 roots, six levels each, **5,304 level
   listings, all successful** - found **6** levels with a header and no chunks, and they are the six
   levels of one store (#1892). **That store was removed upstream on 2026-10-05** after the maintainer

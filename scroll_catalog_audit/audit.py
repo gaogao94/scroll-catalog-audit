@@ -827,7 +827,12 @@ def cmd_verify(args):
 
     listed = [l for r in chunks for l in r["levels"] if l.get("status") == "OK"]
     print(f"\n  figures the write-up quotes, recomputed now:")
-    print(f"    roots swept ........................... {len(live)} on the S3 convention, "
+    # `live` includes the roots that live on the alternate root: since the sweep resolves each root
+    # against its declared access_roots, the 10 `samples/...` stores are fetched there and are live. The
+    # label said "on the S3 convention" for all 894 of them, which is the wrong denominator.
+    on_alt = {r["path"].strip("/").rstrip("/") for r in base
+              if r.get("via") and r["via"] != BUCKET}
+    print(f"    roots swept ........................... {len(live - on_alt)} on the S3 convention, "
           f"{len(zset)} including the alternate root")
     print(f"    level listings, all successful ........ {len(listed)}")
     print(f"    level listings with no chunks ......... {len(empty)} (in {len(empty_roots)} root)")

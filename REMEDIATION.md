@@ -13,7 +13,7 @@ only a description. **Nothing here has been written to the bucket** — these ar
 
 ---
 
-## A — the 81 stores (#1951, #1957)
+## A — the 82 stores (#1951, #1957)
 
 For each store: the `axes[].unit` and per-level `scale` needed to agree with the pitch the manifest
 already records. Four stores take their ladder **verbatim from a verified sibling copy**; the other
@@ -79,7 +79,7 @@ one-line catalog change and can be done today; option (a) restores the data.
 1. **One sentence** on the z spacing for raw volumes and prediction surfaces (classes A and B).
    After that both plans are mechanical.
 2. A decision on **fix-in-place vs fix-the-publisher**: writing the manifest value into the metadata
-   at publish time would stop new instances, which is the difference between repairing 124 stores
+   at publish time would stop new instances, which is the difference between repairing 125 stores
    and repairing the pipeline that produced them.
 3. For class C, whether the store is worth re-rendering or dropping.
 

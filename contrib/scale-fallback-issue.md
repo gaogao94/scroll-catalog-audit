@@ -1,3 +1,6 @@
+<!-- 文本副本：这是实际发布到 GitHub 的文本，数字为发布当时的值。 -->
+> **文本副本** —— 以下是实际发布到 GitHub 的文本，数字为**发布当时**的值；后续目录变化以 [README](../README.md) / [COVERAGE](../COVERAGE.md) 为准。
+
 # Issue / PR draft · physical scale silently defaults to 1.0 in three places
 
 > **Status**: patch ready (`lasagna-scale-fallback.patch`, 4 files, +111/−2, verified with `git apply --check` against current `main`); opened as <https://github.com/ScrollPrize/villa/pull/1954>.

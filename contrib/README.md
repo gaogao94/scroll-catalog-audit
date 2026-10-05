@@ -6,21 +6,21 @@ it. Nothing here is applied upstream yet; each item names the issue or PR it is 
 
 | File | What it is | Intended target |
 |---|---|---|
-| `issue-1951-addendum.md` | Catalog-wide quantification of the missing-physical-scale class (81 stores, 76 of them raw CT volumes, 39 samples) plus a negative result on level ladders | comment on [ScrollPrize/villa#1951](https://github.com/ScrollPrize/villa/issues/1951) |
+| `issue-1951-addendum.md` | Catalog-wide quantification of the missing-physical-scale class (82 stores, 76 of them raw CT volumes, 39 samples) plus a negative result on level ladders | comment on [ScrollPrize/villa#1951](https://github.com/ScrollPrize/villa/issues/1951) |
 | `scale-fallback-issue.md` | Reader side: three places that substitute `1.0` for a missing physical scale without a word, with `file:line`, executed before/after evidence, and an appendix listing four further candidates found by the same search | new issue in `ScrollPrize/villa` |
 | `lasagna-scale-fallback.patch` | Reader-side fix: warning naming the affected levels + opt-in `--require-scale`; 4 files, +111/−2, includes tests | PR against `ScrollPrize/villa` |
 | `spiral-unitless-issue.md` | Writer side: `tracks_to_ome_zarr` writes `1.0` into newly produced OME-Zarr metadata when no voxel size is available | new issue / PR description |
 | `spiral-unitless-scale.patch` | Writer-side fix: warn before writing a unitless scale; 2 files, +28/−0, includes a test modelled on an existing fixture | PR against `ScrollPrize/villa` |
 | `vesuvius-scale-warnings-issue.md` | The two remaining reader-side sites in `tifxyz_label_transfer` (one of them records the assumed scale **as evidence**) | new issue / PR description |
 | `vesuvius-scale-warnings.patch` | Reader-side fix for those two: `warnings.warn` on a missing scale, values unchanged; 4 files, +55/−0, includes two tests | PR against `ScrollPrize/villa` |
-| `issue-manifest-pitch.md` | The manifest already records the pitch for 77 of the 81 affected stores, so the repair is a metadata copy from the catalog rather than a re-render | filed as [ScrollPrize/villa#1957](https://github.com/ScrollPrize/villa/issues/1957) |
+| `issue-manifest-pitch.md` | The manifest already records the pitch for 77 of the 82 affected stores, so the repair is a metadata copy from the catalog rather than a re-render | filed as [ScrollPrize/villa#1957](https://github.com/ScrollPrize/villa/issues/1957) |
 | `check-omezarr-metadata/` | Publish-time check for the whole class: every defect this audit found, as a check that runs before a store is published. Standard library only, no chunk bytes, 37 unit tests, verified against four published stores | usable as it stands or as the basis of a PR; also packaged as a composite action at the repository root, so a repository can gate a publish with three lines |
 | `fix-omezarr-scale/` | The repair half: writes the corrected `axes[].unit` and `scale` for a store whose pitch the manifest already knows, as a reviewable diff. Dry run by default, refuses when the store has changed since the plan was made | usable as it stands; pairs with the check above |
 
 ## How the pieces relate
 
 ```
-scroll-catalog-audit  ──finds──▶  81 stores whose name states a µm pitch
+scroll-catalog-audit  ──finds──▶  82 stores whose name states a µm pitch
         (this repo)               while their OME metadata carries none
                                           │
                      ┌────────────────────┴────────────────────┐
@@ -56,7 +56,7 @@ and `yaml` — and run in CI.
 ## Full chain
 
 ```
-scroll-catalog-audit  ──finds──▶  81 stores whose name states a µm pitch
+scroll-catalog-audit  ──finds──▶  82 stores whose name states a µm pitch
         (this repo)               while their OME metadata carries none
                                           │
         ┌─────────────────────────────────┼─────────────────────────────────┐
