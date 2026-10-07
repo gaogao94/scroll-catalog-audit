@@ -42,8 +42,12 @@ present**, reproducing #1755 with a different tool. The other 26 roots have ever
 Unlike the bucket's 77 repairable stores, **the manifest records no pitch for any of these six**, so the
 file name is the only place in the catalog the value appears. See [FINDINGS-legacy.md](FINDINGS-legacy.md).
 
-**What others did with it.** Two cases where the audit changed someone else's conclusion rather than
-just adding a comment. The reporter of
+**What others did with it.** Three cases where the audit changed someone else's conclusion rather than
+just adding a comment. In [#1755](https://github.com/ScrollPrize/villa/issues/1755), the contributor who
+had read the bucket's `PHercParis1Fr34/` as an incomplete upload wrote that the catalog evidence
+**"corrects the implication in my Sept 30 comment: the bucket holding only photos/ for PHercParis1Fr34 is
+by design, not an incomplete upload"**, and that the finding both of us measured on the legacy host is
+the one that stands. The reporter of
 [#1892](https://github.com/ScrollPrize/villa/issues/1892) used this audit's bound - exactly one of 894
 roots has no chunks at level 0 - and its remediation options to settle on a fix, and agreed to a
 precision point that avoids removing two populated surface volumes along with the empty one. The
