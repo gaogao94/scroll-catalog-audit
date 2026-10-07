@@ -141,7 +141,7 @@ Coverage is checked in both directions: everything the catalog declares is publi
 ## Evidence / reproducibility
 
 * `python -m scroll_catalog_audit scan --workers 10` — full catalog, metadata only, resumable.
-* `python -m scroll_catalog_audit selftest` — 13 offline unit checks over the parsing and
+* `python -m scroll_catalog_audit selftest` — 15 offline unit checks over the parsing and
   classification logic (no network).
 * `python -m scroll_catalog_audit explain --path <store>` — prints the raw evidence behind any
   single finding (pitch in the name, axis units, level-0 scale, chunks on the first page, derived

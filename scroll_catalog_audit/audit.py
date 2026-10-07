@@ -450,6 +450,21 @@ def _det3(m):
             + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]))
 
 
+def confirms_change(probe, rec, after):
+    """Does a reported classification change reproduce on a second probe?
+
+    A transient 404 classifies a store as PATH_MISSING, which is a legitimate finding, so it arrives as a
+    change rather than as an exception. Requiring the change to reproduce keeps the canary honest: on
+    2026-10-08 one run reported a changed store and the next reported none, which is how a canary teaches
+    its reader to ignore it. Anything unconfirmed is still printed, it just does not fail the build.
+    """
+    try:
+        again = sorted(set(classify(probe(dict(rec)))))
+    except Exception:  # noqa: BLE001
+        return False
+    return again == after
+
+
 def cmd_freshness(args):
     """Is the committed sweep still true? Re-probe a sample and compare classifications.
 
@@ -476,6 +491,7 @@ def cmd_freshness(args):
     sample = rnd.sample(rows, min(args.sample, len(rows)))
     print(f"re-probing {len(sample)} of {len(rows)} stores (seed {args.seed}), metadata only")
     changed = []
+    transient = []
     failed = []
     for rec in sample:
         try:
@@ -485,8 +501,15 @@ def cmd_freshness(args):
             continue
         before, after = sorted(set(classify(rec))), sorted(set(classify(fresh)))
         if before != after:
+            # A difference has to reproduce: a single transient 404 classifies a store as PATH_MISSING,
+            # which is a legitimate finding and therefore arrives here as a change rather than as an
+            # exception. On 2026-10-08 a run reported one changed store and the next run reported none,
+            # so the canary cried wolf on noise - and a canary that does that gets ignored.
+            if not confirms_change(scan_root, rec, after):
+                transient.append((rec["path"], before, after))
+                continue
             changed.append((rec["path"], before, after))
-    print(f"  unchanged: {len(sample) - len(changed) - len(failed)}")
+    print(f"  unchanged: {len(sample) - len(changed) - len(transient) - len(failed)}")
     print(f"  changed  : {len(changed)}")
     for path, before, after in changed[: args.limit]:
         print(f"    {path}")
@@ -494,6 +517,11 @@ def cmd_freshness(args):
         print(f"      now: {after}")
     if len(changed) > args.limit:
         print(f"    ... and {len(changed) - args.limit} more")
+    if transient:
+        print(f"  did not reproduce (transient, not a change): {len(transient)}")
+        for path, before, after in transient[: args.limit]:
+            print(f"    {path}")
+            print(f"      was: {before}  saw once: {after}")
     if failed:
         print(f"  could not re-probe: {len(failed)}")
         for path, why in failed[: args.limit]:
@@ -1029,6 +1057,20 @@ def _manifest_fixture_codes() -> str:
         os.unlink(path)
 
 
+def _case_transient_confirmed():
+    """A change that reproduces counts."""
+    rec = {"exists": True, "um_in_path": 8.64, "scale0": [1, 1, 1], "units_present": False}
+    after = classify(rec)
+    return confirms_change(lambda r: rec, rec, after)
+
+
+def _case_transient_not_reproduced():
+    """A change that vanishes on re-probe is not a change - the 2026-10-08 false alarm."""
+    rec = {"exists": True, "um_in_path": 8.64, "scale0": [1, 1, 1], "units_present": False}
+    healthy = {"exists": True, "um_in_path": None, "scale0": [2.4, 2.4, 2.4], "units_present": True}
+    return confirms_change(lambda r: healthy, rec, classify(rec))
+
+
 SELFTEST_CASES = [
     (lambda: is_chunk_key("0/0/0/5"), True, "hierarchical chunk"),
     (lambda: is_chunk_key("0/0.0.11"), True, "dotted chunk"),
@@ -1049,6 +1091,8 @@ SELFTEST_CASES = [
     (lambda: classify({"skipped": "NOT_S3_ORIGIN", "exists": False}), [], "other roots are not findings"),
     (_manifest_fixture_codes, "1:MODEL_SAMPLE_MISSING,SEGMENT_VOLUME_MISSING,TRANSFORM_TARGET_MISSING",
      "manifest checks find the synthetic defects"),
+    (_case_transient_confirmed, True, "freshness: a change that reproduces counts"),
+    (_case_transient_not_reproduced, False, "freshness: a change that does not reproduce is not a change"),
 ]
 
 

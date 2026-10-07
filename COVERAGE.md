@@ -99,7 +99,7 @@ python -m scroll_catalog_audit manifest      # the manifest-layer checks in sect
 ```
 
 ```
-python -m scroll_catalog_audit selftest      # 13 offline checks
+python -m scroll_catalog_audit selftest      # 15 offline checks
 python -m scroll_catalog_audit.asserts       # 10 structural assertions over the committed evidence
 python -m scroll_catalog_audit demo          # reproduces two filed issues offline
 python -m scroll_catalog_audit drift         # what the catalog declares now vs what was swept
