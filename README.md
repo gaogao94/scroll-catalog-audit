@@ -42,8 +42,13 @@ present**, reproducing #1755 with a different tool. The other 26 roots have ever
 Unlike the bucket's 77 repairable stores, **the manifest records no pitch for any of these six**, so the
 file name is the only place in the catalog the value appears. See [FINDINGS-legacy.md](FINDINGS-legacy.md).
 
-**What others did with it.** Three cases where the audit changed someone else's conclusion rather than
-just adding a comment. In [#1755](https://github.com/ScrollPrize/villa/issues/1755), the contributor who
+**What others did with it.** Four cases where the audit changed someone else's conclusion - or
+reproduced its method - rather than just adding a comment. The author of
+[#1730](https://github.com/ScrollPrize/villa/issues/1730) **re-ran this audit's filename test independently**
+and got the same result (9 of 9 affected segments carry the volume they declare in their own artifact paths),
+then stated the two things the test cannot show, which is the more useful half of a cross-check; answering that,
+the declared ids turn out to be uniform per sample - 39 of 39 and 15 of 15 segments name one volume each -
+so for two of the three samples the field is a per-sample pointer rather than a per-segment record. In [#1755](https://github.com/ScrollPrize/villa/issues/1755), the contributor who
 had read the bucket's `PHercParis1Fr34/` as an incomplete upload wrote that the catalog evidence
 **"corrects the implication in my Sept 30 comment: the bucket holding only photos/ for PHercParis1Fr34 is
 by design, not an incomplete upload"**, and that the finding both of us measured on the legacy host is
