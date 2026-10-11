@@ -46,7 +46,7 @@ file name is the only place in the catalog the value appears. See [FINDINGS-lega
 reproduced its method - rather than just adding a comment. The author of
 [#1730](https://github.com/ScrollPrize/villa/issues/1730) **re-ran this audit's filename test independently**
 and got the same result (9 of 9 affected segments carry the volume they declare in their own artifact paths),
-then stated the two things the test cannot show, which is the more useful half of a cross-check; answering that,
+then stated the two things the test cannot show, which is the more useful half of a cross-check. Prompted by the second limit they also **re-derived the per-sample counts** and got the same table. Answering that,
 the declared ids turn out to be uniform per sample - 39 of 39 and 15 of 15 segments name one volume each -
 so for two of the three samples the field is a per-sample pointer rather than a per-segment record. In [#1755](https://github.com/ScrollPrize/villa/issues/1755), the contributor who
 had read the bucket's `PHercParis1Fr34/` as an incomplete upload wrote that the catalog evidence
