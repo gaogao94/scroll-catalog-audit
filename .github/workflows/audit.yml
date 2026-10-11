@@ -41,7 +41,7 @@ jobs:
         # committed data, so a number copied from an older run fails here.
         run: python -m scroll_catalog_audit verify
       - name: The committed sweep is still true
-        if: github.event_name != 'schedule'
+        if: github.event_name != 'schedule' && github.event_name != 'workflow_dispatch'
         # A canary, not coverage - but drawn from the population that can actually change. If a
         # publisher fixes one of the 77 stores the audit reports, this fails and the published numbers
         # get updated rather than quietly going stale. Sampling all 894 roots instead would cover 2 %
@@ -69,7 +69,7 @@ jobs:
           PY
 
       - name: Scheduled canary reports a catalog change instead of failing
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         # On a schedule, the catalog moving is not a regression: this audit is a snapshot, and a
         # publisher fixing one of the stores it reports is the outcome it wants. The first three runs of
         # this workflow that the owner saw in their notifications were exactly that - red for a change
