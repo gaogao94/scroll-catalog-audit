@@ -30,7 +30,10 @@ every record, and one artifact whose parameters contradict its own path) — plu
 that turn the silent `1.0` defaults above into warnings:
 [#1954](https://github.com/ScrollPrize/villa/pull/1954),
 [#1955](https://github.com/ScrollPrize/villa/pull/1955),
-[#1956](https://github.com/ScrollPrize/villa/pull/1956). Five existing threads were independently
+[#1956](https://github.com/ScrollPrize/villa/pull/1956). Those three were **auto-closed by the repository's
+14-day PR time limit** while their CI waited on a Vercel deployment authorization, so the same patches are
+now rebased onto the current `main` and combined into one diff,
+[#2137](https://github.com/ScrollPrize/villa/pull/2137) (+194/-2 across 10 files). Five existing threads were independently
 reproduced, corrected or bounded with evidence: #1730, #1734, #1949, #1950, #1951.
 
 **One corner that is not in the bucket.** Six fragment samples are listed by the catalog but published
