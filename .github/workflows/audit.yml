@@ -104,12 +104,20 @@ jobs:
         # provenance blocks exist only there. Manifest exits 1 on the one filed defect, so the step
         # tolerates that and asserts instead that no *other* code has appeared. The extraction is in
         # Python because the first attempt used sed and silently captured only the severity word.
+        #
+        # Strict on a push, report-only on a schedule or a manual run: on 2026-10-19 the daily cron went
+        # red because the catalog had moved (PHercParis4's 3D ink predictions republished under new
+        # names, one segment and three models added) - which is a re-baseline prompt, not a regression.
+        # The same treatment the freshness canary already got.
+        env:
+          STRICT_MANIFEST: ${{ github.event_name != 'schedule' && github.event_name != 'workflow_dispatch' }}
         run: |
+          set +e
           curl -sSL -o /tmp/metadata.json \
             https://vesuvius-challenge-open-data.s3.amazonaws.com/metadata.json
           python -m scroll_catalog_audit manifest --catalog /tmp/metadata.json > /tmp/manifest.txt || true
           cat /tmp/manifest.txt
-          python - <<'PY'
+          python - <<'PY' > /tmp/manifest-assert.txt 2>&1
           import re
           allowed = {
               "ERROR MODEL_SAMPLE_MISSING",
@@ -141,12 +149,22 @@ jobs:
               r"provenance: (\d+) records, (\d+) with atlas_git_dirty=true, "
               r"(\d+) output-paths compared, (\d+) mismatched", text)
           assert summary, "the provenance summary line is missing"
-          # Moved on 2026-10-05/06: the maintainer withdrew the store #1892 reported (-4 records) and a
-          # new PHerc0139 volume was published (+1 volume, +1 transform, +1 scan param, -3 output paths).
-          assert summary.groups() == ("3835", "3830", "2497", "1"), (
+          # Moved again by 2026-10-19: PHercParis4's 3D ink predictions were republished under new names,
+          # one segment and three models were added, and the provenance count returned to its pre-10-05
+          # level as a coincidence of those additions rather than a revert - the #1892 store is still gone.
+          assert summary.groups() == ("3839", "3834", "2500", "1"), (
               f"provenance summary changed: {summary.groups()} - update the documents and this list"
           )
           PY
+          rc=$?
+          cat /tmp/manifest-assert.txt
+          if [ "$rc" != "0" ]; then
+            if [ "$STRICT_MANIFEST" = "true" ]; then
+              echo "::error::manifest guard failed on a push - fix the snapshot or the expectation"
+              exit 1
+            fi
+            echo "::warning title=Catalog changed::manifest findings or provenance moved against the snapshot - re-baseline and update the documents"
+          fi
 
   docs-in-sync:
     # Every number quoted in the README, SUBMISSION and contrib/ files must be reproducible

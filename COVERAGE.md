@@ -1,3 +1,11 @@
+> **Snapshot date and what has moved since.** Every figure here is the **2026-10-06** sweep of the
+> catalog as it stood then (894 roots, 45 samples, 74 volumes, 323 segments, 13 models). The catalog has
+> changed since: on 2026-10-19 `drift` reports **896** declared roots (+2 net) because PHercParis4's 3D ink
+> predictions were republished under new names - 81 roots renamed, 83 added - along with one new segment
+> and three new models (324 segments, 16 models, provenance 3,839 records). The audit's *classes* are
+> unaffected; the counts in this file are not updated to the newer state. `python -m scroll_catalog_audit
+> drift` reports the difference in one request, which is why the tool exists.
+
 # What was checked, over what, and what came back
 
 Every row is metadata-only: no chunk bytes are downloaded anywhere in this repository. Scope counts
