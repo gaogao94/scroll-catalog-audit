@@ -45,8 +45,8 @@ present**, reproducing #1755 with a different tool. The other 26 roots have ever
 Unlike the bucket's 77 repairable stores, **the manifest records no pitch for any of these six**, so the
 file name is the only place in the catalog the value appears. See [FINDINGS-legacy.md](FINDINGS-legacy.md).
 
-**What others did with it.** Four cases where the audit changed someone else's conclusion - or
-reproduced its method - rather than just adding a comment. The author of
+**What others did with it.** Five cases where the audit changed someone else's conclusion - or
+reproduced its method, or turned it into tooling - rather than just adding a comment. The author of
 [#1730](https://github.com/ScrollPrize/villa/issues/1730) **re-ran this audit's filename test independently**
 and got the same result (9 of 9 affected segments carry the volume they declare in their own artifact paths),
 then stated the two things the test cannot show, which is the more useful half of a cross-check. Prompted by the second limit they also **re-derived the per-sample counts** and got the same table. Answering that,
@@ -63,6 +63,14 @@ reporter of [#1951](https://github.com/ScrollPrize/villa/issues/1951) **retracte
 audit's correction: they had reported that the alternate access root does not resolve, re-verified, and
 found a resolver-specific failure on their own side. Their words: *"claims that don't reproduce should
 be retracted fast, so: retracted"*, and they adopted this audit's count as the frame for the class.
+
+The fifth form of use is different again: a third-party pull request
+([#2273](https://github.com/ScrollPrize/villa/pull/2273)) built a catalog gate around the #1730 diagnosis -
+"the provenance inconsistency diagnosed by @gaogao94 and @kadenpool in #1730" - recording per segment whether
+the declared volume id appears among the segment's own data paths, which is the filename test as an
+annotation. Its claimed output was reproduced independently here against the live catalog before commenting
+on it: 324 segments, 20 affected, split 8 / 1 / 11. That is the finding leaving this repository and becoming
+someone else's tool, which is the outcome the prize description calls "actually get used".
 
 ## Why
 
