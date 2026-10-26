@@ -69,8 +69,11 @@ The fifth form of use is different again: a third-party pull request
 "the provenance inconsistency diagnosed by @gaogao94 and @kadenpool in #1730" - recording per segment whether
 the declared volume id appears among the segment's own data paths, which is the filename test as an
 annotation. Its claimed output was reproduced independently here against the live catalog before commenting
-on it: 324 segments, 20 affected, split 8 / 1 / 11. That is the finding leaving this repository and becoming
-someone else's tool, which is the outcome the prize description calls "actually get used".
+on it: 324 segments, 20 affected, split 8 / 1 / 11. That review was acted on in return: the checker now pins the catalog revision by printing a SHA-256 of the
+decompressed `metadata.json` next to its counts (the suggestion came from watching the catalog move from 894
+to 897 declared roots in two weeks), and its author confirmed the reading of the 20 as one pointer per sample
+rather than independent mistakes. Seeing the finding become someone else's tool, and then shape it, is the
+outcome the prize description calls "actually get used".
 
 ## Why
 
